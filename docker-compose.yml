@@ -1,0 +1,116 @@
+services:
+  web:
+    build: backend
+    command: >
+      bash -c "./manage.py collectstatic --noinput && 
+               ./manage.py makemigrations && 
+               ./manage.py migrate && 
+               gunicorn -b 0.0.0.0:8000 atlas_travel.wsgi:application"
+    volumes:
+      - .:/app
+      - static_volume:/app/staticfiles
+      - media_volume:/app/media
+    env_file:
+      - backend/.env
+    depends_on:
+      - db
+      - redis
+    environment:
+      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      - REDIS_URL=redis://redis:6379/0
+    networks:
+      - dev
+
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: frontend
+    working_dir: /usr/src/app
+    volumes:
+      - ./src:/usr/src/app/src
+      - ./next.config.mjs:/usr/src/app/next.config.mjs
+      - ./package.json:/usr/src/app/package.json
+      - ./package-lock.json:/usr/src/app/package-lock.json
+      - ./tsconfig.json:/usr/src/app/tsconfig.json
+    ports:
+      - '3000:3000'
+    command: sh -c "npm install && npm run dev"
+    networks:
+      - dev
+    depends_on:
+      - web
+
+
+  db:
+    image: postgres:13-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    env_file:
+      - backend/.env
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - dev
+
+  redis:
+    image: redis:alpine
+    command: redis-server --save "" --appendonly no
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - dev
+
+  nginx:
+    build: ./nginx
+    container_name: nginx_proxy
+    ports:
+      - "80:80"
+    volumes:
+      - static_volume:/app/staticfiles
+      - media_volume:/app/media
+    depends_on:
+      - web
+    networks:
+      - dev
+
+  telegram_bot:
+    build: backend
+    command: python manage.py run_telegram_bot
+    volumes:
+      - .:/app
+    env_file:
+      - backend/.env
+    depends_on:
+      - web
+      - db
+      - redis
+    environment:
+      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      - REDIS_URL=redis://redis:6379/0
+    networks:
+      - dev
+
+networks:
+  dev:
+
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:
+  redis_data:
