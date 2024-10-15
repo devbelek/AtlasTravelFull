@@ -1,13 +1,17 @@
+version: '3.8'
+
 services:
   web:
-    build: backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
     command: >
       bash -c "./manage.py collectstatic --noinput && 
                ./manage.py makemigrations && 
                ./manage.py migrate && 
                gunicorn -b 0.0.0.0:8000 atlas_travel.wsgi:application"
     volumes:
-      - .:/app
+      - ./backend:/app
       - static_volume:/app/staticfiles
       - media_volume:/app/media
     env_file:
@@ -21,19 +25,18 @@ services:
     networks:
       - dev
 
-
   frontend:
     build:
-      context: .
+      context: ./frontend
       dockerfile: Dockerfile
     container_name: frontend
     working_dir: /usr/src/app
     volumes:
-      - ./src:/usr/src/app/src
-      - ./next.config.mjs:/usr/src/app/next.config.mjs
-      - ./package.json:/usr/src/app/package.json
-      - ./package-lock.json:/usr/src/app/package-lock.json
-      - ./tsconfig.json:/usr/src/app/tsconfig.json
+      - ./frontend/src:/usr/src/app/src
+      - ./frontend/next.config.mjs:/usr/src/app/next.config.mjs
+      - ./frontend/package.json:/usr/src/app/package.json
+      - ./frontend/package-lock.json:/usr/src/app/package-lock.json
+      - ./frontend/tsconfig.json:/usr/src/app/tsconfig.json
     ports:
       - '3000:3000'
     command: sh -c "npm install && npm run dev"
@@ -41,7 +44,6 @@ services:
       - dev
     depends_on:
       - web
-
 
   db:
     image: postgres:13-alpine
@@ -92,10 +94,12 @@ services:
       - dev
 
   telegram_bot:
-    build: backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
     command: python manage.py run_telegram_bot
     volumes:
-      - .:/app
+      - ./backend:/app
     env_file:
       - backend/.env
     depends_on:
