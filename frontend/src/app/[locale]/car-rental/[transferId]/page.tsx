@@ -8,7 +8,8 @@ import "swiper/css";
 
 import styles from "./page.module.css";
 import Container from "../../components/layout/container/Container";
-import { Swiper, SwiperSlide, Swiper as SwiperType } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperType } from "swiper";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import Image from "next/image";
 
@@ -40,9 +41,8 @@ import OffersWithMainCard from "../../components/pages/main_page/offer_section/o
 import OffersBlock from "../../components/pages/main_page/offer_section/OfferBlock";
 
 const TransferDetails: React.FC = () => {
-  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
-  const [modalThumbsSwiper, setModalThumbsSwiper] = useState<SwiperType | null>(
-    null
+const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
+const [modalThumbsSwiper, setModalThumbsSwiper] = useState<SwiperType | null>(null);
   );
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
