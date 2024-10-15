@@ -41,9 +41,8 @@ import OffersWithMainCard from "../../components/pages/main_page/offer_section/o
 import OffersBlock from "../../components/pages/main_page/offer_section/OfferBlock";
 
 const TransferDetails: React.FC = () => {
-const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
-const [modalThumbsSwiper, setModalThumbsSwiper] = useState<SwiperType | null>(null);
-  );
+  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
+  const [modalThumbsSwiper, setModalThumbsSwiper] = useState<SwiperType | null>(null);
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [activeIndex, setActiveIndex] = useState<number>(0);
