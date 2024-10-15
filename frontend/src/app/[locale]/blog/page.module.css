@@ -1,0 +1,15 @@
+.blog_page {
+  padding: 80px 0;
+}
+
+.blog_list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.blog_page .darker_filter {
+  border-radius: 15px;
+}

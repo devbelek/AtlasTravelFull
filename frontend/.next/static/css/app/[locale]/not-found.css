@@ -1,0 +1,69 @@
+/*!*********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/not-found.module.css ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************/
+.not-found_not_found_block__HCCFy {
+  margin: 100px 0;
+  text-align: center;
+}
+
+.not-found_not_found_block__HCCFy h1 {
+  color: var(--text);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 39.01px;
+  margin-bottom: 20px;
+}
+
+.not-found_not_found_block__HCCFy p {
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.94px;
+  margin-bottom: 40px;
+}
+
+.not-found_not_found_block__HCCFy img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+@media (max-width: 768px) {
+  .not-found_not_found_block__HCCFy h1 {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 34.13px;
+  }
+
+  .not-found_not_found_block__HCCFy p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.5px;
+  }
+}
+
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/ui/page_link/page_link.module.css ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************/
+.page_link_page_link__hTki6 {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 28px;
+  text-align: center;
+  color: #fff;
+  background: var(--blue);
+  padding: 14px 35px;
+  border-radius: 15px;
+  display: inline-block;
+  transition: 0.5s ease;
+}
+
+.page_link_page_link__hTki6:hover {
+  background: #226ee6;
+  transition: 0.5s ease;
+}
+

@@ -1,0 +1,89 @@
+.main_block {
+  padding: 143px 0 162px 0;
+}
+
+.ticket_picker_block {
+  background: url("../../../../../../assets/section_backgrounds/main_bg.svg")
+    repeat-x;
+  background-size: cover;
+  margin-bottom: 100px;
+}
+
+.company_slogan {
+  text-align: center;
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 60.95px;
+  color: white;
+  margin-bottom: 80px;
+}
+
+.ticket_category_picker_block {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.ticket_category_picker_block::-webkit-scrollbar {
+  display: none;
+}
+
+.ticket_category_picker {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 25.6px;
+  color: white;
+  cursor: pointer;
+  padding-bottom: 17.5px;
+
+  margin-bottom: 30px;
+}
+
+.ticket_category_picker:hover {
+  color: var(--orange);
+}
+
+.ticket_category_picker:hover svg path {
+  fill: var(--orange);
+}
+
+.ticket_category_picker:hover .palm_tree path {
+  stroke: var(--orange);
+  fill: none;
+}
+
+.ticket_category_picker.active {
+  color: var(--orange);
+  border-bottom: 1px solid var(--orange);
+  padding-bottom: 16.5px;
+}
+
+
+
+@media (max-width: 1024px) {
+  .main_block {
+    padding: 60px 0 75px 0;
+  }
+
+
+  .company_slogan {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 39.01px;
+  }
+
+  .ticket_category_picker {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22.4px;
+    padding-bottom: 15;
+    margin-bottom: 20px;
+  }
+}

@@ -1,0 +1,60 @@
+.tripleImageContainer {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.tripleImageContainer img {
+  object-fit: cover;
+  object-position: center;
+  border-radius: 20px;
+  border: 10px solid #ffffff;
+}
+
+.middle_car {
+  anchor-name: --middle;
+  display: block;
+  text-align: center;
+}
+
+.car_1_image {
+  left: 42px;
+  top: -42px;
+  aspect-ratio: 0.71 / 1;
+  max-width: 30%;
+  z-index: 2;
+  position: absolute;
+  position-anchor: --middle;
+}
+
+.car_2_image {
+  aspect-ratio: 0.71 / 1;
+  max-width: 50%;
+}
+
+.car_3_image {
+  bottom: -42px;
+  right: 42px;
+  aspect-ratio: 0.71 / 1;
+  max-width: 30%;
+  z-index: 2;
+  position: absolute;
+  position-anchor: --middle;
+}
+
+@media (max-width: 400px) {
+  .car_1_image,
+  .car_3_image {
+    max-width: 40%;
+  }
+  .car_2_image {
+    max-width: 60%;
+  }
+  .car_1_image {
+    left: 12px;
+  }
+  .car_3_image {
+    right: 12px;
+  }
+}

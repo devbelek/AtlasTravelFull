@@ -1,0 +1,11 @@
+.global_footer{
+    background: var(--text);
+    color: var(--stroke);
+    padding-top: 66px;
+}
+
+.stroke{
+    width: 100vw;
+    height: 1px;
+    background: #1A324A;
+}

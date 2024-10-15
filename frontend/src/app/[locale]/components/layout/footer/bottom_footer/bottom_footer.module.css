@@ -1,0 +1,27 @@
+.bottom_footer_block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  color: white;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25.6px;
+
+  padding: 10px;
+}
+
+@media (max-width: 820px) {
+  .bottom_footer_block {
+      flex-direction: column;
+      gap: 8px;
+  }
+}
+
+.remotion_ad{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}

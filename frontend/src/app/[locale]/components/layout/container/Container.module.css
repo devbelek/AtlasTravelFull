@@ -1,0 +1,16 @@
+.global_container{
+    display: block;
+    max-width: 1330px;
+    width: 100%;
+    overflow: hidden;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+header .global_container{
+    overflow: visible;
+}
+
+.global_container_visible{
+    overflow: visible;
+}

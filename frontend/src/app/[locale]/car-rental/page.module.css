@@ -1,0 +1,11 @@
+.transfer_page_main .ticket_picker_block {
+    background: url("../../../assets/section_backgrounds/transfer.jpeg") center
+      no-repeat;
+    background-size: cover;
+  }
+  
+  .ticket_picker_block {
+    padding: 100px 0;
+    position: relative;
+  }
+  

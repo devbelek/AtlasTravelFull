@@ -1,0 +1,193 @@
+.request_block {
+  overflow: hidden;
+  margin: 100px 0;
+}
+
+.request_block_inner {
+  background: var(--orange);
+  padding: 50px;
+
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 40px;
+  position: relative;
+}
+
+.form_block {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  width: 70%;
+}
+
+.form_block_title {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 60px;
+  letter-spacing: 0.015em;
+  margin-bottom: 20px;
+}
+
+.form_block_desc {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+  margin-bottom: 80px;
+}
+
+.request_form {
+  background: white;
+  display: flex;
+  flex-direction: row;
+  border-radius: 15px;
+  width: 75%;
+
+  position: relative;
+}
+
+.request_form input {
+  flex-grow: 1;
+  padding: 20px;
+  padding-right: 145px;
+  font-size: 20px;
+  font-weight: 400;
+  border-radius: 15px;
+  line-height: 24px;
+}
+
+.request_form input::placeholder {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--text-input);
+}
+
+.request_form button {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 10px 25px;
+  background: var(--blue);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 28px;
+  text-align: center;
+  color: white;
+  border-radius: 12px;
+}
+
+.consultant_block {
+  width: 25%;
+  margin-right: 20px;
+}
+
+.consultant_image {
+  object-fit: cover;
+  display: block;
+  transform: scale(1.35);
+}
+
+.consultant_info {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 25px 30px;
+  backdrop-filter: blur(15px);
+  border-top-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.consultant_name {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.consultant_work {
+  color: #fff;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+
+  margin-bottom: 8px;
+}
+
+.consultant_phone {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17.07px;
+
+  color: white;
+
+  margin-bottom: 8px;
+}
+
+.consultant_contacts {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+@media (max-width: 935px) {
+  .request_form {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .request_block_inner {
+    flex-direction: column;
+    padding: 16px;
+    padding-bottom: 0;
+  }
+
+  .request_form input {
+    width: 100%;
+  }
+
+  .form_block {
+    width: 100%;
+  }
+
+  .form_block_title {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 39.2px;
+  }
+
+  .form_block_desc {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+  }
+  .consultant_block {
+    width: 100%;
+  }
+  .consultant_image {
+    transform: scale(1);
+    margin: 0 auto;
+  }
+
+  .request_form input,
+  .request_form input::placeholder {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17.07px;
+  }
+
+  .request_form button {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 17.07px;
+    padding: 14px 20px;
+  }
+}

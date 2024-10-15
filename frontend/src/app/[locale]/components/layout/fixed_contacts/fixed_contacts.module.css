@@ -1,0 +1,70 @@
+.fixed_contacts_block {
+  position: fixed;
+  bottom: 40px;
+  right: 10px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  z-index: 9999;
+}
+
+.fixed_contacts_link {
+  width: 55px;
+  height: 55px;
+  position: relative;
+  border-radius: 12px;
+  transition: 0.25s all;
+}
+
+.fixed_contacts_link svg {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.25s all;
+}
+
+.telegram {
+  background: #27a6e5;
+  border: 1px solid #27a6e5;
+}
+
+.telegram:hover{
+    background: #fefefe;
+}
+
+.telegram:hover svg path{
+    fill: #27a6e5;
+}
+
+.whatsapp {
+  background: #48c95f;
+  border: 1px solid #48c95f;
+}
+
+.whatsapp:hover{
+    background: white;
+}
+
+.whatsapp:hover svg path{
+    fill: #48c95f;
+}
+
+.phone {
+  background: var(--blue);
+  border: 1px solid var(--blue);
+}
+
+.phone:hover{
+    background: white;
+}
+
+.phone:hover svg path{
+    stroke: var(--blue);
+}
+
+

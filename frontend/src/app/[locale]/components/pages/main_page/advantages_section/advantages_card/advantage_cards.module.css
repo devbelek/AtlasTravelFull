@@ -1,0 +1,52 @@
+.rounded_block {
+  display: flex;
+  align-items: center;
+  max-width: 160px;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0px 0px 100px 0px #0117361a;
+  position: relative;
+}
+
+.image_in_round {
+  min-width: 50px;
+  max-width: 100px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.title {
+  margin-top: 20px;
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 27px;
+}
+
+.desc {
+  color: var(--text-grey);
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.desc::first-letter {
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 22.5px;
+  }
+
+  .desc {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+}

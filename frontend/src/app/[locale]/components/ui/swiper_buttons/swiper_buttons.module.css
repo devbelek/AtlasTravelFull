@@ -1,0 +1,37 @@
+.swiper_button_prev,
+.swiper_button_next {
+  position: absolute;
+  top: -90px;
+  z-index: 10;
+  background-color: var(--blue);
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+}
+
+.swiper_button_prev {
+  right: 76px;
+}
+
+.swiper_button_next {
+  right: 10px;
+}
+
+.swiper_button_next svg,
+.swiper_button_prev svg {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  text-align: center;
+  width: 10px;
+  height: 20px;
+}
+
+.swiper_button_prev svg {
+  transform: translate(-50%, -50%) rotate(180deg);
+}

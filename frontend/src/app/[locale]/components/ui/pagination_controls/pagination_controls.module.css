@@ -1,0 +1,31 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0 100px;
+}
+
+.pagination_buttons_block {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+}
+
+.pagination_button {
+  width: 48px;
+  aspect-ratio: 1;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 28px;
+  text-align: center;
+  padding: 10px;
+  border-bottom: 2px solid var(--stroke);
+  color: var(--text-grey);
+  cursor: pointer;
+}
+
+.pagination_button:disabled,
+.pagination_button.active {
+  cursor: auto;
+  border-color: var(--blue);
+  color: var(--blue);
+}

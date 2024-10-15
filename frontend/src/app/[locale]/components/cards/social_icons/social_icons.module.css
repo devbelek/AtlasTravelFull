@@ -1,0 +1,69 @@
+.social_icon {
+  width: 40px;
+  height: 40px;
+  display: block;
+  position: relative;
+  border-radius: 10px;
+}
+
+.social_icon img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.whatsApp {
+  background: #48c95f;
+}
+
+.telegram {
+  background: #27a6e5;
+}
+
+.instagram {
+  background: radial-gradient(
+    230.93% 230.93% at 102.01% 2.03%,
+    #f9ed32 0%,
+    #ee2a7b 36%,
+    #d22a8a 44%,
+    #8b2ab2 60%,
+    #1b2af0 83%,
+    #002aff 88%
+  );
+}
+
+.tik_tok {
+  background: #111111;
+}
+
+.facebook {
+  background: #0b84ee;
+}
+
+.youTube {
+  background: #f40000;
+}
+
+.icons_list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .social_icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .social_icon img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .icons_list {
+    gap: 4px;
+  }
+}

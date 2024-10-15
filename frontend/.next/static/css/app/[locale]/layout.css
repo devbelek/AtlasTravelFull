@@ -1,0 +1,754 @@
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[2].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[13].oneOf[2].use[2]!./node_modules/next/font/google/target.css?{"path":"src/app/[locale]/layout.tsx","import":"Montserrat","arguments":[{"subsets":["latin"]}],"variableName":"montserrat"} ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/* cyrillic-ext */
+@font-face {
+  font-family: '__Montserrat_b1da2a';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(/_next/static/media/aec774cbe1963439-s.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: '__Montserrat_b1da2a';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(/_next/static/media/634216363f5c73c1-s.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: '__Montserrat_b1da2a';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(/_next/static/media/d83fe381bb17eb77-s.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: '__Montserrat_b1da2a';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(/_next/static/media/88325a2c1fede2f4-s.woff2) format('woff2');
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: '__Montserrat_b1da2a';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(/_next/static/media/e1c529c04de64b40-s.p.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}@font-face {font-family: '__Montserrat_Fallback_b1da2a';src: local("Arial");ascent-override: 85.79%;descent-override: 22.25%;line-gap-override: 0.00%;size-adjust: 112.83%
+}.__className_b1da2a {font-family: '__Montserrat_b1da2a', '__Montserrat_Fallback_b1da2a';font-style: normal
+}
+
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/layout/container/Container.module.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************/
+.Container_global_container__iCBtc{
+    display: block;
+    max-width: 1330px;
+    width: 100%;
+    overflow: hidden;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+header .Container_global_container__iCBtc{
+    overflow: visible;
+}
+
+.Container_global_container_visible__kKNZP{
+    overflow: visible;
+}
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/layout/footer/footer.module.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************/
+.footer_global_footer__oh_gP{
+    background: var(--text);
+    color: var(--stroke);
+    padding-top: 66px;
+}
+
+.footer_stroke__H5Jg7{
+    width: 100vw;
+    height: 1px;
+    background: #1A324A;
+}
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/layout/footer/bottom_footer/bottom_footer.module.css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.bottom_footer_bottom_footer_block__bjZiC {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  color: white;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25.6px;
+
+  padding: 10px;
+}
+
+@media (max-width: 820px) {
+  .bottom_footer_bottom_footer_block__bjZiC {
+      flex-direction: column;
+      gap: 8px;
+  }
+}
+
+.bottom_footer_remotion_ad__cbk64{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/layout/footer/upper_footer/upper_footer.module.css ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.upper_footer_upper_footer_block__5S3rh {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-right: 10%;
+  padding-bottom: 60px;
+}
+
+@media (max-width: 820px) {
+    .upper_footer_upper_footer_block__5S3rh {
+        flex-direction: column;
+        gap: 30px;
+    }
+}
+
+.upper_footer_social_block__c0fR_ {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.upper_footer_company_info__GLDQm {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.upper_footer_politic_link_list__TY13V {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.upper_footer_politic_link__bsAH4 {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.5px;
+  color: var(--stroke);
+  transition: 0.5s ease;
+}
+
+.upper_footer_politic_link__bsAH4:hover {
+  color: var(--blue);
+  transition: 0.5s ease;
+}
+
+.upper_footer_section_title__zNLxX {
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 29.26px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.upper_footer_contacts_list__ADMce {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.upper_footer_contacts_list_item__O4lIJ {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+  transition: 0.5s ease;
+  color: white;
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 25.6px;
+}
+
+.upper_footer_contacts_list_item__O4lIJ:hover {
+  color: var(--blue);
+  transition: 0.5s ease;
+}
+
+.upper_footer_menu_list__K1xR2 {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.upper_footer_menu_link__UFlai {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25.6px;
+
+  color: white;
+  transition: 0.5s ease;
+}
+
+.upper_footer_menu_link__UFlai:hover{
+    color: var(--blue);
+    transition: 0.5s ease;
+}
+
+@media (max-width: 380px) {
+  .upper_footer_company_logo__t1okl{
+    width: 100%;
+  }
+}
+
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/cards/social_icons/social_icons.module.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************/
+.social_icons_social_icon__LPMVs {
+  width: 40px;
+  height: 40px;
+  display: block;
+  position: relative;
+  border-radius: 10px;
+}
+
+.social_icons_social_icon__LPMVs img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.social_icons_whatsApp__EsaZV {
+  background: #48c95f;
+}
+
+.social_icons_telegram__Y5JOD {
+  background: #27a6e5;
+}
+
+.social_icons_instagram__WytX5 {
+  background: radial-gradient(
+    230.93% 230.93% at 102.01% 2.03%,
+    #f9ed32 0%,
+    #ee2a7b 36%,
+    #d22a8a 44%,
+    #8b2ab2 60%,
+    #1b2af0 83%,
+    #002aff 88%
+  );
+}
+
+.social_icons_tik_tok__Vqy9T {
+  background: #111111;
+}
+
+.social_icons_facebook__CvLCF {
+  background: #0b84ee;
+}
+
+.social_icons_youTube__a7oHu {
+  background: #f40000;
+}
+
+.social_icons_icons_list__cWc9w {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .social_icons_social_icon__LPMVs {
+    width: 32px;
+    height: 32px;
+  }
+
+  .social_icons_social_icon__LPMVs img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .social_icons_icons_list__cWc9w {
+    gap: 4px;
+  }
+}
+
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/layout/header/bottom_header/bottom_header.module.css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.bottom_header_bottom_header__jMGV_ {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  position: relative;
+}
+
+.bottom_header_header_logo__stzep{
+  display: block;
+}
+
+.bottom_header_global_nav_list__2jboR {
+  display: flex;
+  flex-direction: row;
+  gap: 28px;
+}
+
+.bottom_header_global_nav_list_item__WWbWn {
+  padding: 0;
+  white-space: nowrap;
+}
+
+.bottom_header_global_nav_link__uc_Ar {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25.6px;
+  padding: 25px 4px;
+  color: var(--text);
+}
+
+.bottom_header_global_nav_link__uc_Ar:hover {
+  color: var(--blue);
+  transition: 0.25s all;
+}
+
+.bottom_header_active_nav__UMLaI {
+  font-weight: 600;
+  color: var(--blue);
+  position: relative;
+}
+
+.bottom_header_active_nav__UMLaI::after{
+  content: "";
+  display: block;
+  position: absolute;
+  background: var(--blue);
+  width: 100%;
+  height: 2px;
+  top: 0;
+  left: 0;
+}
+
+.bottom_header_nav_aside_button__2gvhj {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .bottom_header_global_nav_list__2jboR {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .bottom_header_nav_aside_button__2gvhj {
+    display: block;
+    margin-left: 15px;
+  }
+
+  .bottom_header_global_nav_list__2jboR {
+    position: absolute;
+    top: calc(100% - 16px);
+    background-color: white;
+    left: -20px;
+    width: 100vw;
+    padding: 20px;
+    gap: 14px;
+    flex-direction: column;
+    transition: all 0.6s ease;
+    display: none;
+    z-index: 3;
+  }
+
+  .bottom_header_global_nav_list__2jboR.bottom_header_open__eXfT_ {
+    display: flex;
+  }
+
+  .bottom_header_global_nav_list_item__WWbWn {
+    padding: 0;
+  }
+
+  .bottom_header_global_nav_link__uc_Ar {
+    padding: 0 4px;
+    display: block;
+  }
+
+  .bottom_header_active_nav__UMLaI {
+    border: none;
+  }
+
+  .bottom_header_nav_aside_button__2gvhj {
+    display: block;
+    width: 18px;
+    aspect-ratio: 1;
+    position: relative;
+  }
+
+  .bottom_header_icon_1__aFmPL,
+  .bottom_header_icon_2__pbAuk,
+  .bottom_header_icon_3___5S80 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #242424;
+    border-radius: 3px;
+    transition: all 400ms cubic-bezier(0.84, 0.06, 0.52, 1.8);
+  }
+
+  .bottom_header_icon_1__aFmPL {
+    transform: translateY(2.5px);
+    animation-delay: 100ms;
+  }
+
+  .bottom_header_icon_2__pbAuk {
+    transform: translateY(9px);
+    animation-delay: 100ms;
+  }
+
+  .bottom_header_icon_3___5S80 {
+    transform: translateY(15.5px);
+    animation-delay: 250ms;
+  }
+
+  .bottom_header_hamburger_icon__6xkHE {
+    height: 18px;
+    width: 18px;
+    z-index: 1000;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .bottom_header_icon-1__NAnui.bottom_header_a__zxYpL {
+    transform: rotate(40deg);
+  }
+  .bottom_header_icon-3__qdP_S.bottom_header_b__6REjU {
+    transform: rotate(-40deg);
+  }
+  .bottom_header_icon-2__DER2_.bottom_header_c__ma2KD {
+    opacity: 0;
+  }
+
+  .bottom_header_clear__8_JuJ {
+    clear: both;
+  }
+
+  .bottom_header_icon_1__aFmPL.bottom_header_a__zxYpL {
+    transform: rotate(45deg) translate(4px, 7px);
+    background-color: var(--blue);
+  }
+
+  .bottom_header_icon_3___5S80.bottom_header_b__6REjU {
+    transform: rotate(-45deg) translate(-7px, 4px);
+    background-color: var(--blue);
+  }
+
+  .bottom_header_icon_2__pbAuk.bottom_header_c__ma2KD {
+    opacity: 0;
+  }
+}
+
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/layout/header/top_header/top_header.module.css ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************/
+.top_header_top_header__IUqux {
+  padding: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top_header_phone_block___1zNq {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+}
+
+.top_header_phone_block_inner__M02GX {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.top_header_phone_numbers__UqIh8 {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17.07px;
+}
+
+@media (max-width: 500px) {
+  .top_header_phone_block___1zNq {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/layout/header/top_header/change_language/change_language.module.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.change_language_change_language__OHNST {
+  border: none;
+  background-color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.5px;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  transition: 1s all ease-in;
+  position: relative;
+  padding: 0px 0px 0px 12px;
+}
+
+.change_language_language_menu__WigYY {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 0;
+  background-color: #fff;
+  box-shadow: 0px 20px 10px 0px #01173614;
+}
+
+.change_language_other_languages__uoxkw {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  padding: 0 12px;
+  align-items: center;
+}
+
+/*!**************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./src/app/[locale]/globals.css ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  --white: #ffffff;
+  --orange: #f1a018;
+  --sky: #67cde2;
+  --salad: #83cd29;
+  --blue: #4877c1;
+  --text-grey: #676767;
+  --stroke: #d3d3d3;
+  --text-input: #989898;
+  --text: #0d1a27;
+}
+
+html,
+body {
+  max-width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--text);
+  background: var(--white);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  border: none;
+  background: none;
+}
+
+input {
+  outline: none;
+  border: none;
+}
+
+.swiper-3d .swiper-slide-shadow {
+  background: none !important;
+}
+
+.swiper {
+  overflow: visible !important;
+}
+
+.swiper-button-disabled {
+  background: #4877c133 !important;
+  cursor: default !important;
+}
+
+.swiper-button-disabled svg path{
+  stroke: var(--text);
+}
+
+.offer_block_vacation_ideas_block .swiper-wrapper {
+  overflow: hidden !important;
+}
+
+.best_offer_swiper .swiper-pagination-fraction,
+.swiper-pagination-custom,
+.swiper-horizontal > .swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  top: 0% !important;
+  right: unset !important;
+  left: calc(100% - 28px) !important;
+}
+
+.comments_block_swiper .swiper {
+  overflow: hidden !important;
+}
+
+.swiper-pagination-bullet {
+  background: #fff !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--blue) !important;
+}
+
+.global_header_inner .global_container {
+  overflow: visible !important;
+}
+
+@media (max-width: 970px) {
+  .offer_block_vacation_ideas_block .swiper {
+    overflow: hidden !important;
+  }
+}
+
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/layout/header/header.module.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************/
+.header_global_header_inner__rcpcZ{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.header_stroke___Elz_{
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: var(--stroke);
+}
+
+
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/layout/fixed_contacts/fixed_contacts.module.css ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************/
+.fixed_contacts_fixed_contacts_block__3J1qm {
+  position: fixed;
+  bottom: 40px;
+  right: 10px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  z-index: 9999;
+}
+
+.fixed_contacts_fixed_contacts_link__tE32f {
+  width: 55px;
+  height: 55px;
+  position: relative;
+  border-radius: 12px;
+  transition: 0.25s all;
+}
+
+.fixed_contacts_fixed_contacts_link__tE32f svg {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.25s all;
+}
+
+.fixed_contacts_telegram__KAYAB {
+  background: #27a6e5;
+  border: 1px solid #27a6e5;
+}
+
+.fixed_contacts_telegram__KAYAB:hover{
+    background: #fefefe;
+}
+
+.fixed_contacts_telegram__KAYAB:hover svg path{
+    fill: #27a6e5;
+}
+
+.fixed_contacts_whatsapp__PMyPt {
+  background: #48c95f;
+  border: 1px solid #48c95f;
+}
+
+.fixed_contacts_whatsapp__PMyPt:hover{
+    background: white;
+}
+
+.fixed_contacts_whatsapp__PMyPt:hover svg path{
+    fill: #48c95f;
+}
+
+.fixed_contacts_phone__B9EvS {
+  background: var(--blue);
+  border: 1px solid var(--blue);
+}
+
+.fixed_contacts_phone__B9EvS:hover{
+    background: white;
+}
+
+.fixed_contacts_phone__B9EvS:hover svg path{
+    stroke: var(--blue);
+}
+
+
+
