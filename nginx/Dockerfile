@@ -28,17 +28,15 @@ RUN NGINX_VERSION=$(nginx -v 2>&1 | sed 's/^nginx version: nginx\///') && \
     tar -zxC /tmp -f nginx.tar.gz
 
 # Компиляция Nginx с модулем Brotli
-RUN NGINX_VERSION=$(nginx -v 2>&1 | sed 's/^nginx version: nginx\///') && \
-    cd /tmp/nginx-$NGINX_VERSION && \
+RUN cd /tmp/nginx-$NGINX_VERSION && \
     ./configure --with-compat --add-dynamic-module=/tmp/ngx_brotli && \
     make modules
 
 # Копирование скомпилированных модулей Brotli
-RUN NGINX_VERSION=$(nginx -v 2>&1 | sed 's/^nginx version: nginx\///') && \
-    cp /tmp/nginx-$NGINX_VERSION/objs/ngx_http_brotli_filter_module.so /usr/lib/nginx/modules/ && \
+RUN cp /tmp/nginx-$NGINX_VERSION/objs/ngx_http_brotli_filter_module.so /usr/lib/nginx/modules/ && \
     cp /tmp/nginx-$NGINX_VERSION/objs/ngx_http_brotli_static_module.so /usr/lib/nginx/modules/
 
-# Удаление ненужных файлов
+# Удаление ненужных файлов и очистка
 RUN apk del .build-deps && \
     rm -rf /tmp/* /var/cache/apk/*
 
@@ -47,3 +45,6 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 # Экспонирование порта 80
 EXPOSE 80
+
+# Старт Nginx
+CMD ["nginx", "-g", "daemon off;"]
