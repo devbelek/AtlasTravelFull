@@ -8,7 +8,8 @@ import "swiper/css";
 
 import styles from "./page.module.css";
 import Container from "../../components/layout/container/Container";
-import { Swiper, SwiperSlide, Swiper as SwiperType } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper as SwiperType } from "swiper";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import Image from "next/image";
 
@@ -107,6 +108,7 @@ const HotelDetails: React.FC = () => {
       commentQuantity: 2,
       title: "Наименование тура",
       desc: "ОАЭ, Дубай",
+      linkTo: "/"
     });
   }
 
@@ -504,3 +506,4 @@ const HotelDetails: React.FC = () => {
 };
 
 export default HotelDetails;
+

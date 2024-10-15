@@ -8,7 +8,8 @@ import "swiper/css";
 
 import styles from "./page.module.css";
 import Container from "../../components/layout/container/Container";
-import { Swiper, SwiperSlide, Swiper as SwiperType } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper as SwiperType } from "swiper";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import Image from "next/image";
 
@@ -57,8 +58,7 @@ const FlightDetails: React.FC = () => {
   };
 
   const handleModalClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    // Проверяем, если клик был на фоне модального окна
-    if (event.currentTarget === event.target) {
+      if (event.currentTarget === event.target) {
       closeModal();
     }
   };
@@ -109,6 +109,7 @@ const FlightDetails: React.FC = () => {
       commentQuantity: 2,
       title: "Наименование тура",
       desc: "ОАЭ, Дубай",
+      linkTo: "/"
     });
   }
 
@@ -506,3 +507,4 @@ const FlightDetails: React.FC = () => {
 };
 
 export default FlightDetails;
+

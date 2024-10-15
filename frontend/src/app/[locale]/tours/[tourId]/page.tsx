@@ -8,7 +8,8 @@ import "swiper/css";
 
 import styles from "./page.module.css";
 import Container from "../../components/layout/container/Container";
-import { Swiper, SwiperSlide, Swiper as SwiperType } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper as SwiperType } from "swiper";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import Image from "next/image";
 
@@ -36,7 +37,6 @@ import image_9 from "@/assets/ticket_cards/tours/image_9.jpeg";
 import image_10 from "@/assets/ticket_cards/tours/image_10.jpeg";
 import image_11 from "@/assets/ticket_cards/tours/image_11.jpeg";
 import image_12 from "@/assets/ticket_cards/tours/image_12.jpeg";
-import { Contrail_One } from "next/font/google";
 import OffersWithMainCard from "../../components/pages/main_page/offer_section/offer_main_card/OffersWithMainCard";
 import OffersBlock from "../../components/pages/main_page/offer_section/OfferBlock";
 
@@ -108,6 +108,7 @@ const TourDetails: React.FC = () => {
       commentQuantity: 2,
       title: "Наименование тура",
       desc: "ОАЭ, Дубай",
+      linkTo: "/"
     });
   }
 
@@ -502,3 +503,4 @@ const TourDetails: React.FC = () => {
 };
 
 export default TourDetails;
+

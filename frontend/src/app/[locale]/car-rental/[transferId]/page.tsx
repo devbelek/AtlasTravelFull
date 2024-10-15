@@ -9,7 +9,7 @@ import "swiper/css";
 import styles from "./page.module.css";
 import Container from "../../components/layout/container/Container";
 import { Swiper, SwiperSlide } from "swiper/react";
-import type { Swiper as SwiperType } from "swiper";
+import { Swiper as SwiperType } from "swiper";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import Image from "next/image";
 
@@ -42,7 +42,9 @@ import OffersBlock from "../../components/pages/main_page/offer_section/OfferBlo
 
 const TransferDetails: React.FC = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
-  const [modalThumbsSwiper, setModalThumbsSwiper] = useState<SwiperType | null>(null);
+  const [modalThumbsSwiper, setModalThumbsSwiper] = useState<SwiperType | null>(
+    null
+  );
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [activeIndex, setActiveIndex] = useState<number>(0);
@@ -109,6 +111,7 @@ const TransferDetails: React.FC = () => {
       commentQuantity: 2,
       title: "Наименование тура",
       desc: "ОАЭ, Дубай",
+      linkTo: "/"
     });
   }
 
@@ -511,3 +514,4 @@ const TransferDetails: React.FC = () => {
 };
 
 export default TransferDetails;
+
