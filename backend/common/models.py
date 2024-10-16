@@ -26,7 +26,7 @@ class City(models.Model):
 
 
 class Tag(models.Model):
-    icon = models.FileField(upload_to='tag_icons/', verbose_name='Иконка')  # Указан путь для медиафайлов
+    icon = models.FileField(upload_to='tag_icons/', verbose_name='Иконка')
     name = models.CharField(max_length=30, verbose_name='Тег', unique=True)
 
     def __str__(self):
