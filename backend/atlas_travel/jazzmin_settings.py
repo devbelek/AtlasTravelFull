@@ -14,7 +14,7 @@ JAZZMIN_SETTINGS = {
     "show_sidebar": True,
     "navigation_expanded": True,
     "changeform_format": "horizontal_tabs",
-    "language_chooser": False,
+    "language_chooser": True,
     "changeform_format_overrides": {
     },
     "hide_apps": [],
