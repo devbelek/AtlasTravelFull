@@ -60,11 +60,11 @@ class FlightAdmin(TranslationAdmin):
         ('Рейтинг', {
             'fields': ('manual_rating', 'average_rating', 'rating_count')
         }),
-        ('Русский', {
-            'fields': ('title_ru', 'description_ru'),
-        }),
         ('Кыргызский', {
             'fields': ('title_ky', 'description_ky'),
+        }),
+        ('Русский', {
+            'fields': ('title_ru', 'description_ru'),
         }),
         ('Английский', {
             'fields': ('title_en', 'description_en'),

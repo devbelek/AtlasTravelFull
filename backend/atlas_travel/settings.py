@@ -130,12 +130,12 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'ru'
 
 LANGUAGES = [
-    ('ky', _('Кыргызча')),
     ('ru', _('Русский')),
+    ('ky', _('Кыргызча')),
     ('en', _('English')),
 ]
 
-MODELTRANSLATION_LANGUAGES = ('ky', 'ru', 'en')
+MODELTRANSLATION_LANGUAGES = ('ru', 'ky', 'en')
 
 LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale'),
