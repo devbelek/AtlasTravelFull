@@ -83,6 +83,38 @@ JAZZMIN_SETTINGS = {
         "transfer.TransferInquiry": "fas fa-question-circle",
         "transfer.IconsAfterName": "fas fa-icons",
     },
+
+    # Добавляем новую настройку для упорядочивания приложений
+    "order_with_respect_to": [
+        # Группируем похожие приложения вместе
+        "tours",
+        "hotels",
+        "transfer",
+        "flights",
+
+        # Другие приложения
+        "main",
+        "blog",
+        "contacts",
+        "about",
+        "common",
+        "services",
+        "auth",
+    ],
+
+    # Добавляем настройку для создания кастомных ссылок и группировки
+    "custom_links": {
+        "travel_services": [{
+            "name": "Туристические услуги",
+            "url": "admin:index",
+            "children": [
+                {"name": "Туры", "url": "admin:tours_tour_changelist"},
+                {"name": "Отели", "url": "admin:hotels_hotel_changelist"},
+                {"name": "Трансфер", "url": "admin:transfer_transfer_changelist"},
+                {"name": "Авиаперелеты", "url": "admin:flights_flight_changelist"},
+            ]
+        }],
+    },
 }
 
 JAZZMIN_UI_TWEAKS = {
