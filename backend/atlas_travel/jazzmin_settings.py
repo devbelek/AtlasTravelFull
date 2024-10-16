@@ -35,6 +35,7 @@ JAZZMIN_SETTINGS = {
         "main.RentOfCarImage": "fas fa-car-side",
         "main.RentOfCarDescription": "fas fa-file-alt",
         "main.Benefits": "fas fa-gift",
+        "main.MainComments": "fas fa-comment-alt",
 
         "hotels.HotelComments": "fas fa-comment-alt",
         "hotels.Hotel": "fas fa-hotel",
