@@ -1,5 +1,18 @@
 FROM nginx:alpine
 
+
+RUN rm /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d
+
+# Создаем директории для статических файлов и медиа
+RUN mkdir -p /app/staticfiles /app/media
+
+# Меняем владельца директорий на nginx
+RUN chown -R nginx:nginx /app
+
+# Переключаемся на пользователя nginx
+USER nginx
+
 # Установка зависимостей для сборки Nginx и модуля Brotli
 RUN apk add --no-cache --virtual .build-deps \
     gcc \
