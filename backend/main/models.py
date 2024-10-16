@@ -198,3 +198,24 @@ class Benefits(models.Model):
             self.icon.save(self.icon.name, compressed_image, save=False)
 
         super().save(*args, **kwargs)
+
+
+class MainComments(models.Model):
+    RATING = (
+        (1, '1'),
+        (2, '2'),
+        (3, '3'),
+        (4, '4'),
+        (5, '5')
+    )
+    image = models.FileField(verbose_name='Фото')
+    full_name = models.CharField(max_length=100, verbose_name='Полное имя')
+    rates = models.CharField(max_length=50, choices=RATING, verbose_name='Оценка')
+    comment = RichTextField(verbose_name='Отзыв')
+
+    def __str__(self):
+        return f'Имя: {self.full_name} Оценка: {self.rates}'
+
+    class Meta:
+        verbose_name = 'Отзыв'
+        verbose_name_plural = 'Отзывы'

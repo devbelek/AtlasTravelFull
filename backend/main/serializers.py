@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import RestIdea, BestChoice, PopularHotel, RentOfCar, RentOfCarImage, RentOfCarDescription, Benefits
+from .models import RestIdea, BestChoice, PopularHotel, RentOfCar, RentOfCarImage, RentOfCarDescription, Benefits, \
+    MainComments
 from tours.serializers import TourSerializer
 from hotels.serializers import HotelSerializer
 
@@ -52,4 +53,10 @@ class RentOfCarSerializer(serializers.ModelSerializer):
 class BenefitsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Benefits
+        fields = '__all__'
+
+
+class MainCommentsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MainComments
         fields = '__all__'

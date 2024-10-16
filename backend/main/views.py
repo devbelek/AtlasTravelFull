@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import RestIdea, BestChoice, PopularHotel, RentOfCar, Benefits
+from .models import RestIdea, BestChoice, PopularHotel, RentOfCar, Benefits, MainComments
 from .serializers import RestIdeaSerializer, BestChoiceSerializer, PopularHotelSerializer, RentOfCarSerializer, BenefitsSerializer
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
@@ -43,3 +43,9 @@ class BenefitsViewSet(viewsets.ModelViewSet):
     @method_decorator(cache_page(60 * 60))
     def list(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)
+
+
+class MainCommentsViewSet(viewsets.ModelViewSet):
+    queryset = MainComments.objects.all()
+    serializer_class = MainCommentsSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]

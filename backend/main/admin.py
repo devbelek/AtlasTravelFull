@@ -1,5 +1,9 @@
 from django.contrib import admin
-from .models import RestIdea, BestChoice, PopularHotel, RentOfCar, RentOfCarDescription, Benefits, RentOfCarImage
+from django.utils.html import format_html
+from modeltranslation.admin import TranslationAdmin
+
+from .models import RestIdea, BestChoice, PopularHotel, RentOfCar, RentOfCarDescription, Benefits, RentOfCarImage, \
+    MainComments
 
 
 @admin.register(RestIdea)
@@ -82,3 +86,33 @@ class BenefitsAdmin(admin.ModelAdmin):
             'fields': ('title_en', 'description_en'),
         }),
     )
+
+
+@admin.register(MainComments)
+class MainCommentsAdmin(TranslationAdmin):
+    list_display = ['id', 'full_name', 'rates', 'short_comment', 'image_tag']
+    list_filter = ['rates']
+    search_fields = ['full_name', 'comment']
+    readonly_fields = ['image_tag']
+
+    fieldsets = (
+        ('Кыргызский', {
+            'fields': ('full_name_ky', 'comment_ky'),
+        }),
+        ('Русский', {
+            'fields': ('full_name_ru', 'comment_ru'),
+        }),
+        ('Английский', {
+            'fields': ('full_name_en', 'comment_en'),
+        }),
+    )
+
+    def short_comment(self, obj):
+        return obj.comment[:50] + '...' if len(obj.comment) > 50 else obj.comment
+    short_comment.short_description = 'Отзыв'
+
+    def image_tag(self, obj):
+        if obj.image:
+            return format_html('<img src="{}" width="50" height="50" />'.format(obj.image.url))
+        return None
+    image_tag.short_description = 'Фото'
