@@ -11,7 +11,8 @@ RUN apk add --no-cache --virtual .build-deps \
     zlib-dev \
     linux-headers \
     curl \
-    git
+    git \
+    brotli-dev
 
 # Клонирование и настройка модуля Brotli
 RUN cd /tmp && \
