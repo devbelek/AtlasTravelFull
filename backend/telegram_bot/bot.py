@@ -191,22 +191,28 @@ async def remove_admin(update: Update, context: ContextTypes.DEFAULT_TYPE):
     else:
         await update.message.reply_text("Вы не являетесь администратором.")
 
-
 async def main():
     application = ApplicationBuilder().token(settings.TELEGRAM_BOT_TOKEN).build()
 
+    # Инициализируем приложение
+    await application.initialize()
+
+    # Добавляем обработчики
     application.add_handler(CommandHandler('start', start))
     application.add_handler(CommandHandler('add_admin', add_admin))
     application.add_handler(CommandHandler('remove_admin', remove_admin))
     application.add_handler(CallbackQueryHandler(button_callback))
     application.add_handler(CallbackQueryHandler(process_item, pattern='^process_'))
 
-    # Start the bot and notification queue processor
+    # Запускаем приложение и обработку очереди уведомлений
     await asyncio.gather(
-        application.initialize(),
         application.start(),
         process_notification_queue()
     )
+
+    # Ожидаем завершения
+    await application.stop()
+    await application.shutdown()
 
 if __name__ == '__main__':
     asyncio.run(main())
