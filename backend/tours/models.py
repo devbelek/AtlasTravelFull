@@ -10,6 +10,8 @@ from io import BytesIO
 from django.core.files import File
 import os
 
+from telegram_bot.utils import send_consultation_notification, send_review_notification
+
 
 class TourComments(Comments):
     tour = models.ForeignKey('Tour', on_delete=models.SET_NULL, null=True, related_name='comments', verbose_name='Отзывы')
@@ -23,6 +25,12 @@ class TourComments(Comments):
     class Meta:
         verbose_name = 'Отзыв о туре'
         verbose_name_plural = 'Отзывы о турах'
+
+
+@receiver(post_save, sender=TourComments)
+def tour_comment_post_save(sender, instance, created, **kwargs):
+    if created:
+        send_review_notification(instance)
 
 
 class Tour(models.Model):
@@ -105,17 +113,9 @@ class TourInquiry(Inquiry):
         verbose_name_plural = 'Запросы на информацию о турах'
 
 
-@receiver(post_save, sender=TourComments)
-def tour_comment_post_save(sender, instance, created, **kwargs):
-    if created:
-        from telegram_bot.utils import send_review_notification
-        send_review_notification(instance)
-
-
 @receiver(post_save, sender=TourInquiry)
 def tour_inquiry_post_save(sender, instance, created, **kwargs):
     if created:
-        from telegram_bot.utils import send_consultation_notification
         send_consultation_notification(instance)
 
 

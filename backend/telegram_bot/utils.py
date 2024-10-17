@@ -3,9 +3,10 @@ from django.core.serializers.json import DjangoJSONEncoder
 from django.conf import settings
 import redis
 from django.apps import apps
-from django.db.models import Count
+import logging
 
 redis_client = redis.Redis.from_url(settings.REDIS_URL)
+logger = logging.getLogger(__name__)
 
 
 def get_model(app_label, model_name):
@@ -37,8 +38,10 @@ def mark_about_us_inquiry_as_processed(item_id):
 
 def get_all_unprocessed_inquiries():
     inquiries = []
-    for app, model in [('flights', 'FlightInquiry'), ('tours', 'TourInquiry'),
-                       ('hotels', 'HotelInquiry'), ('transfer', 'TransferInquiry')]:
+    for app, model in [
+        ('flights', 'FlightInquiry'), ('tours', 'TourInquiry'),
+        ('hotels', 'HotelInquiry'), ('transfer', 'TransferInquiry')
+    ]:
         Model = get_model(app, model)
         inquiries.extend(Model.objects.filter(is_processed=False))
     return inquiries
@@ -46,8 +49,10 @@ def get_all_unprocessed_inquiries():
 
 def get_all_unprocessed_reviews():
     reviews = []
-    for app, model in [('flights', 'FlightComments'), ('tours', 'TourComments'),
-                       ('hotels', 'HotelComments'), ('transfer', 'TransferComments')]:
+    for app, model in [
+        ('flights', 'FlightComments'), ('tours', 'TourComments'),
+        ('hotels', 'HotelComments'), ('transfer', 'TransferComments')
+    ]:
         Model = get_model(app, model)
         reviews.extend(Model.objects.filter(is_processed=False))
     return reviews
@@ -58,9 +63,9 @@ def get_unprocessed_about_us_inquiries():
     return AboutUsInquiry.objects.filter(is_processed=False)
 
 
-def enqueue_notification(message):
-    logger.info(f"Enqueueing notification: {message}")
-    redis_client.lpush('telegram_notifications', json.dumps(message, cls=DjangoJSONEncoder))
+def enqueue_notification(notification):
+    logger.info(f"Enqueueing notification: {notification}")
+    redis_client.lpush('telegram_notifications', json.dumps(notification, cls=DjangoJSONEncoder))
 
 
 def send_review_notification(review):
@@ -117,26 +122,32 @@ def get_model_for_review(model_name):
 
 def get_statistics():
     stats = {}
-    for app, model in [('flights', 'FlightInquiry'), ('tours', 'TourInquiry'),
-                       ('hotels', 'HotelInquiry'), ('transfer', 'TransferInquiry')]:
+    for app, model in [
+        ('flights', 'FlightInquiry'), ('tours', 'TourInquiry'),
+        ('hotels', 'HotelInquiry'), ('transfer', 'TransferInquiry')
+    ]:
         Model = get_model(app, model)
-        stats[f"{model} (Всего/Необработанные)"] = f"{Model.objects.count()}/{Model.objects.filter(is_processed=False).count()}"
+        stats[f"{Model._meta.verbose_name_plural} (Всего/Необработанные)"] = f"{Model.objects.count()}/{Model.objects.filter(is_processed=False).count()}"
 
-    for app, model in [('flights', 'FlightComments'), ('tours', 'TourComments'),
-                       ('hotels', 'HotelComments'), ('transfer', 'TransferComments')]:
+    for app, model in [
+        ('flights', 'FlightComments'), ('tours', 'TourComments'),
+        ('hotels', 'HotelComments'), ('transfer', 'TransferComments')
+    ]:
         Model = get_model(app, model)
-        stats[f"{model} (Всего/Необработанные)"] = f"{Model.objects.count()}/{Model.objects.filter(is_processed=False).count()}"
+        stats[f"{Model._meta.verbose_name_plural} (Всего/Необработанные)"] = f"{Model.objects.count()}/{Model.objects.filter(is_processed=False).count()}"
 
     AboutUsInquiry = get_model('about', 'AboutUsInquiry')
-    stats["AboutUsInquiry (Всего/Необработанные)"] = f"{AboutUsInquiry.objects.count()}/{AboutUsInquiry.objects.filter(is_processed=False).count()}"
+    stats[f"{AboutUsInquiry._meta.verbose_name_plural} (Всего/Необработанные)"] = f"{AboutUsInquiry.objects.count()}/{AboutUsInquiry.objects.filter(is_processed=False).count()}"
 
     return stats
 
 
-def get_all_admin_chat_ids():
+def get_all_chat_ids_for_notification(notification_type):
     TelegramUser = get_model('telegram_bot', 'TelegramUser')
-    chat_ids = list(TelegramUser.objects.filter(is_admin=True).values_list('chat_id', flat=True))
-    logger.info(f"Retrieved admin chat IDs: {chat_ids}")
+    filter_args = {f"receive_{notification_type}": True}
+    users = TelegramUser.objects.filter(**filter_args)
+    chat_ids = list(users.values_list('chat_id', flat=True))
+    logger.info(f"Retrieved chat IDs for '{notification_type}' notification: {chat_ids}")
     return chat_ids
 
 
@@ -147,17 +158,24 @@ def add_admin_user(chat_id):
         user.is_admin = True
         user.save()
         logger.info(f"Added new admin: {chat_id}")
+        return True
     else:
         logger.info(f"User already an admin: {chat_id}")
-    return created
+        return False
 
 
 def remove_admin_user(chat_id):
     TelegramUser = get_model('telegram_bot', 'TelegramUser')
     try:
         user = TelegramUser.objects.get(chat_id=chat_id)
-        user.is_admin = False
-        user.save()
-        return True
+        if user.is_admin:
+            user.is_admin = False
+            user.save()
+            logger.info(f"Removed admin: {chat_id}")
+            return True
+        else:
+            logger.info(f"User is not an admin: {chat_id}")
+            return False
     except TelegramUser.DoesNotExist:
+        logger.error(f"User does not exist: {chat_id}")
         return False

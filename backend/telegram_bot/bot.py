@@ -2,13 +2,16 @@ import asyncio
 import json
 import logging
 from telegram import Bot, Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler, ContextTypes
+from telegram.ext import (
+    ApplicationBuilder, CommandHandler, CallbackQueryHandler, ContextTypes
+)
 from django.conf import settings
 from telegram_bot.utils import (
     get_all_unprocessed_inquiries, get_all_unprocessed_reviews,
     mark_inquiry_as_processed, mark_review_as_processed,
     get_unprocessed_about_us_inquiries, mark_about_us_inquiry_as_processed,
-    get_statistics, get_all_admin_chat_ids, add_admin_user, remove_admin_user
+    get_statistics, get_all_chat_ids_for_notification,
+    add_admin_user, remove_admin_user
 )
 from asgiref.sync import sync_to_async
 import redis
@@ -18,9 +21,9 @@ logging.basicConfig(
     level=logging.INFO
 )
 
+logger = logging.getLogger(__name__)
 redis_client = redis.Redis.from_url(settings.REDIS_URL)
 bot = Bot(token=settings.TELEGRAM_BOT_TOKEN)
-
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [
@@ -35,7 +38,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         reply_markup=reply_markup
     )
 
-
 async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
@@ -49,7 +51,6 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     elif query.data == 'statistics':
         await show_statistics(update, context)
 
-
 async def new_inquiries(update: Update, context: ContextTypes.DEFAULT_TYPE):
     inquiries = await sync_to_async(get_all_unprocessed_inquiries)()
     if inquiries:
@@ -58,8 +59,10 @@ async def new_inquiries(update: Update, context: ContextTypes.DEFAULT_TYPE):
             message += f"Имя: {inquiry.name}\nТелефон: {inquiry.phone_number}\nEmail: {inquiry.email}\nСообщение: {inquiry.message}\n"
 
             keyboard = [
-                [InlineKeyboardButton("Отметить как обработанный",
-                                      callback_data=f'process_inquiry_{inquiry.id}_{inquiry._meta.model_name}')]
+                [InlineKeyboardButton(
+                    "Отметить как обработанный",
+                    callback_data=f'process_inquiry_{inquiry.id}_{inquiry._meta.model_name}'
+                )]
             ]
             reply_markup = InlineKeyboardMarkup(keyboard)
 
@@ -71,7 +74,6 @@ async def new_inquiries(update: Update, context: ContextTypes.DEFAULT_TYPE):
     else:
         await context.bot.send_message(chat_id=update.effective_chat.id, text="Новых запросов нет.")
 
-
 async def new_reviews(update: Update, context: ContextTypes.DEFAULT_TYPE):
     reviews = await sync_to_async(get_all_unprocessed_reviews)()
     if reviews:
@@ -80,8 +82,10 @@ async def new_reviews(update: Update, context: ContextTypes.DEFAULT_TYPE):
             message += f"Имя: {review.full_name}\nОценка: {review.rate}\nКомментарий: {review.text}\n"
 
             keyboard = [
-                [InlineKeyboardButton("Отметить как обработанный",
-                                      callback_data=f'process_review_{review.id}_{review._meta.model_name}')]
+                [InlineKeyboardButton(
+                    "Отметить как обработанный",
+                    callback_data=f'process_review_{review.id}_{review._meta.model_name}'
+                )]
             ]
             reply_markup = InlineKeyboardMarkup(keyboard)
 
@@ -93,7 +97,6 @@ async def new_reviews(update: Update, context: ContextTypes.DEFAULT_TYPE):
     else:
         await context.bot.send_message(chat_id=update.effective_chat.id, text="Новых отзывов нет.")
 
-
 async def about_us_inquiries(update: Update, context: ContextTypes.DEFAULT_TYPE):
     inquiries = await sync_to_async(get_unprocessed_about_us_inquiries)()
     if inquiries:
@@ -101,7 +104,10 @@ async def about_us_inquiries(update: Update, context: ContextTypes.DEFAULT_TYPE)
             message = f"Новый запрос 'О нас':\n\nТелефон: {inquiry.phone_number}\nДата создания: {inquiry.created_at}\n"
 
             keyboard = [
-                [InlineKeyboardButton("Отметить как обработанный", callback_data=f'process_about_us_{inquiry.id}')]
+                [InlineKeyboardButton(
+                    "Отметить как обработанный",
+                    callback_data=f'process_about_us_{inquiry.id}'
+                )]
             ]
             reply_markup = InlineKeyboardMarkup(keyboard)
 
@@ -112,7 +118,6 @@ async def about_us_inquiries(update: Update, context: ContextTypes.DEFAULT_TYPE)
             )
     else:
         await context.bot.send_message(chat_id=update.effective_chat.id, text="Новых запросов 'О нас' нет.")
-
 
 async def process_item(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
@@ -133,7 +138,6 @@ async def process_item(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await sync_to_async(mark_about_us_inquiry_as_processed)(item_id)
         await query.edit_message_text(text="Запрос 'О нас' отмечен как обработанный.")
 
-
 async def show_statistics(update: Update, context: ContextTypes.DEFAULT_TYPE):
     stats = await sync_to_async(get_statistics)()
     message = "Статистика:\n\n"
@@ -141,26 +145,25 @@ async def show_statistics(update: Update, context: ContextTypes.DEFAULT_TYPE):
         message += f"{key}: {value}\n"
     await context.bot.send_message(chat_id=update.effective_chat.id, text=message)
 
-
-async def send_notification(message):
-    admin_chat_ids = await sync_to_async(get_all_admin_chat_ids)()
-    for chat_id in admin_chat_ids:
+async def send_notification(notification):
+    notification_type = notification.get('type')
+    chat_ids = await sync_to_async(get_all_chat_ids_for_notification)(notification_type)
+    message = notification.get('content')
+    for chat_id in chat_ids:
         try:
             await bot.send_message(chat_id=chat_id, text=message, parse_mode='Markdown')
         except Exception as e:
-            logging.error(f"Error sending message to chat_id {chat_id}: {e}")
-
+            logger.error(f"Error sending message to chat_id {chat_id}: {e}")
 
 async def process_notification_queue():
     while True:
         try:
-            _, notification = redis_client.brpop('telegram_notifications')
-            notification = json.loads(notification)
-            await send_notification(notification['content'])
+            _, notification_json = redis_client.brpop('telegram_notifications')
+            notification = json.loads(notification_json)
+            await send_notification(notification)
         except Exception as e:
-            logging.error(f"Error processing notification: {e}")
+            logger.error(f"Error processing notification: {e}")
         await asyncio.sleep(1)
-
 
 async def add_admin(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if update.message.chat.type != 'private':
@@ -174,7 +177,6 @@ async def add_admin(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("Вы успешно добавлены как администратор.")
     else:
         await update.message.reply_text("Вы уже являетесь администратором.")
-
 
 async def remove_admin(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if update.message.chat.type != 'private':
@@ -193,15 +195,15 @@ async def remove_admin(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def main():
     application = ApplicationBuilder().token(settings.TELEGRAM_BOT_TOKEN).build()
 
-    await application.initialize()
-
     application.add_handler(CommandHandler('start', start))
     application.add_handler(CommandHandler('add_admin', add_admin))
     application.add_handler(CommandHandler('remove_admin', remove_admin))
     application.add_handler(CallbackQueryHandler(button_callback))
     application.add_handler(CallbackQueryHandler(process_item, pattern='^process_'))
 
+    # Start the bot and notification queue processor
     await asyncio.gather(
+        application.initialize(),
         application.start(),
         process_notification_queue()
     )
