@@ -60,7 +60,6 @@ def enqueue_notification(notification):
 
 def send_review_notification(review):
     message = {
-        'type': 'reviews',  # Исправлено с 'review' на 'reviews'
         'content': f"*Новый отзыв:*\nТип: {review._meta.verbose_name}\n"
                    f"Имя: {review.full_name}\nОценка: {review.rate}\nКомментарий: {review.text}"
     }
@@ -68,7 +67,6 @@ def send_review_notification(review):
 
 def send_consultation_notification(inquiry):
     message = {
-        'type': 'inquiries',  # Исправлено с 'inquiry' на 'inquiries'
         'content': f"*Новый запрос на консультацию:*\nТип: {inquiry._meta.verbose_name}\n"
                    f"Имя: {inquiry.name}\nТелефон: {inquiry.phone_number}\nEmail: {inquiry.email}\nСообщение: {inquiry.message}"
     }
@@ -76,7 +74,6 @@ def send_consultation_notification(inquiry):
 
 def send_about_us_notification(inquiry):
     message = {
-        'type': 'about_us_inquiries',  # Исправлено с 'about_us' на 'about_us_inquiries'
         'content': f"*Новый запрос 'О нас':*\nТелефон: {inquiry.phone_number}\nДата создания: {inquiry.created_at}"
     }
     enqueue_notification(message)
@@ -126,16 +123,11 @@ def get_statistics():
 
     return stats
 
-def get_all_chat_ids_for_notification(notification_type):
+def get_admin_chat_ids():
     TelegramUser = get_model('telegram_bot', 'TelegramUser')
-    field_name = f"receive_{notification_type}"
-    if not hasattr(TelegramUser, field_name):
-        logger.error(f"Unknown notification type: {notification_type}")
-        return []
-    filter_args = {field_name: True}
-    users = TelegramUser.objects.filter(**filter_args)
+    users = TelegramUser.objects.filter(is_admin=True, receive_notifications=True)
     chat_ids = list(users.values_list('chat_id', flat=True))
-    logger.info(f"Retrieved chat IDs for '{notification_type}' notification: {chat_ids}")
+    logger.info(f"Retrieved admin chat IDs: {chat_ids}")
     return chat_ids
 
 def add_admin_user(chat_id):
@@ -143,6 +135,7 @@ def add_admin_user(chat_id):
     user, created = TelegramUser.objects.get_or_create(chat_id=chat_id)
     if not user.is_admin:
         user.is_admin = True
+        user.receive_notifications = True
         user.save()
         logger.info(f"Added new admin: {chat_id}")
         return True
@@ -156,6 +149,7 @@ def remove_admin_user(chat_id):
         user = TelegramUser.objects.get(chat_id=chat_id)
         if user.is_admin:
             user.is_admin = False
+            user.receive_notifications = False
             user.save()
             logger.info(f"Removed admin: {chat_id}")
             return True
@@ -165,3 +159,7 @@ def remove_admin_user(chat_id):
     except TelegramUser.DoesNotExist:
         logger.error(f"User does not exist: {chat_id}")
         return False
+
+def is_admin(chat_id):
+    TelegramUser = get_model('telegram_bot', 'TelegramUser')
+    return TelegramUser.objects.filter(chat_id=chat_id, is_admin=True).exists()

@@ -10,8 +10,9 @@ from telegram_bot.utils import (
     get_all_unprocessed_inquiries, get_all_unprocessed_reviews,
     mark_inquiry_as_processed, mark_review_as_processed,
     get_unprocessed_about_us_inquiries, mark_about_us_inquiry_as_processed,
-    get_statistics, get_all_chat_ids_for_notification,
-    add_admin_user, remove_admin_user
+    get_statistics, get_admin_chat_ids,
+    add_admin_user, remove_admin_user,
+    is_admin
 )
 from asgiref.sync import sync_to_async
 import redis
@@ -25,6 +26,18 @@ logger = logging.getLogger(__name__)
 redis_client = redis.Redis.from_url(settings.REDIS_URL)
 bot = Bot(token=settings.TELEGRAM_BOT_TOKEN)
 
+# Проверка, является ли пользователь администратором
+async def admin_only(handler):
+    async def wrapper(update: Update, context: ContextTypes.DEFAULT_TYPE):
+        chat_id = update.effective_chat.id
+        if await sync_to_async(is_admin)(chat_id):
+            return await handler(update, context)
+        else:
+            await update.message.reply_text("Доступ запрещен. Вы не являетесь администратором.")
+    return wrapper
+
+# Команда /start
+@admin_only
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [
         [InlineKeyboardButton("Новые запросы", callback_data='new_inquiries')],
@@ -34,10 +47,12 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     await update.message.reply_text(
-        "Добро пожаловать! Выберите действие:",
+        "Добро пожаловать, администратор! Выберите действие:",
         reply_markup=reply_markup
     )
 
+# Обработка нажатий кнопок меню
+@admin_only
 async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
@@ -51,6 +66,8 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     elif query.data == 'statistics':
         await show_statistics(update, context)
 
+# Функции для отображения новых запросов, отзывов и статистики
+@admin_only
 async def new_inquiries(update: Update, context: ContextTypes.DEFAULT_TYPE):
     inquiries = await sync_to_async(get_all_unprocessed_inquiries)()
     if inquiries:
@@ -74,6 +91,7 @@ async def new_inquiries(update: Update, context: ContextTypes.DEFAULT_TYPE):
     else:
         await context.bot.send_message(chat_id=update.effective_chat.id, text="Новых запросов нет.")
 
+@admin_only
 async def new_reviews(update: Update, context: ContextTypes.DEFAULT_TYPE):
     reviews = await sync_to_async(get_all_unprocessed_reviews)()
     if reviews:
@@ -97,6 +115,7 @@ async def new_reviews(update: Update, context: ContextTypes.DEFAULT_TYPE):
     else:
         await context.bot.send_message(chat_id=update.effective_chat.id, text="Новых отзывов нет.")
 
+@admin_only
 async def about_us_inquiries(update: Update, context: ContextTypes.DEFAULT_TYPE):
     inquiries = await sync_to_async(get_unprocessed_about_us_inquiries)()
     if inquiries:
@@ -119,6 +138,16 @@ async def about_us_inquiries(update: Update, context: ContextTypes.DEFAULT_TYPE)
     else:
         await context.bot.send_message(chat_id=update.effective_chat.id, text="Новых запросов 'О нас' нет.")
 
+@admin_only
+async def show_statistics(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    stats = await sync_to_async(get_statistics)()
+    message = "Статистика:\n\n"
+    for key, value in stats.items():
+        message += f"{key}: {value}\n"
+    await context.bot.send_message(chat_id=update.effective_chat.id, text=message)
+
+# Обработка нажатий кнопок "Отметить как обработанный"
+@admin_only
 async def process_item(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
@@ -138,16 +167,40 @@ async def process_item(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await sync_to_async(mark_about_us_inquiry_as_processed)(item_id)
         await query.edit_message_text(text="Запрос 'О нас' отмечен как обработанный.")
 
-async def show_statistics(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    stats = await sync_to_async(get_statistics)()
-    message = "Статистика:\n\n"
-    for key, value in stats.items():
-        message += f"{key}: {value}\n"
-    await context.bot.send_message(chat_id=update.effective_chat.id, text=message)
+# Команды для добавления и удаления администратора
+async def add_admin(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    chat_id = update.effective_chat.id
+    if await sync_to_async(is_admin)(chat_id):
+        if len(context.args) != 1:
+            await update.message.reply_text("Использование: /add_admin <chat_id>")
+            return
+        new_admin_chat_id = int(context.args[0])
+        result = await sync_to_async(add_admin_user)(new_admin_chat_id)
+        if result:
+            await update.message.reply_text(f"Пользователь {new_admin_chat_id} добавлен как администратор.")
+        else:
+            await update.message.reply_text(f"Пользователь {new_admin_chat_id} уже является администратором.")
+    else:
+        await update.message.reply_text("Доступ запрещен. Вы не являетесь администратором.")
 
+async def remove_admin(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    chat_id = update.effective_chat.id
+    if await sync_to_async(is_admin)(chat_id):
+        if len(context.args) != 1:
+            await update.message.reply_text("Использование: /remove_admin <chat_id>")
+            return
+        remove_admin_chat_id = int(context.args[0])
+        result = await sync_to_async(remove_admin_user)(remove_admin_chat_id)
+        if result:
+            await update.message.reply_text(f"Пользователь {remove_admin_chat_id} удален из администраторов.")
+        else:
+            await update.message.reply_text(f"Пользователь {remove_admin_chat_id} не является администратором.")
+    else:
+        await update.message.reply_text("Доступ запрещен. Вы не являетесь администратором.")
+
+# Функция для отправки уведомлений администраторам
 async def send_notification(notification):
-    notification_type = notification.get('type')
-    chat_ids = await sync_to_async(get_all_chat_ids_for_notification)(notification_type)
+    chat_ids = await sync_to_async(get_admin_chat_ids)()
     message = notification.get('content')
     for chat_id in chat_ids:
         try:
@@ -155,6 +208,7 @@ async def send_notification(notification):
         except Exception as e:
             logger.error(f"Error sending message to chat_id {chat_id}: {e}")
 
+# Обработка очереди уведомлений
 async def process_notification_queue():
     while True:
         try:
@@ -165,42 +219,19 @@ async def process_notification_queue():
             logger.error(f"Error processing notification: {e}")
         await asyncio.sleep(1)
 
-async def add_admin(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    if update.message.chat.type != 'private':
-        await update.message.reply_text("Эта команда доступна только в личных сообщениях.")
-        return
-
-    chat_id = update.effective_chat.id
-    result = await sync_to_async(add_admin_user)(chat_id)
-
-    if result:
-        await update.message.reply_text("Вы успешно добавлены как администратор.")
-    else:
-        await update.message.reply_text("Вы уже являетесь администратором.")
-
-async def remove_admin(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    if update.message.chat.type != 'private':
-        await update.message.reply_text("Эта команда доступна только в личных сообщениях.")
-        return
-
-    chat_id = update.effective_chat.id
-    result = await sync_to_async(remove_admin_user)(chat_id)
-
-    if result:
-        await update.message.reply_text("Вы успешно удалены из списка администраторов.")
-    else:
-        await update.message.reply_text("Вы не являетесь администратором.")
-
+# Основная функция
 async def main():
     application = ApplicationBuilder().token(settings.TELEGRAM_BOT_TOKEN).build()
 
     # Инициализируем приложение
     await application.initialize()
 
-    # Добавляем обработчики
+    # Обработчики команд
     application.add_handler(CommandHandler('start', start))
     application.add_handler(CommandHandler('add_admin', add_admin))
     application.add_handler(CommandHandler('remove_admin', remove_admin))
+
+    # Обработчики колбэков
     application.add_handler(CallbackQueryHandler(button_callback))
     application.add_handler(CallbackQueryHandler(process_item, pattern='^process_'))
 
