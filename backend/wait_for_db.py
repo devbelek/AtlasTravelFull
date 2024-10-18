@@ -1,7 +1,12 @@
+import os
 import sys
 import time
 import psycopg2
 from django.conf import settings
+import django
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'atlas_travel.settings')  # Укажите модуль настроек
+django.setup()  # Инициализация настроек Django
 
 
 def wait_for_db():
