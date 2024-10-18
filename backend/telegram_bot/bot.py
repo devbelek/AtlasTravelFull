@@ -4,7 +4,7 @@ import logging
 from telegram import Bot, Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
     ApplicationBuilder, CommandHandler, CallbackQueryHandler, ContextTypes,
-    MessageHandler, filters
+    MessageHandler, filters  # Added MessageHandler and filters
 )
 from django.conf import settings
 from telegram_bot.utils import (
@@ -207,11 +207,11 @@ async def main():
     application.add_handler(CallbackQueryHandler(process_item, pattern='^process_'))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_text_messages))
 
-    # Запускаем обработку очереди уведомлений в фоне
-    asyncio.create_task(process_notification_queue())
-
-    # Запускаем бота в режиме опроса обновлений
-    await application.run_polling()
+    # Запускаем приложение и обработку очереди уведомлений одновременно
+    await asyncio.gather(
+        application.run_polling(),
+        process_notification_queue()
+    )
 
 if __name__ == '__main__':
     asyncio.run(main())
