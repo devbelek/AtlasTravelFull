@@ -4,7 +4,7 @@ import logging
 from telegram import Bot, Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
     ApplicationBuilder, CommandHandler, CallbackQueryHandler, ContextTypes,
-    MessageHandler, filters  # Added MessageHandler and filters
+    MessageHandler, filters, Application
 )
 from django.conf import settings
 from telegram_bot.utils import (
@@ -196,6 +196,11 @@ async def remove_admin(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def handle_text_messages(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("Команда не распознана. Пожалуйста, используйте меню или команды бота.")
 
+# Функция, вызываемая при запуске приложения
+async def on_startup(application: Application):
+    application.create_task(process_notification_queue())
+    logger.info("Фоновая задача process_notification_queue() запущена.")
+
 async def main():
     application = ApplicationBuilder().token(settings.TELEGRAM_BOT_TOKEN).build()
 
@@ -203,15 +208,15 @@ async def main():
     application.add_handler(CommandHandler('start', start))
     application.add_handler(CommandHandler('add_admin', add_admin))
     application.add_handler(CommandHandler('remove_admin', remove_admin))
-    application.add_handler(CallbackQueryHandler(button_callback))
+    application.add_handler(CallbackQueryHandler(button_callback, pattern='^(new_|about_us|statistics)'))
     application.add_handler(CallbackQueryHandler(process_item, pattern='^process_'))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_text_messages))
 
-    # Запускаем приложение и обработку очереди уведомлений одновременно
-    await asyncio.gather(
-        application.run_polling(),
-        process_notification_queue()
-    )
+    # Добавляем функцию on_startup
+    application.on_startup.append(on_startup)
+
+    # Запускаем бота
+    await application.run_polling()
 
 if __name__ == '__main__':
     asyncio.run(main())
