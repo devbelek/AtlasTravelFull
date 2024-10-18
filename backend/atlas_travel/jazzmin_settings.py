@@ -28,7 +28,7 @@ JAZZMIN_SETTINGS = {
         "services.ServiceImage": "fas fa-image",
         "services.ServiceFeature": "fas fa-list-ul",
 
-        "telegram_bot.TelegramUser": "fas fa-telegram",
+        "telegram_bot.TelegramUser": "fas fa-comment-dots",
 
         "main.RestIdea": "fas fa-lightbulb",
         "main.BestChoice": "fas fa-trophy",
