@@ -14,5 +14,5 @@ class TelegramUser(models.Model):
         return f"Телеграм ID: {self.chat_id} (Администратор: {self.is_admin})"
 
     class Meta:
-        verbose_name = 'Пользователь Телеграм'
-        verbose_name_plural = 'Пользователи Телеграм'
+        verbose_name = 'Администратор'
+        verbose_name_plural = 'Администраторы'
