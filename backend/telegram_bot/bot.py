@@ -169,7 +169,7 @@ async def send_notification(notification):
         except Exception as e:
             logger.error(f"Ошибка при отправке сообщения на chat_id {chat_id}: {e}")
 
-async def process_notification_queue(application):
+async def process_notification_queue():
     logger.info("Запуск process_notification_queue")
     while True:
         try:
@@ -217,7 +217,7 @@ async def handle_text_messages(update: Update, context: ContextTypes.DEFAULT_TYP
 # Функция, вызываемая при запуске приложения
 async def on_startup(application: Application):
     logger.info("Запуск on_startup")
-    application.create_task(process_notification_queue(application))
+    application.create_task(process_notification_queue())
     logger.info("Фоновая задача process_notification_queue() запущена.")
 
 async def main():
@@ -231,11 +231,8 @@ async def main():
     application.add_handler(CallbackQueryHandler(process_item, pattern='^process_'))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_text_messages))
 
-    # Добавляем функцию on_startup
-    application.on_startup.append(on_startup)
-
-    # Запускаем бота
-    await application.run_polling()
+    # Запускаем бота с передачей on_startup
+    await application.run_polling(on_startup=on_startup)
 
 if __name__ == '__main__':
     asyncio.run(main())
