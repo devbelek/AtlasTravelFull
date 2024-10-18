@@ -238,21 +238,23 @@ async def main():
     await application.bot.delete_webhook(drop_pending_updates=True)
     logger.info("Вебхук удален, бот переключен в режим polling.")
 
-    # Запускаем обработку уведомлений в фоне
-    asyncio.create_task(process_notification_queue())
-    logger.info("Фоновая задача process_notification_queue() запущена.")
-
     # Инициализируем и запускаем приложение
     await application.initialize()
     await application.start()
     logger.info("Бот запущен и готов к приему сообщений.")
 
-    # Удерживаем приложение запущенным
-    try:
-        await asyncio.Event().wait()  # Ждем, пока не будет прервано
-    except (KeyboardInterrupt, SystemExit):
-        logger.info("Получен сигнал остановки бота.")
-    finally:
-        await application.stop()
-        await application.shutdown()
-        logger.info("Бот остановлен.")
+    # Запускаем обработку уведомлений в фоне
+    asyncio.create_task(process_notification_queue())
+    logger.info("Фоновая задача process_notification_queue() запущена.")
+
+    # Запускаем процесс опроса (polling)
+    await application.start_polling()
+    logger.info("Бот начал polling обновлений.")
+
+    # Ожидаем завершения работы
+    await application.wait_until_closed()
+
+    # Останавливаем приложение
+    await application.stop()
+    await application.shutdown()
+    logger.info("Бот остановлен.")
