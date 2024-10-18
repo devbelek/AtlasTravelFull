@@ -4,7 +4,7 @@ import logging
 from telegram import Bot, Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
     ApplicationBuilder, CommandHandler, CallbackQueryHandler, ContextTypes,
-    MessageHandler, filters, Application
+    MessageHandler, filters, Application, idle
 )
 from django.conf import settings
 from telegram_bot.utils import (
@@ -247,12 +247,8 @@ async def main():
     asyncio.create_task(process_notification_queue())
     logger.info("Фоновая задача process_notification_queue() запущена.")
 
-    # Запускаем процесс опроса (polling)
-    await application.start_polling()
-    logger.info("Бот начал polling обновлений.")
-
-    # Ожидаем завершения работы
-    await application.wait_until_closed()
+    # Удерживаем приложение запущенным и обрабатываем входящие сообщения
+    await idle()
 
     # Останавливаем приложение
     await application.stop()
