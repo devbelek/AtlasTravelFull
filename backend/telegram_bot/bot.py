@@ -236,5 +236,4 @@ async def main():
     # Запускаем бота
     await application.run_polling()
 
-if __name__ == '__main__':
-    asyncio.run(main())
+# В данном случае не требуется вызывать asyncio.run(), так как бот запускается через команду управления Django
