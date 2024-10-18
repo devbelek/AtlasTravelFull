@@ -26,7 +26,9 @@ logger = logging.getLogger(__name__)
 redis_client = redis.Redis.from_url(settings.REDIS_URL)
 bot = Bot(token=settings.TELEGRAM_BOT_TOKEN)
 
+# Функция /start
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    logger.info(f"Команда /start от пользователя {update.effective_user.id}")
     keyboard = [
         [InlineKeyboardButton("Новые запросы", callback_data='new_inquiries')],
         [InlineKeyboardButton("Новые отзывы", callback_data='new_reviews')],
@@ -39,9 +41,12 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         reply_markup=reply_markup
     )
 
+# Обработка нажатий кнопок
 async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
+
+    logger.info(f"Обработка кнопки с данными: {query.data}")
 
     if query.data == 'new_inquiries':
         await new_inquiries(update, context)
@@ -52,7 +57,9 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     elif query.data == 'statistics':
         await show_statistics(update, context)
 
+# Функции обработки запросов
 async def new_inquiries(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    logger.info("Получение новых запросов")
     inquiries = await sync_to_async(get_all_unprocessed_inquiries)()
     if inquiries:
         for inquiry in inquiries:
@@ -76,6 +83,7 @@ async def new_inquiries(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await context.bot.send_message(chat_id=update.effective_chat.id, text="Новых запросов нет.")
 
 async def new_reviews(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    logger.info("Получение новых отзывов")
     reviews = await sync_to_async(get_all_unprocessed_reviews)()
     if reviews:
         for review in reviews:
@@ -99,6 +107,7 @@ async def new_reviews(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await context.bot.send_message(chat_id=update.effective_chat.id, text="Новых отзывов нет.")
 
 async def about_us_inquiries(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    logger.info("Получение запросов 'О нас'")
     inquiries = await sync_to_async(get_unprocessed_about_us_inquiries)()
     if inquiries:
         for inquiry in inquiries:
@@ -129,6 +138,8 @@ async def process_item(update: Update, context: ContextTypes.DEFAULT_TYPE):
     item_id = int(data[2])
     model_name = data[3] if len(data) > 3 else None
 
+    logger.info(f"Обработка элемента: действие={action}, id={item_id}, модель={model_name}")
+
     if action == 'inquiry':
         await sync_to_async(mark_inquiry_as_processed)(item_id, model_name)
         await query.edit_message_text(text="Запрос отмечен как обработанный.")
@@ -140,6 +151,7 @@ async def process_item(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.edit_message_text(text="Запрос 'О нас' отмечен как обработанный.")
 
 async def show_statistics(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    logger.info("Отправка статистики")
     stats = await sync_to_async(get_statistics)()
     message = "Статистика:\n\n"
     for key, value in stats.items():
@@ -150,21 +162,26 @@ async def send_notification(notification):
     notification_type = notification.get('type')
     chat_ids = await sync_to_async(get_all_chat_ids_for_notification)(notification_type)
     message = notification.get('content')
+    logger.info(f"Отправка уведомления: {notification}")
     for chat_id in chat_ids:
         try:
             await bot.send_message(chat_id=chat_id, text=message, parse_mode='Markdown')
         except Exception as e:
-            logger.error(f"Error sending message to chat_id {chat_id}: {e}")
+            logger.error(f"Ошибка при отправке сообщения на chat_id {chat_id}: {e}")
 
-async def process_notification_queue():
+async def process_notification_queue(application):
+    logger.info("Запуск process_notification_queue")
     while True:
         try:
-            _, notification_json = redis_client.brpop('telegram_notifications')
-            notification = json.loads(notification_json)
-            await send_notification(notification)
+            notification_json = redis_client.lpop('telegram_notifications')
+            if notification_json:
+                notification = json.loads(notification_json)
+                await send_notification(notification)
+            else:
+                await asyncio.sleep(1)
         except Exception as e:
-            logger.error(f"Error processing notification: {e}")
-        await asyncio.sleep(1)
+            logger.error(f"Ошибка при обработке уведомления: {e}")
+            await asyncio.sleep(1)
 
 async def add_admin(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if update.message.chat.type != 'private':
@@ -194,11 +211,13 @@ async def remove_admin(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # Обработчик текстовых сообщений
 async def handle_text_messages(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    logger.info(f"Получено текстовое сообщение от {update.effective_user.id}: {update.message.text}")
     await update.message.reply_text("Команда не распознана. Пожалуйста, используйте меню или команды бота.")
 
 # Функция, вызываемая при запуске приложения
 async def on_startup(application: Application):
-    application.create_task(process_notification_queue())
+    logger.info("Запуск on_startup")
+    application.create_task(process_notification_queue(application))
     logger.info("Фоновая задача process_notification_queue() запущена.")
 
 async def main():
@@ -208,7 +227,7 @@ async def main():
     application.add_handler(CommandHandler('start', start))
     application.add_handler(CommandHandler('add_admin', add_admin))
     application.add_handler(CommandHandler('remove_admin', remove_admin))
-    application.add_handler(CallbackQueryHandler(button_callback, pattern='^(new_|about_us|statistics)'))
+    application.add_handler(CallbackQueryHandler(button_callback, pattern='^(new_inquiries|new_reviews|about_us_inquiries|statistics)$'))
     application.add_handler(CallbackQueryHandler(process_item, pattern='^process_'))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_text_messages))
 
