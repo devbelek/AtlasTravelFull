@@ -15,7 +15,7 @@ from telegram_bot.utils import (
     add_admin_user, remove_admin_user
 )
 from asgiref.sync import sync_to_async
-import aioredis
+import redis.asyncio as redis
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -170,7 +170,7 @@ async def send_notification(notification):
 
 async def process_notification_queue():
     logger.info("Запуск process_notification_queue")
-    redis_client = await aioredis.from_url(settings.REDIS_URL)
+    redis_client = redis.Redis.from_url(settings.REDIS_URL)
     while True:
         try:
             notification_json = await redis_client.lpop('telegram_notifications')
