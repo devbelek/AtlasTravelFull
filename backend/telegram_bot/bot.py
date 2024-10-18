@@ -15,7 +15,7 @@ from telegram_bot.utils import (
     add_admin_user, remove_admin_user
 )
 from asgiref.sync import sync_to_async
-import redis
+import aioredis
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -23,7 +23,6 @@ logging.basicConfig(
 )
 
 logger = logging.getLogger(__name__)
-redis_client = redis.Redis.from_url(settings.REDIS_URL)
 bot = Bot(token=settings.TELEGRAM_BOT_TOKEN)
 
 # Функция /start
@@ -171,9 +170,10 @@ async def send_notification(notification):
 
 async def process_notification_queue():
     logger.info("Запуск process_notification_queue")
+    redis_client = await aioredis.from_url(settings.REDIS_URL)
     while True:
         try:
-            notification_json = redis_client.lpop('telegram_notifications')
+            notification_json = await redis_client.lpop('telegram_notifications')
             if notification_json:
                 notification = json.loads(notification_json)
                 await send_notification(notification)
@@ -214,12 +214,6 @@ async def handle_text_messages(update: Update, context: ContextTypes.DEFAULT_TYP
     logger.info(f"Получено текстовое сообщение от {update.effective_user.id}: {update.message.text}")
     await update.message.reply_text("Команда не распознана. Пожалуйста, используйте меню или команды бота.")
 
-# Функция, вызываемая при запуске приложения
-async def on_startup(application: Application):
-    logger.info("Запуск on_startup")
-    application.create_task(process_notification_queue())
-    logger.info("Фоновая задача process_notification_queue() запущена.")
-
 async def main():
     application = ApplicationBuilder().token(settings.TELEGRAM_BOT_TOKEN).build()
 
@@ -231,18 +225,16 @@ async def main():
     application.add_handler(CallbackQueryHandler(process_item, pattern='^process_'))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_text_messages))
 
-    # Запускаем бота с передачей on_startup
-    await application.initialize()
-    await application.start()
-    await on_startup(application)
+    # Удаляем вебхук, если он был установлен
+    await application.bot.delete_webhook(drop_pending_updates=True)
+    logger.info("Вебхук удален, бот переключен в режим polling.")
 
-    try:
-        await application.bot.initialize()
-        logger.info("Бот запущен и готов принимать сообщения.")
-        await application.run_polling()
-    finally:
-        await application.stop()
-        await application.shutdown()
+    # Запускаем обработку уведомлений в фоне
+    asyncio.create_task(process_notification_queue())
+    logger.info("Фоновая задача process_notification_queue() запущена.")
+
+    # Запускаем бота
+    await application.run_polling()
 
 if __name__ == '__main__':
     asyncio.run(main())
