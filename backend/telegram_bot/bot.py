@@ -232,7 +232,17 @@ async def main():
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_text_messages))
 
     # Запускаем бота с передачей on_startup
-    await application.run_polling(on_startup=on_startup)
+    await application.initialize()
+    await application.start()
+    await on_startup(application)
+
+    try:
+        await application.bot.initialize()
+        logger.info("Бот запущен и готов принимать сообщения.")
+        await application.run_polling()
+    finally:
+        await application.stop()
+        await application.shutdown()
 
 if __name__ == '__main__':
     asyncio.run(main())
