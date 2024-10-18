@@ -100,7 +100,10 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    command: python manage.py run_telegram_bot
+    command: >
+      bash -c "python wait_for_db.py && 
+               python manage.py migrate && 
+               python manage.py run_telegram_bot"
     volumes:
       - ./backend:/app
     env_file:
