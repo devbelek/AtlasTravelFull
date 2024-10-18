@@ -3,7 +3,8 @@ import json
 import logging
 from telegram import Bot, Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
-    ApplicationBuilder, CommandHandler, CallbackQueryHandler, ContextTypes
+    ApplicationBuilder, CommandHandler, CallbackQueryHandler, ContextTypes,
+    MessageHandler, filters  # Добавлен импорт MessageHandler и filters
 )
 from django.conf import settings
 from telegram_bot.utils import (
@@ -191,6 +192,10 @@ async def remove_admin(update: Update, context: ContextTypes.DEFAULT_TYPE):
     else:
         await update.message.reply_text("Вы не являетесь администратором.")
 
+# Добавляем обработчик текстовых сообщений
+async def handle_text_messages(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("Команда не распознана. Пожалуйста, используйте меню или команды бота.")
+
 async def main():
     application = ApplicationBuilder().token(settings.TELEGRAM_BOT_TOKEN).build()
 
@@ -203,6 +208,7 @@ async def main():
     application.add_handler(CommandHandler('remove_admin', remove_admin))
     application.add_handler(CallbackQueryHandler(button_callback))
     application.add_handler(CallbackQueryHandler(process_item, pattern='^process_'))
+    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_text_messages))  # Обработчик текстовых сообщений
 
     # Запускаем приложение и обработку очереди уведомлений
     await asyncio.gather(
