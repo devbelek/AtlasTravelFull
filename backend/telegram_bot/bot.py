@@ -4,7 +4,7 @@ import logging
 from telegram import Bot, Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
     ApplicationBuilder, CommandHandler, CallbackQueryHandler, ContextTypes,
-    MessageHandler, filters, Application, idle
+    MessageHandler, filters, Application
 )
 from django.conf import settings
 from telegram_bot.utils import (
@@ -248,7 +248,7 @@ async def main():
     logger.info("Фоновая задача process_notification_queue() запущена.")
 
     # Удерживаем приложение запущенным и обрабатываем входящие сообщения
-    await idle()
+    await asyncio.Event().wait()
 
     # Останавливаем приложение
     await application.stop()
