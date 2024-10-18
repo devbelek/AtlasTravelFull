@@ -1,6 +1,7 @@
 anyio==4.6.0
 asgiref==3.8.1
 async-timeout==4.0.3
+aioredis==2.0.1
 certifi==2024.8.30
 Django==5.0.6
 django-admin-list-filter-dropdown==1.0.3
