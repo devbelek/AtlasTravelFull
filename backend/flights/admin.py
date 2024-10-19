@@ -7,6 +7,8 @@ from modeltranslation.admin import TranslationAdmin
 
 from .models import Flight, FlightImage, FlightComments, FlightInquiry, IconsAfterName
 
+from django.utils.translation import gettext_lazy as _
+
 
 class FlightAdminForm(forms.ModelForm):
     class Meta:
@@ -82,10 +84,18 @@ class FlightAdmin(TranslationAdmin):
 
 @admin.register(FlightInquiry)
 class FlightInquiryAdmin(admin.ModelAdmin):
-    list_display = ['name', 'phone_number', 'email', 'flight', 'created_at']
+    list_display = ['name', 'phone_number', 'email', 'flight', 'created_at', 'is_processed']
     list_filter = ['created_at', 'flight']
     search_fields = ['name', 'phone_number', 'email']
     readonly_fields = ['created_at']
+    list_editable = ['is_processed']
+    actions = ['mark_as_processed']
+
+    def mark_as_processed(self, request, queryset):
+        queryset.update(is_processed=True)
+        self.message_user(request, _('Выбранные запросы отмечены как обработанные.'))
+
+    mark_as_processed.short_description = _('Отметить как обработанное')
 
 
 @admin.register(IconsAfterName)

@@ -9,6 +9,8 @@ from io import BytesIO
 from django.core.files import File
 import os
 
+from django.utils.translation import gettext_lazy as _
+
 
 class HotelAdminForm(forms.ModelForm):
     class Meta:
@@ -102,10 +104,18 @@ class HotelCommentsAdmin(admin.ModelAdmin):
 
 @admin.register(HotelInquiry)
 class HotelInquiryAdmin(admin.ModelAdmin):
-    list_display = ['name', 'phone_number', 'email', 'hotel', 'created_at']
+    list_display = ['name', 'phone_number', 'email', 'hotel', 'created_at', 'is_processed']
     list_filter = ['created_at', 'hotel']
     search_fields = ['name', 'phone_number', 'email']
     readonly_fields = ['created_at']
+    list_editable = ['is_processed']
+    actions = ['mark_as_processed']
+
+    def mark_as_processed(self, request, queryset):
+        queryset.update(is_processed=True)
+        self.message_user(request, _('Выбранные запросы отмечены как обработанные.'))
+
+    mark_as_processed.short_description = _('Отметить как обработанное')
 
 
 @admin.register(IconsAfterName)
