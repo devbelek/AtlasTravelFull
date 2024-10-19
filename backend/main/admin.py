@@ -30,7 +30,7 @@ class BestChoiceAdmin(admin.ModelAdmin):
     filter_horizontal = ('tours', 'hotels')
 
     def get_tours(self, obj):
-        return ", ".join([f"{tour.title_ru} ({tour.start_tour} - {tour.end_tур})" for tour in obj.tours.all()])
+        return ", ".join([f"{tour.title_ru} ({tour.start_tour} - {tour.end_tour})" for tour in obj.tours.all()])
 
     def get_hotels(self, obj):
         return ", ".join([f"{hotel.title_ru} ({hotel.city})" for hotel in obj.hotels.all()])
