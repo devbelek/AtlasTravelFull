@@ -12,11 +12,11 @@ JAZZMIN_SETTINGS = {
 
     ],
     "custom_js": [
-        "/static/admin/js/vendor/jquery/jquery.js",
-        "/static/admin/js/jquery.init.js",
-        "/static/admin/js/jquery-ui/jquery-ui.min.js",
-        "/static/adminsortable2/js/jquery.ui.touch-punch.js",
-        "/static/adminsortable2/js/sortable.admin.js",
+        "/staticfiles/admin/js/vendor/jquery/jquery.js",
+        "/staticfiles/admin/js/jquery.init.js",
+        "/staticfiles/admin/js/jquery-ui/jquery-ui.min.js",
+        "/staticfiles/adminsortable2/js/jquery.ui.touch-punch.js",
+        "/staticfiles/adminsortable2/js/sortable.admin.js",
     ],
     "default_icon_parents": "fas fa-circle",
     "default_icon_children": "fas fa-dot-circle",
