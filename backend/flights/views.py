@@ -6,13 +6,13 @@ from django_filters.rest_framework import DjangoFilterBackend
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
 
-from .models import Flight
+from .models import Flight, IconsAfterName
 from common.models import City
 from .serializers import (
     FlightSerializer,
     FlightDetailSerializer,
     FlightCommentsSerializer,
-    FlightInquirySerializer
+    FlightInquirySerializer, IconsAfterNameSerializer
 )
 import django_filters
 from pagination.pagination import BookingPagination
@@ -80,3 +80,8 @@ class FlightViewSet(viewsets.ModelViewSet):
         similar_flights = flight.find_similar_flights()
         serializer = FlightSerializer(similar_flights, many=True, context={'request': request})
         return Response(serializer.data)
+
+
+class IconsAfterNameViewSet(viewsets.ModelViewSet):
+    queryset = IconsAfterName.objects.all()
+    serializer_class = IconsAfterNameSerializer
