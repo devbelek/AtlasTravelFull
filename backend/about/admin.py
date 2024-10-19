@@ -1,3 +1,4 @@
+from adminsortable2.admin import SortableAdminMixin
 from django.contrib import admin, messages
 from django import forms
 from ckeditor.widgets import CKEditorWidget
@@ -53,8 +54,9 @@ class AboutUsImageAdmin(admin.ModelAdmin):
 
 
 @admin.register(FAQ)
-class FAQAdmin(admin.ModelAdmin):
-    list_display = ('question_ru', 'question_ky', 'question_en')
+class FAQAdmin(SortableAdminMixin, admin.ModelAdmin):
+    list_display = ('order', 'question_ru', 'question_ky', 'question_en')
+    list_editable = ('order',)
     fieldsets = (
         ('Русский', {
             'fields': ('question_ru', 'answer_ru'),
