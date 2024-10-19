@@ -1,9 +1,9 @@
 JAZZMIN_SETTINGS = {
     "site_title": "Название вашего сайта",
     "site_header": "Название вашего сайта",
-    "site_logo": "admin/img/LOGO.svg",
+    "site_logo": "/staticfiles/admin/img/LOGO.svg",
     "site_logo_classes": "img-circle elevation-3",
-    "site_icon": "admin/img/LOGO.svg",
+    "site_icon": "/staticfiles/admin/img/LOGO.svg",
     "site_brand": "Atlas Travel",
     "welcome_sign": "Добро пожаловать в админ-панель вашего сайта",
     "copyright": "Ваше авторское право",
