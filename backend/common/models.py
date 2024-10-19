@@ -56,7 +56,7 @@ class Comments(models.Model):
     RATE_CHOICES = [(i, str(i)) for i in range(1, 6)]
     rate = models.PositiveSmallIntegerField(choices=RATE_CHOICES, verbose_name='Оценка', null=True)
     full_name = models.CharField(max_length=100, verbose_name='Имя-Фамилия')
-    phone_number = models.PositiveIntegerField(verbose_name='Номер телефона')
+    phone_number = models.PositiveIntegerField(verbose_name='Номер телефона', blank=True, null=True)
     text = RichTextField(verbose_name='Комментарий', blank=True, null=True)
     date = models.DateField(auto_now_add=True, verbose_name='Дата создания')
     is_approved = models.BooleanField(default=False, verbose_name='Прошёл модерацию')
