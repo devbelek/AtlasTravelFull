@@ -1,5 +1,5 @@
 from modeltranslation.translator import register, TranslationOptions
-from .models import RentOfCar, RentOfCarDescription, Benefits, MainComments
+from .models import RentOfCar, RentOfCarDescription, Benefits
 
 
 @register(RentOfCar)
@@ -16,7 +16,3 @@ class RentOfCarDescriptionTranslationOptions(TranslationOptions):
 class BenefitsTranslationOptions(TranslationOptions):
     fields = ('title', 'description')
 
-
-@register(MainComments)
-class MainCommentsTranslationOptions(TranslationOptions):
-    fields = ('full_name', 'comment')
