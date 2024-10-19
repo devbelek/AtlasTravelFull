@@ -98,7 +98,7 @@ class RentOfCarAdmin(admin.ModelAdmin):
 
 
 @admin.register(Benefits)
-class BenefitsAdmin(admin.ModelAdmin):
+class BenefitsAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_display = ('order', 'title_ru', 'icon')
     list_editable = ('order',)
     list_display_links = ('title_ru',)
