@@ -8,13 +8,17 @@ from .models import RestIdea, BestChoice, PopularHotel, RentOfCar, RentOfCarDesc
 
 @admin.register(RestIdea)
 class RestIdeaAdmin(admin.ModelAdmin):
-    list_display = ['id', 'get_tours']
-    filter_horizontal = ('tours',)
+    list_display = ['id', 'get_tours', 'get_hotels']
+    filter_horizontal = ('tours', 'hotels')
 
     def get_tours(self, obj):
         return ", ".join([f"{tour.title_ru} ({tour.start_tour} - {tour.end_tour})" for tour in obj.tours.all()])
 
+    def get_hotels(self, obj):
+        return ", ".join([f"{hotel.title_ru} ({hotel.city})" for hotel in obj.hotels.all()])
+
     get_tours.short_description = 'Туры'
+    get_hotels.short_description = 'Отели'
 
     def has_add_permission(self, request):
         return False
@@ -22,13 +26,17 @@ class RestIdeaAdmin(admin.ModelAdmin):
 
 @admin.register(BestChoice)
 class BestChoiceAdmin(admin.ModelAdmin):
-    list_display = ['id', 'get_tours']
-    filter_horizontal = ('tours',)
+    list_display = ['id', 'get_tours', 'get_hotels']
+    filter_horizontal = ('tours', 'hotels')
 
     def get_tours(self, obj):
-        return ", ".join([f"{tour.title_ru} ({tour.start_tour} - {tour.end_tour})" for tour in obj.tours.all()])
+        return ", ".join([f"{tour.title_ru} ({tour.start_tour} - {tour.end_tур})" for tour in obj.tours.all()])
+
+    def get_hotels(self, obj):
+        return ", ".join([f"{hotel.title_ru} ({hotel.city})" for hotel in obj.hotels.all()])
 
     get_tours.short_description = 'Туры'
+    get_hotels.short_description = 'Отели'
 
     def has_add_permission(self, request):
         return False
