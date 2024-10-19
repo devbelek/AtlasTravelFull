@@ -99,7 +99,7 @@ class RentOfCarAdmin(admin.ModelAdmin):
 
 @admin.register(Benefits)
 class BenefitsAdmin(SortableAdminMixin, admin.ModelAdmin):
-    list_display = ('title_ru', 'icon')
+    list_display = ('order', 'title_ru', 'icon')
     # Удаляем 'order' из list_editable
     # list_editable = ('order',)
     list_display_links = ('title_ru',)
