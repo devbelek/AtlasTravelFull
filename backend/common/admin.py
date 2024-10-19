@@ -60,7 +60,7 @@ class TagAdmin(TranslationAdmin):
 
 @admin.register(Comments)
 class CommentsAdmin(admin.ModelAdmin):
-    list_display = ('full_name', 'rate', 'date', 'is_approved')
+    list_display = ('full_name', 'rate', 'phone_number', 'date', 'is_approved')
     list_filter = ('is_approved', 'date')
     search_fields = ('full_name', 'text')
     actions = ['approve_comments']
