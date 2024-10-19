@@ -63,9 +63,10 @@ def compress_image(image, max_size=(1920, 1080), quality=85, format='JPEG'):
 
 class RestIdea(models.Model):
     tours = models.ManyToManyField('tours.Tour', related_name='rest_ideas', verbose_name='Туры')
+    hotels = models.ManyToManyField('hotels.Hotel', related_name='rest_ideas', verbose_name='Отели')
 
     def __str__(self):
-        return str(self.tours.all())
+        return f'Tours: {self.tours.count()}, Hotels: {self.hotels.count()}'
 
     class Meta:
         verbose_name = 'Идея для отдыха'
@@ -74,9 +75,10 @@ class RestIdea(models.Model):
 
 class BestChoice(models.Model):
     tours = models.ManyToManyField('tours.Tour', related_name='best_choices', verbose_name='Туры')
+    hotels = models.ManyToManyField('hotels.Hotel', related_name='best_choices', verbose_name='Отели')
 
     def __str__(self):
-        return str(self.tours.all())
+        return f'Tours: {self.tours.count()}, Hotels: {self.hotels.count()}'
 
     class Meta:
         verbose_name = 'Лучшее предложение'
