@@ -6,7 +6,6 @@ from PIL import Image, ExifTags
 import io
 import os
 
-from hotels.models import Hotel
 
 def compress_image(image, max_size=(1920, 1080), quality=85, format='JPEG'):
     img = Image.open(image)
