@@ -3,14 +3,9 @@ from django.conf import settings
 from django.contrib import admin
 from django.contrib.admin import ModelAdmin, TabularInline
 from ckeditor.widgets import CKEditorWidget
-
 from main.models import BestChoice, RestIdea
 from .models import *
 from common.models import *
-from django.contrib.auth.models import Group, User
-
-admin.site.unregister(User)
-admin.site.unregister(Group)
 
 
 class TourCommentsAdminForm(forms.ModelForm):
