@@ -15,7 +15,7 @@ class RestIdeaSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = RestIdea
-        fields = ['id', 'tours', 'hotels', 'flights', 'transfers']
+        exclude = ['id']
 
 
 class BestChoiceSerializer(serializers.ModelSerializer):
@@ -26,7 +26,7 @@ class BestChoiceSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = BestChoice
-        fields = ['id', 'tours', 'hotels', 'flights', 'transfers']
+        exclude = ['id']
 
 
 class PopularHotelSerializer(serializers.ModelSerializer):
@@ -34,7 +34,7 @@ class PopularHotelSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = PopularHotel
-        fields = ['id', 'hotels']
+        exclude = ['id']
 
 
 class RentOfCarImageSerializer(serializers.ModelSerializer):
