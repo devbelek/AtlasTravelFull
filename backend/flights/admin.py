@@ -8,6 +8,7 @@ from modeltranslation.admin import TranslationAdmin
 from .models import Flight, FlightImage, FlightComments, FlightInquiry, IconsAfterName
 
 from django.utils.translation import gettext_lazy as _
+from main.models import RestIdea, BestChoice
 
 
 class FlightAdminForm(forms.ModelForm):
@@ -52,7 +53,8 @@ class FlightImageInline(TabularInline):
 class FlightAdmin(TranslationAdmin):
     form = FlightAdminForm
     inlines = [FlightImageInline]
-    list_display = ['title', 'departure_date', 'return_date', 'get_final_rating', 'rating_count']
+    list_display = ['title', 'departure_date', 'return_date', 'get_final_rating', 'rating_count', 'is_best_choice', 'is_rest_idea']
+    list_editable = ['is_best_choice', 'is_rest_idea']
     readonly_fields = ['average_rating', 'rating_count']
 
     fieldsets = (
@@ -75,6 +77,21 @@ class FlightAdmin(TranslationAdmin):
 
     def save_model(self, request, obj, form, change):
         super().save_model(request, obj, form, change)
+        obj.update_rating()
+        self._update_special_lists(obj)
+
+    def _update_special_lists(self, flight):
+        best_choice, _ = BestChoice.objects.get_or_create(id=1)
+        if flight.is_best_choice:
+            best_choice.flights.add(flight)
+        else:
+            best_choice.flights.remove(flight)
+
+        rest_idea, _ = RestIdea.objects.get_or_create(id=1)
+        if flight.is_rest_idea:
+            rest_idea.flights.add(flight)
+        else:
+            rest_idea.flights.remove(flight)
 
     def get_final_rating(self, obj):
         return obj.get_final_rating()

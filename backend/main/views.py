@@ -11,8 +11,8 @@ from django.views.decorators.cache import cache_page
 class HomePageView(APIView):
     @method_decorator(cache_page(60 * 15))
     def get(self, request):
-        rest_idea = RestIdea.objects.prefetch_related('tours__tags').first()
-        best_choice = BestChoice.objects.prefetch_related('tours__tags').first()
+        rest_idea = RestIdea.objects.prefetch_related('tours__tags', 'hotels__tags', 'flights__tags').first()
+        best_choice = BestChoice.objects.prefetch_related('tours__tags', 'hotels__tags', 'flights__tags').first()
         popular_hotel = PopularHotel.objects.prefetch_related('hotels__tags').first()
 
         rest_ideas_serializer = RestIdeaSerializer(rest_idea) if rest_idea else None
@@ -49,3 +49,21 @@ class BenefitsViewSet(viewsets.ModelViewSet):
 class MainCommentsViewSet(viewsets.ModelViewSet):
     queryset = MainComments.objects.all()
     serializer_class = MainCommentsSerializer
+
+
+class RestIdeaViewSet(viewsets.ModelViewSet):
+    queryset = RestIdea.objects.prefetch_related('tours', 'hotels', 'flights').all()
+    serializer_class = RestIdeaSerializer
+
+    @method_decorator(cache_page(60 * 15))
+    def list(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)
+
+
+class BestChoiceViewSet(viewsets.ModelViewSet):
+    queryset = BestChoice.objects.prefetch_related('tours', 'hotels', 'flights').all()
+    serializer_class = BestChoiceSerializer
+
+    @method_decorator(cache_page(60 * 15))
+    def list(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)

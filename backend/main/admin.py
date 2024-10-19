@@ -8,8 +8,8 @@ from .models import RestIdea, BestChoice, PopularHotel, RentOfCar, RentOfCarDesc
 
 @admin.register(RestIdea)
 class RestIdeaAdmin(admin.ModelAdmin):
-    list_display = ['id', 'get_tours', 'get_hotels']
-    filter_horizontal = ('tours', 'hotels')
+    list_display = ['id', 'get_tours', 'get_hotels', 'get_flights']
+    filter_horizontal = ('tours', 'hotels', 'flights')
 
     def get_tours(self, obj):
         return ", ".join([f"{tour.title_ru} ({tour.start_tour} - {tour.end_tour})" for tour in obj.tours.all()])
@@ -17,17 +17,18 @@ class RestIdeaAdmin(admin.ModelAdmin):
     def get_hotels(self, obj):
         return ", ".join([f"{hotel.title_ru} ({hotel.city})" for hotel in obj.hotels.all()])
 
+    def get_flights(self, obj):
+        return ", ".join([f"{flight.title} ({flight.from_city} -> {flight.to_city})" for flight in obj.flights.all()])
+
     get_tours.short_description = 'Туры'
     get_hotels.short_description = 'Отели'
-
-    def has_add_permission(self, request):
-        return False
+    get_flights.short_description = 'Авиарейсы'
 
 
 @admin.register(BestChoice)
 class BestChoiceAdmin(admin.ModelAdmin):
-    list_display = ['id', 'get_tours', 'get_hotels']
-    filter_horizontal = ('tours', 'hotels')
+    list_display = ['id', 'get_tours', 'get_hotels', 'get_flights']
+    filter_horizontal = ('tours', 'hotels', 'flights')
 
     def get_tours(self, obj):
         return ", ".join([f"{tour.title_ru} ({tour.start_tour} - {tour.end_tour})" for tour in obj.tours.all()])
@@ -35,11 +36,12 @@ class BestChoiceAdmin(admin.ModelAdmin):
     def get_hotels(self, obj):
         return ", ".join([f"{hotel.title_ru} ({hotel.city})" for hotel in obj.hotels.all()])
 
+    def get_flights(self, obj):
+        return ", ".join([f"{flight.title} ({flight.from_city} -> {flight.to_city})" for flight in obj.flights.all()])
+
     get_tours.short_description = 'Туры'
     get_hotels.short_description = 'Отели'
-
-    def has_add_permission(self, request):
-        return False
+    get_flights.short_description = 'Авиарейсы'
 
 
 @admin.register(PopularHotel)
