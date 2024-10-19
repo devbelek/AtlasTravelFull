@@ -20,7 +20,9 @@ JAZZMIN_SETTINGS = {
     "changeform_format_overrides": {
     },
     "hide_apps": [],
-    "hide_models": [],
+    "hide_models": [
+        "services.ServiceFeature",
+    ],
     "icons": {
         "auth": "fas fa-users-cog",
         "auth.user": "fas fa-user",
