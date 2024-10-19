@@ -8,7 +8,7 @@ from .models import RestIdea, BestChoice, PopularHotel, RentOfCar, RentOfCarDesc
 
 @admin.register(RestIdea)
 class RestIdeaAdmin(admin.ModelAdmin):
-    list_display = ['id', 'get_tours', 'get_hotels', 'get_flights', 'get_transfers']
+    list_display = ['get_tours', 'get_hotels', 'get_flights', 'get_transfers']
     filter_horizontal = ('tours', 'hotels', 'flights', 'transfers')
 
     def get_tours(self, obj):
@@ -31,7 +31,7 @@ class RestIdeaAdmin(admin.ModelAdmin):
 
 @admin.register(BestChoice)
 class BestChoiceAdmin(admin.ModelAdmin):
-    list_display = ['id', 'get_tours', 'get_hotels', 'get_flights', 'get_transfers']
+    list_display = ['get_tours', 'get_hotels', 'get_flights', 'get_transfers']
     filter_horizontal = ('tours', 'hotels', 'flights', 'transfers')
 
     def get_tours(self, obj):
