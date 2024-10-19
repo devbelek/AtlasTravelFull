@@ -42,6 +42,8 @@ class Hotel(models.Model):
     rating_count = models.PositiveIntegerField(default=0, verbose_name='Количество оценок')
 
     is_popular_hotel = models.BooleanField(default=False, verbose_name='Популярный отель')
+    is_best_choice = models.BooleanField(default=False, verbose_name='Лучшее предложение')
+    is_rest_idea = models.BooleanField(default=False, verbose_name='Идея для отдыха')
 
     def clean(self):
         if self.arrival_date and self.departure_date and self.arrival_date > self.departure_date:

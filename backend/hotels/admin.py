@@ -11,6 +11,8 @@ import os
 
 from django.utils.translation import gettext_lazy as _
 
+from main.models import BestChoice, RestIdea
+
 
 class HotelAdminForm(forms.ModelForm):
     class Meta:
@@ -37,13 +39,13 @@ class HotelImageInline(TabularInline):
 class HotelAdmin(admin.ModelAdmin):
     form = HotelAdminForm
     inlines = [HotelImageInline]
-    list_display = ['title', 'city', 'get_final_rating', 'rating_count', 'is_popular_hotel']
-    list_editable = ['is_popular_hotel']
+    list_display = ['title', 'city', 'get_final_rating', 'rating_count', 'is_popular_hotel', 'is_best_choice', 'is_rest_idea']
+    list_editable = ['is_popular_hotel', 'is_best_choice', 'is_rest_idea']
     readonly_fields = ['average_rating', 'rating_count']
 
     fieldsets = (
         ('Основная информация', {
-            'fields': ('city', 'arrival_date', 'departure_date', 'nights', 'tags', 'is_popular_hotel')
+            'fields': ('city', 'arrival_date', 'departure_date', 'nights', 'tags', 'is_popular_hotel', 'is_best_choice', 'is_rest_idea')
         }),
         ('Рейтинг', {
             'fields': ('manual_rating', 'average_rating', 'rating_count')
@@ -62,24 +64,20 @@ class HotelAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         super().save_model(request, obj, form, change)
         obj.update_rating()
+        self._update_special_lists(obj)
 
-    def get_final_rating(self, obj):
-        return obj.get_final_rating()
-
-    get_final_rating.short_description = 'Рейтинг'
-
-    def save_model(self, request, obj, form, change):
-        super().save_model(request, obj, form, change)
-        obj.update_rating()
-        self._update_popular_hotels(obj)
-
-    def _update_popular_hotels(self, hotel):
-        from main.models import PopularHotel
-        popular_hotel, _ = PopularHotel.objects.get_or_create(id=1)
-        if hotel.is_popular_hotel:
-            popular_hotel.hotels.add(hotel)
+    def _update_special_lists(self, hotel):
+        best_choice, _ = BestChoice.objects.get_or_create(id=1)
+        if hotel.is_best_choice:
+            best_choice.hotels.add(hotel)
         else:
-            popular_hotel.hotels.remove(hotel)
+            best_choice.hotels.remove(hotel)
+
+        rest_idea, _ = RestIdea.objects.get_or_create(id=1)
+        if hotel.is_rest_idea:
+            rest_idea.hotels.add(hotel)
+        else:
+            rest_idea.hotels.remove(hotel)
 
     def get_final_rating(self, obj):
         return obj.get_final_rating()
