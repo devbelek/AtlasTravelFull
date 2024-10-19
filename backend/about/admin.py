@@ -2,6 +2,7 @@ from django.contrib import admin, messages
 from django import forms
 from ckeditor.widgets import CKEditorWidget
 from django.db import models
+from django.utils.html import strip_tags
 from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
 from .models import (AboutUs, AboutUsImage, FAQ, AboutUsInquiry,
                      AboutUsConsultant, OurProjects, PrivacyPolicy,
@@ -136,17 +137,20 @@ class PrivacyPolicyAdmin(admin.ModelAdmin):
     )
 
     def content_preview_ky(self, obj):
-        return (obj.content_ky[:100] + '...') if len(obj.content_ky) > 100 else obj.content_ky
+        content = strip_tags(obj.content_ky)
+        return (content[:100] + '...') if len(content) > 100 else content
 
     def content_preview_ru(self, obj):
-        return (obj.content_ru[:100] + '...') if len(obj.content_ru) > 100 else obj.content_ru
+        content = strip_tags(obj.content_ru)
+        return (content[:100] + '...') if len(content) > 100 else content
 
     def content_preview_en(self, obj):
-        return (obj.content_en[:100] + '...') if len(obj.content_en) > 100 else obj.content_en
+        content = strip_tags(obj.content_en)
+        return (content[:100] + '...') if len(content) > 100 else content
 
-    content_preview_ky.short_description = 'Content Preview (KY)'
-    content_preview_ru.short_description = 'Content Preview (RU)'
-    content_preview_en.short_description = 'Content Preview (EN)'
+    content_preview_ru.short_description = 'Превью контента (Ру)'
+    content_preview_ky.short_description = 'Превью контента (Кыр)'
+    content_preview_en.short_description = 'Превью контента (Анг)'
 
 
 @admin.register(UserAgreement)
@@ -171,17 +175,20 @@ class UserAgreementAdmin(admin.ModelAdmin):
     )
 
     def content_preview_ky(self, obj):
-        return (obj.content_ky[:100] + '...') if len(obj.content_ky) > 100 else obj.content_ky
+        content = strip_tags(obj.content_ky)
+        return (content[:100] + '...') if len(content) > 100 else content
 
     def content_preview_ru(self, obj):
-        return (obj.content_ru[:100] + '...') if len(obj.content_ru) > 100 else obj.content_ru
+        content = strip_tags(obj.content_ru)
+        return (content[:100] + '...') if len(content) > 100 else content
 
     def content_preview_en(self, obj):
-        return (obj.content_en[:100] + '...') if len(obj.content_en) > 100 else obj.content_en
+        content = strip_tags(obj.content_en)
+        return (content[:100] + '...') if len(content) > 100 else content
 
-    content_preview_ky.short_description = 'Content Preview (KY)'
-    content_preview_ru.short_description = 'Content Preview (RU)'
-    content_preview_en.short_description = 'Content Preview (EN)'
+    content_preview_ru.short_description = 'Превью контента (Ру)'
+    content_preview_ky.short_description = 'Превью контента (Кыр)'
+    content_preview_en.short_description = 'Превью контента (Анг)'
 
 
 @admin.register(ReturnPolicy)
@@ -206,14 +213,17 @@ class ReturnPolicyAdmin(admin.ModelAdmin):
     )
 
     def content_preview_ky(self, obj):
-        return (obj.content_ky[:100] + '...') if len(obj.content_ky) > 100 else obj.content_ky
+        content = strip_tags(obj.content_ky)
+        return (content[:100] + '...') if len(content) > 100 else content
 
     def content_preview_ru(self, obj):
-        return (obj.content_ru[:100] + '...') if len(obj.content_ru) > 100 else obj.content_ru
+        content = strip_tags(obj.content_ru)
+        return (content[:100] + '...') if len(content) > 100 else content
 
     def content_preview_en(self, obj):
-        return (obj.content_en[:100] + '...') if len(obj.content_en) > 100 else obj.content_en
+        content = strip_tags(obj.content_en)
+        return (content[:100] + '...') if len(content) > 100 else content
 
-    content_preview_ky.short_description = 'Content Preview (KY)'
-    content_preview_ru.short_description = 'Content Preview (RU)'
-    content_preview_en.short_description = 'Content Preview (EN)'
+    content_preview_ru.short_description = 'Превью контента (Ру)'
+    content_preview_ky.short_description = 'Превью контента (Кыр)'
+    content_preview_en.short_description = 'Превью контента (Анг)'

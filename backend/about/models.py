@@ -32,7 +32,7 @@ def compress_image(image, max_size=(1200, 1200), quality=85):
 class AboutUs(models.Model):
     title = models.CharField(max_length=200, verbose_name='О нас', default='О нас')
     description = RichTextField(verbose_name='Описание')
-    youtube_video_url = models.URLField(verbose_name="URL видео с YouTube")
+    youtube_video_url = models.URLField(verbose_name="URL видео с YouTube", blank=True, null=True)
 
     def __str__(self):
         return f'{self.title}'
@@ -96,13 +96,13 @@ class AboutUsInquiry(models.Model):
 
 
 class AboutUsConsultant(models.Model):
-    surname = models.CharField(max_length=20, verbose_name='Фамилия')
-    name = models.CharField(max_length=20, verbose_name='Имя')
-    phone_number = models.CharField(max_length=20, verbose_name="Номер телефона")
-    whatsapp = models.URLField(verbose_name='whatsapp')
-    telegram = models.URLField(verbose_name='telegram')
-    instagram = models.URLField(verbose_name='instagram')
-    is_active = models.BooleanField(default=False, verbose_name='Активный консультант')
+    surname = models.CharField(max_length=20, verbose_name='Фамилия', blank=True, null=True)
+    name = models.CharField(max_length=20, verbose_name='Имя', blank=True, null=True)
+    phone_number = models.CharField(max_length=20, verbose_name="Номер телефона", blank=True, null=True)
+    whatsapp = models.URLField(verbose_name='whatsapp', blank=True, null=True)
+    telegram = models.URLField(verbose_name='telegram', blank=True, null=True)
+    instagram = models.URLField(verbose_name='instagram', blank=True, null=True)
+    is_active = models.BooleanField(default=False, verbose_name='Активный консультант', blank=True, null=True)
 
     def __str__(self):
         return f"{self.name} {self.surname}"
@@ -124,7 +124,7 @@ class AboutUsConsultant(models.Model):
 class OurProjects(models.Model):
     title = models.CharField(max_length=200, default="Наши Проекты", verbose_name="Заголовок")
     description = RichTextField(verbose_name="Описание")
-    youtube_video_url = models.URLField(verbose_name="URL видео с YouTube")
+    youtube_video_url = models.URLField(verbose_name="URL видео с YouTube", blank=True, null=True)
     tours = models.ManyToManyField(Tour, related_name='our_projects', verbose_name="Связанные туры")
 
     class Meta:
