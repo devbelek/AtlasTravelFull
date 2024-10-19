@@ -7,6 +7,8 @@ from .models import Transfer, TransferImage, TransferComments, TransferInquiry, 
 
 from django.utils.translation import gettext_lazy as _
 
+from main.models import BestChoice, RestIdea
+
 
 class TransferAdminForm(forms.ModelForm):
     class Meta:
@@ -34,14 +36,15 @@ class TransferImageInline(TabularInline):
 class TransferAdmin(admin.ModelAdmin):
     form = TransferAdminForm
     inlines = [TransferImageInline]
-    list_display = ['title_ru', 'city', 'departure_date', 'return_date', 'passengers', 'get_final_rating', 'rating_count']
+    list_display = ['title_ru', 'city', 'departure_date', 'return_date', 'passengers', 'get_final_rating', 'rating_count', 'is_best_choice', 'is_rest_idea']
     list_filter = ['city', 'departure_date', 'return_date']
     search_fields = ['title_ky', 'title_ru', 'title_en', 'description_ky', 'description_ru', 'description_en']
     readonly_fields = ['average_rating', 'rating_count']
+    list_editable = ['is_best_choice', 'is_rest_idea']
 
     fieldsets = (
         ('Основная информация', {
-            'fields': ('city', 'departure_date', 'return_date', 'passengers', 'tags')
+            'fields': ('city', 'departure_date', 'return_date', 'passengers', 'tags', 'is_best_choice', 'is_rest_idea')
         }),
         ('Рейтинг', {
             'fields': ('manual_rating', 'average_rating', 'rating_count')
@@ -57,13 +60,28 @@ class TransferAdmin(admin.ModelAdmin):
         }),
     )
 
-    def get_final_rating(self, obj):
-        return obj.get_final_rating()
-    get_final_rating.short_description = 'Рейтинг'
-
     def save_model(self, request, obj, form, change):
         super().save_model(request, obj, form, change)
         obj.update_rating()
+        self._update_special_lists(obj)
+
+    def get_final_rating(self, obj):
+        return obj.get_final_rating()
+
+    get_final_rating.short_description = 'Рейтинг'
+
+    def _update_special_lists(self, transfer):
+        rest_idea, _ = RestIdea.objects.get_or_create(id=1)
+        if transfer.is_rest_idea:
+            rest_idea.transfers.add(transfer)
+        else:
+            rest_idea.transfers.remove(transfer)
+
+        best_choice, _ = BestChoice.objects.get_or_create(id=1)
+        if transfer.is_best_choice:
+            best_choice.transfers.add(transfer)
+        else:
+            best_choice.transfers.remove(transfer)
 
 
 @admin.register(TransferComments)

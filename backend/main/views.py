@@ -11,8 +11,8 @@ from django.views.decorators.cache import cache_page
 class HomePageView(APIView):
     @method_decorator(cache_page(60 * 15))
     def get(self, request):
-        rest_idea = RestIdea.objects.prefetch_related('tours__tags', 'hotels__tags', 'flights__tags').first()
-        best_choice = BestChoice.objects.prefetch_related('tours__tags', 'hotels__tags', 'flights__tags').first()
+        rest_idea = RestIdea.objects.prefetch_related('tours__tags', 'hotels__tags', 'flights__tags', 'transfers__tags').first()
+        best_choice = BestChoice.objects.prefetch_related('tours__tags', 'hotels__tags', 'flights__tags', 'transfers__tags').first()
         popular_hotel = PopularHotel.objects.prefetch_related('hotels__tags').first()
 
         rest_ideas_serializer = RestIdeaSerializer(rest_idea) if rest_idea else None

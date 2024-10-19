@@ -41,6 +41,9 @@ class Transfer(models.Model):
     average_rating = models.FloatField(default=0, verbose_name='Средний рейтинг')
     rating_count = models.PositiveIntegerField(default=0, verbose_name='Количество оценок')
 
+    is_best_choice = models.BooleanField(default=False, verbose_name='Лучшее предложение')
+    is_rest_idea = models.BooleanField(default=False, verbose_name='Идея для отдыха')
+
     def clean(self):
         if self.departure_date and self.return_date and self.departure_date > self.return_date:
             raise ValidationError(_('Дата получения не может быть позже даты возврата.'))

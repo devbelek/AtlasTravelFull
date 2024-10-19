@@ -65,9 +65,10 @@ class RestIdea(models.Model):
     tours = models.ManyToManyField('tours.Tour', related_name='rest_ideas', verbose_name='Туры')
     hotels = models.ManyToManyField('hotels.Hotel', related_name='rest_ideas', verbose_name='Отели')
     flights = models.ManyToManyField('flights.Flight', related_name='rest_ideas', verbose_name='Авиарейсы')
+    transfers = models.ManyToManyField('transfers.Transfer', related_name='rest_ideas', verbose_name='Трансферы')
 
     def __str__(self):
-        return f'Tours: {self.tours.count()}, Hotels: {self.hotels.count()}, Flights: {self.flights.count()}'
+        return f'Tours: {self.tours.count()}, Hotels: {self.hotels.count()}, Flights: {self.flights.count()}, Transfers: {self.transfers.count()}'
 
     class Meta:
         verbose_name = 'Идея для отдыха'
@@ -78,9 +79,10 @@ class BestChoice(models.Model):
     tours = models.ManyToManyField('tours.Tour', related_name='best_choices', verbose_name='Туры')
     hotels = models.ManyToManyField('hotels.Hotel', related_name='best_choices', verbose_name='Отели')
     flights = models.ManyToManyField('flights.Flight', related_name='best_choices', verbose_name='Авиарейсы')
+    transfers = models.ManyToManyField('transfers.Transfer', related_name='best_choices', verbose_name='Трансферы')
 
     def __str__(self):
-        return f'Tours: {self.tours.count()}, Hotels: {self.hotels.count()}, Flights: {self.flights.count()}'
+        return f'Tours: {self.tours.count()}, Hotels: {self.hotels.count()}, Flights: {self.flights.count()}, Transfers: {self.transfers.count()}'
 
     class Meta:
         verbose_name = 'Лучшее предложение'

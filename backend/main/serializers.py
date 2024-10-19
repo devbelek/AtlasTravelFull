@@ -4,26 +4,29 @@ from .models import RestIdea, BestChoice, PopularHotel, RentOfCar, RentOfCarImag
 from tours.serializers import TourSerializer
 from hotels.serializers import HotelSerializer
 from flights.serializers import FlightSerializer
+from transfer.serializers import TransferSerializer
 
 
 class RestIdeaSerializer(serializers.ModelSerializer):
     tours = TourSerializer(many=True, read_only=True)
     hotels = HotelSerializer(many=True, read_only=True)
     flights = FlightSerializer(many=True, read_only=True)
+    transfers = TransferSerializer(many=True, read_only=True)
 
     class Meta:
         model = RestIdea
-        fields = ['id', 'tours', 'hotels', 'flights']
+        fields = ['id', 'tours', 'hotels', 'flights', 'transfers']
 
 
 class BestChoiceSerializer(serializers.ModelSerializer):
     tours = TourSerializer(many=True, read_only=True)
     hotels = HotelSerializer(many=True, read_only=True)
     flights = FlightSerializer(many=True, read_only=True)
+    transfers = TransferSerializer(many=True, read_only=True)
 
     class Meta:
         model = BestChoice
-        fields = ['id', 'tours', 'hotels', 'flights']
+        fields = ['id', 'tours', 'hotels', 'flights', 'transfers']
 
 
 class PopularHotelSerializer(serializers.ModelSerializer):
