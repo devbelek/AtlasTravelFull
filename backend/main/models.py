@@ -171,6 +171,7 @@ class Benefits(models.Model):
     icon = models.FileField(verbose_name='Иконка')
     title = models.CharField(max_length=30, verbose_name='Заголовок')
     description = RichTextField(verbose_name='Описание')
+    order = models.PositiveIntegerField(default=0, blank=False, null=False, verbose_name='Порядок отображения')
 
     # Новые поля для настройки сжатия
     max_width = models.PositiveIntegerField(default=200, verbose_name='Максимальная ширина иконки')
@@ -178,6 +179,7 @@ class Benefits(models.Model):
     quality = models.PositiveIntegerField(default=90, verbose_name='Качество (1-100)')
 
     class Meta:
+        ordering = ['order']
         verbose_name = "Преимущество работы с нами"
         verbose_name_plural = "Преимущества работы с нами"
 

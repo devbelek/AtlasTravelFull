@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
 from modeltranslation.admin import TranslationAdmin
+from adminsortable2.admin import SortableAdminMixin
 
 from .models import RestIdea, BestChoice, PopularHotel, RentOfCar, RentOfCarDescription, Benefits, RentOfCarImage, \
     MainComments
@@ -98,7 +99,9 @@ class RentOfCarAdmin(admin.ModelAdmin):
 
 @admin.register(Benefits)
 class BenefitsAdmin(admin.ModelAdmin):
-    list_display = ('icon', 'title_ru')
+    list_display = ('order', 'title_ru', 'icon')
+    list_editable = ('order',)
+    list_display_links = ('title_ru',)
     fieldsets = (
         ('Общее', {
             'fields': ('icon',),
