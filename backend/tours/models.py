@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -11,6 +12,8 @@ from django.core.files import File
 import os
 
 from telegram_bot.utils import send_consultation_notification, send_review_notification
+
+from django.utils.translation import gettext_lazy as _
 
 
 class TourComments(Comments):
@@ -50,6 +53,13 @@ class Tour(models.Model):
 
     is_best_choice = models.BooleanField(default=False, verbose_name='Лучшее предложение')
     is_rest_idea = models.BooleanField(default=False, verbose_name='Идея для отдыха')
+
+    def clean(self):
+        if self.start_tour and self.end_tour and self.start_tour > self.end_tour:
+            raise ValidationError(_('Дата начала сезона не может быть позже даты конца сезона.'))
+
+        if self.departure_date and (self.departure_date < self.start_tour or self.departure_date > self.end_tour):
+            raise ValidationError(_('Дата вылета должна быть в пределах сезона.'))
 
     def update_rating(self):
         comments = self.comments.filter(is_approved=True)
