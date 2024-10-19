@@ -57,6 +57,7 @@ class AboutUsImageAdmin(admin.ModelAdmin):
 class FAQAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_display = ('order', 'question_ru', 'question_ky', 'question_en')
     list_editable = ('order',)
+    list_display_links = ('question_ru',)  # Добавляем поле, по которому будет переход
     fieldsets = (
         ('Русский', {
             'fields': ('question_ru', 'answer_ru'),
