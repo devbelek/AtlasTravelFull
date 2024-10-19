@@ -150,7 +150,7 @@ class RentOfCarImage(models.Model):
 class RentOfCarDescription(models.Model):
     rent_of_car = models.ForeignKey(RentOfCar, related_name='descriptions', on_delete=models.CASCADE,
                                     verbose_name='Аренда автомобиля')
-    description = RichTextField(verbose_name="Описание")
+    description = models.TextField(verbose_name="Описание")
     order = models.PositiveIntegerField(default=0, verbose_name="Порядок отображения")
 
     class Meta:
