@@ -118,6 +118,15 @@ class BenefitsAdmin(SortableAdminMixin, admin.ModelAdmin):
         }),
     )
 
+    class Media:
+        js = (
+            'admin/js/vendor/jquery/jquery.js',  # jQuery
+            'admin/js/jquery.init.js',           # Инициализация jQuery
+            'admin/js/jquery-ui/jquery-ui.min.js',  # jQuery UI
+            'adminsortable2/js/jquery.ui.touch-punch.js',  # Поддержка touch-событий
+            'adminsortable2/js/sortable.admin.js',  # Скрипт django-admin-sortable2
+        )
+
 
 @admin.register(MainComments)
 class MainCommentsAdmin(admin.ModelAdmin):
