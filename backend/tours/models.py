@@ -61,6 +61,9 @@ class Tour(models.Model):
         if self.departure_date and (self.departure_date < self.start_tour or self.departure_date > self.end_tour):
             raise ValidationError(_('Дата вылета должна быть в пределах сезона.'))
 
+        if self.manual_rating is not None and (self.manual_rating > 10 or self.manual_rating < 0):
+            raise ValidationError(_('Ручной рейтинг должен быть в диапазоне от 0 до 10.'))
+
     def update_rating(self):
         comments = self.comments.filter(is_approved=True)
         self.rating_count = comments.count()

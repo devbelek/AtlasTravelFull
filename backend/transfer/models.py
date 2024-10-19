@@ -45,6 +45,9 @@ class Transfer(models.Model):
         if self.departure_date and self.return_date and self.departure_date > self.return_date:
             raise ValidationError(_('Дата получения не может быть позже даты возврата.'))
 
+        if self.manual_rating is not None and (self.manual_rating > 10 or self.manual_rating < 0):
+            raise ValidationError(_('Ручной рейтинг должен быть в диапазоне от 0 до 10.'))
+
     def update_rating(self):
         comments = self.comments.filter(is_approved=True)
         self.rating_count = comments.count()
