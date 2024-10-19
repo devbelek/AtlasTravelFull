@@ -1,7 +1,9 @@
 JAZZMIN_SETTINGS = {
     "site_title": "Название вашего сайта",
     "site_header": "Название вашего сайта",
-    "site_logo_classes": "img-circle",
+    "site_logo": "img/LOGO.svg",
+    "site_logo_classes": "img-circle elevation-3",
+    "site_icon": "img/LOGO.svg",
     "site_brand": "Atlas Travel",
     "welcome_sign": "Добро пожаловать в админ-панель вашего сайта",
     "copyright": "Ваше авторское право",
@@ -86,15 +88,11 @@ JAZZMIN_SETTINGS = {
         "transfer.IconsAfterName": "fas fa-icons",
     },
 
-    # Добавляем новую настройку для упорядочивания приложений
     "order_with_respect_to": [
-        # Группируем похожие приложения вместе
         "tours",
         "hotels",
         "transfer",
         "flights",
-
-        # Другие приложения
         "main",
         "blog",
         "contacts",
@@ -104,7 +102,6 @@ JAZZMIN_SETTINGS = {
         "auth",
     ],
 
-    # Добавляем настройку для создания кастомных ссылок и группировки
     "custom_links": {
         "travel_services": [{
             "name": "Туристические услуги",
