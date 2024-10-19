@@ -46,11 +46,11 @@ class HotelAdmin(admin.ModelAdmin):
         ('Рейтинг', {
             'fields': ('manual_rating', 'average_rating', 'rating_count')
         }),
-        ('Кыргызский', {
-            'fields': ('title_ky', 'description_ky'),
-        }),
         ('Русский', {
             'fields': ('title_ru', 'description_ru'),
+        }),
+        ('Кыргызский', {
+            'fields': ('title_ky', 'description_ky'),
         }),
         ('Английский', {
             'fields': ('title_en', 'description_en'),

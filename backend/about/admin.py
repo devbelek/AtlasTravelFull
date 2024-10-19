@@ -11,8 +11,8 @@ from django.utils.translation import gettext_lazy as _
 
 @admin.register(AboutUs)
 class AboutUsAdmin(admin.ModelAdmin):
-    list_display = ('title_ky', 'title_ru', 'title_en', 'youtube_video_url')
-    search_fields = ('title_ky', 'title_ru', 'title_en')
+    list_display = ('title_ru', 'title_ky', 'title_en', 'youtube_video_url')
+    search_fields = ('title_ru', 'title_ky', 'title_en')
     formfield_overrides = {
         models.TextField: {'widget': CKEditorWidget},
     }
@@ -21,11 +21,11 @@ class AboutUsAdmin(admin.ModelAdmin):
         ('Основные', {
             'fields': ('youtube_video_url',),
         }),
-        ('Кыргызский', {
-            'fields': ('title_ky', 'description_ky'),
-        }),
         ('Русский', {
             'fields': ('title_ru', 'description_ru'),
+        }),
+        ('Кыргызский', {
+            'fields': ('title_ky', 'description_ky'),
         }),
         ('Английский', {
             'fields': ('title_en', 'description_en'),
@@ -53,13 +53,13 @@ class AboutUsImageAdmin(admin.ModelAdmin):
 
 @admin.register(FAQ)
 class FAQAdmin(admin.ModelAdmin):
-    list_display = ('question_ky', 'question_ru', 'question_en')
+    list_display = ('question_ru', 'question_ky', 'question_en')
     fieldsets = (
-        ('Кыргызский', {
-            'fields': ('question_ky', 'answer_ky'),
-        }),
         ('Русский', {
             'fields': ('question_ru', 'answer_ru'),
+        }),
+        ('Кыргызский', {
+            'fields': ('question_ky', 'answer_ky'),
         }),
         ('Английский', {
             'fields': ('question_en', 'answer_en'),
@@ -93,16 +93,16 @@ class AboutUsConsultantAdmin(admin.ModelAdmin):
 
 @admin.register(OurProjects)
 class OurProjectsAdmin(admin.ModelAdmin):
-    list_display = ('title_ky', 'title_ru', 'title_en')
+    list_display = ('title_ru', 'title_ky', 'title_en')
     fieldsets = (
         ('Основные', {
             'fields': ('tours', 'youtube_video_url'),
         }),
-        ('Кыргызский', {
-            'fields': ('title_ky', 'description_ky'),
-        }),
         ('Русский', {
             'fields': ('title_ru', 'description_ru'),
+        }),
+        ('Кыргызский', {
+            'fields': ('title_ky', 'description_ky'),
         }),
         ('Английский', {
             'fields': ('title_en', 'description_en'),
@@ -116,19 +116,19 @@ class OurProjectsAdmin(admin.ModelAdmin):
 
 @admin.register(PrivacyPolicy)
 class PrivacyPolicyAdmin(admin.ModelAdmin):
-    list_display = ('id', 'content_preview_ky', 'content_preview_ru', 'content_preview_en')
-    search_fields = ('content_ky', 'content_ru', 'content_en')
+    list_display = ('id', 'content_preview_ru', 'content_preview_ky', 'content_preview_en')
+    search_fields = ('content_ru', 'content_ky', 'content_en')
 
     formfield_overrides = {
         models.TextField: {'widget': CKEditorWidget},
     }
 
     fieldsets = (
-        ('Кыргызский', {
-            'fields': ('title_ky', 'content_ky'),
-        }),
         ('Русский', {
             'fields': ('title_ru', 'content_ru'),
+        }),
+        ('Кыргызский', {
+            'fields': ('title_ky', 'content_ky'),
         }),
         ('Английский', {
             'fields': ('title_en', 'content_en'),
@@ -151,19 +151,19 @@ class PrivacyPolicyAdmin(admin.ModelAdmin):
 
 @admin.register(UserAgreement)
 class UserAgreementAdmin(admin.ModelAdmin):
-    list_display = ('id', 'content_preview_ky', 'content_preview_ru', 'content_preview_en')
-    search_fields = ('content_ky', 'content_ru', 'content_en')
+    list_display = ('id', 'content_preview_ru', 'content_preview_ky', 'content_preview_en')
+    search_fields = ('content_ru', 'content_ky', 'content_en')
 
     formfield_overrides = {
         models.TextField: {'widget': CKEditorWidget},
     }
 
     fieldsets = (
-        ('Кыргызский', {
-            'fields': ('title_ky', 'content_ky'),
-        }),
         ('Русский', {
             'fields': ('title_ru', 'content_ru'),
+        }),
+        ('Кыргызский', {
+            'fields': ('title_ky', 'content_ky'),
         }),
         ('Английский', {
             'fields': ('title_en', 'content_en'),
@@ -186,19 +186,19 @@ class UserAgreementAdmin(admin.ModelAdmin):
 
 @admin.register(ReturnPolicy)
 class ReturnPolicyAdmin(admin.ModelAdmin):
-    list_display = ('id', 'content_preview_ky', 'content_preview_ru', 'content_preview_en')
-    search_fields = ('content_ky', 'content_ru', 'content_en')
+    list_display = ('id', 'content_preview_ru', 'content_preview_ky', 'content_preview_en')
+    search_fields = ('content_ru', 'content_ky', 'content_en')
 
     formfield_overrides = {
         models.TextField: {'widget': CKEditorWidget},
     }
 
     fieldsets = (
-        ('Кыргызский', {
-            'fields': ('title_ky', 'content_ky'),
-        }),
         ('Русский', {
             'fields': ('title_ru', 'content_ru'),
+        }),
+        ('Кыргызский', {
+            'fields': ('title_ky', 'content_ky'),
         }),
         ('Английский', {
             'fields': ('title_en', 'content_en'),

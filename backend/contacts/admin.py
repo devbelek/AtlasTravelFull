@@ -13,11 +13,11 @@ class ContactsAdmin(TranslationAdmin):
         ('Социальные сети', {
             'fields': ('whatsapp', 'telegram', 'instagram', 'tiktok', 'facebook', 'youtube')
         }),
-        ('Кыргызский', {
-            'fields': ('title_ky', 'description_ky', 'job_ky'),
-        }),
         ('Русский', {
             'fields': ('title_ru', 'description_ru', 'job_ru'),
+        }),
+        ('Кыргызский', {
+            'fields': ('title_ky', 'description_ky', 'job_ky'),
         }),
         ('Английский', {
             'fields': ('title_en', 'description_en', 'job_en'),

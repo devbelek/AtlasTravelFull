@@ -41,11 +41,11 @@ class TransferAdmin(admin.ModelAdmin):
         ('Основная информация', {
             'fields': ('city', 'departure_date', 'return_date', 'passengers', 'tags')
         }),
-        ('Кыргызский', {
-            'fields': ('title_ky', 'description_ky'),
-        }),
         ('Русский', {
             'fields': ('title_ru', 'description_ru'),
+        }),
+        ('Кыргызский', {
+            'fields': ('title_ky', 'description_ky'),
         }),
         ('Английский', {
             'fields': ('title_en', 'description_en'),

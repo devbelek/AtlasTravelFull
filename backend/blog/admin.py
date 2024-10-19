@@ -12,11 +12,11 @@ class BlogSectionInline(SortableInlineAdminMixin, TranslationTabularInline):
         ('Основное', {
             'fields': ('image', 'image_preview', 'order'),
         }),
-        ('Кыргызский', {
-            'fields': ('title_ky', 'content_ky'),
-        }),
         ('Русский', {
             'fields': ('title_ru', 'content_ru'),
+        }),
+        ('Кыргызский', {
+            'fields': ('title_ky', 'content_ky'),
         }),
         ('Английский', {
             'fields': ('title_en', 'content_en'),
@@ -40,11 +40,11 @@ class BlogPostAdmin(SortableAdminBase, TranslationAdmin):
         ('Основная информация', {
             'fields': ('main_image', 'main_image_preview', 'created_at', 'updated_at')
         }),
-        ('Кыргызский', {
-            'fields': ('title_ky', 'second_title_ky', 'content_ky'),
-        }),
         ('Русский', {
             'fields': ('title_ru', 'second_title_ru', 'content_ru'),
+        }),
+        ('Кыргызский', {
+            'fields': ('title_ky', 'second_title_ky', 'content_ky'),
         }),
         ('Английский', {
             'fields': ('title_en', 'second_title_en', 'content_en'),

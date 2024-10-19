@@ -1,12 +1,12 @@
 JAZZMIN_SETTINGS = {
-    "site_title": "Название вашего сайта",
-    "site_header": "Название вашего сайта",
-    "site_logo": "media/LOGO.svg",
+    "site_title": "Atlas Travel",
+    "site_header": "Atlas Travel",
+    "site_logo": "admin/img/LOGO.svg",
     "site_logo_classes": "img-circle elevation-3",
-    "site_icon": "media/LOGO.svg",
+    "site_icon": "admin/img/LOGO.svg",
     "site_brand": "Atlas Travel",
-    "welcome_sign": "Добро пожаловать в админ-панель вашего сайта",
-    "copyright": "Ваше авторское право",
+    "welcome_sign": "Добро пожаловать в админ-панель Atlas Travel",
+    "copyright": "Все права защищены.",
     "search_model": [],
     "topmenu_links": [
 

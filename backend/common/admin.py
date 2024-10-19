@@ -7,11 +7,11 @@ from .models import Country, City, Tag, Comments, Inquiry
 class CountryAdmin(admin.ModelAdmin):
     list_display = ('name', )
     fieldsets = (
-        ('Кыргызский', {
-            'fields': ('name_ky', ),
-        }),
         ('Русский', {
             'fields': ('name_ru', ),
+        }),
+        ('Кыргызский', {
+            'fields': ('name_ky',),
         }),
         ('Английский', {
             'fields': ('name_en', ),
@@ -26,11 +26,11 @@ class CityAdmin(admin.ModelAdmin):
         ('Страна', {
             'fields': ('country',),
         }),
-        ('Кыргызский', {
-            'fields': ('name_ky', ),
-        }),
         ('Русский', {
             'fields': ('name_ru', ),
+        }),
+        ('Кыргызский', {
+            'fields': ('name_ky',),
         }),
         ('Английский', {
             'fields': ('name_en', ),
@@ -46,11 +46,11 @@ class TagAdmin(TranslationAdmin):
         ('Основная информация', {
             'fields': ('icon', )
         }),
-        ('Кыргызский', {
-            'fields': ('name_ky', ),
-        }),
         ('Русский', {
             'fields': ('name_ru', ),
+        }),
+        ('Кыргызский', {
+            'fields': ('name_ky',),
         }),
         ('Английский', {
             'fields': ('name_en', ),

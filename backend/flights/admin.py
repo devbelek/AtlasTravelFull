@@ -60,11 +60,11 @@ class FlightAdmin(TranslationAdmin):
         ('Рейтинг', {
             'fields': ('manual_rating', 'average_rating', 'rating_count')
         }),
-        ('Кыргызский', {
-            'fields': ('title_ky', 'description_ky'),
-        }),
         ('Русский', {
             'fields': ('title_ru', 'description_ru'),
+        }),
+        ('Кыргызский', {
+            'fields': ('title_ky', 'description_ky'),
         }),
         ('Английский', {
             'fields': ('title_en', 'description_en'),
@@ -73,7 +73,6 @@ class FlightAdmin(TranslationAdmin):
 
     def save_model(self, request, obj, form, change):
         super().save_model(request, obj, form, change)
-
 
     def get_final_rating(self, obj):
         return obj.get_final_rating()
