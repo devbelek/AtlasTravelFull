@@ -16,6 +16,9 @@ class RestIdeaAdmin(admin.ModelAdmin):
 
     get_tours.short_description = 'Туры'
 
+    def has_add_permission(self, request):
+        return False
+
 
 @admin.register(BestChoice)
 class BestChoiceAdmin(admin.ModelAdmin):
@@ -27,6 +30,9 @@ class BestChoiceAdmin(admin.ModelAdmin):
 
     get_tours.short_description = 'Туры'
 
+    def has_add_permission(self, request):
+        return False
+
 
 @admin.register(PopularHotel)
 class PopularHotelAdmin(admin.ModelAdmin):
@@ -37,6 +43,9 @@ class PopularHotelAdmin(admin.ModelAdmin):
         return ", ".join([f"{hotel.title_ru} ({hotel.description_ru} - {hotel.city})" for hotel in obj.hotels.all()])
 
     get_hotels.short_description = 'Отели'
+
+    def has_add_permission(self, request):
+        return False
 
 
 class RentOfCarImageInline(admin.TabularInline):
