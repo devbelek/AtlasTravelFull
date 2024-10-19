@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -10,6 +11,8 @@ from io import BytesIO
 from django.core.files import File
 import os
 from telegram_bot.utils import send_review_notification, send_consultation_notification
+
+from django.utils.translation import gettext_lazy as _
 
 
 class FlightComments(Comments):
@@ -42,6 +45,10 @@ class Flight(models.Model):
     manual_rating = models.FloatField(default=None, null=True, blank=True, verbose_name='Ручной рейтинг')
     average_rating = models.FloatField(default=0, verbose_name='Средний рейтинг')
     rating_count = models.PositiveIntegerField(default=0, verbose_name='Количество оценок')
+
+    def clean(self):
+        if self.return_date and self.departure_date and self.departure_date > self.return_date:
+            raise ValidationError(_('Дата вылета не может быть позже даты возврата.'))
 
     def update_rating(self):
         comments = self.comments.filter(is_approved=True)

@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -9,6 +10,8 @@ from PIL import Image
 from io import BytesIO
 from django.core.files import File
 import os
+
+from django.utils.translation import gettext_lazy as _
 
 
 class HotelComments(Comments):
@@ -39,6 +42,10 @@ class Hotel(models.Model):
     rating_count = models.PositiveIntegerField(default=0, verbose_name='Количество оценок')
 
     is_popular_hotel = models.BooleanField(default=False, verbose_name='Популярный отель')
+
+    def clean(self):
+        if self.arrival_date and self.departure_date and self.arrival_date > self.departure_date:
+            raise ValidationError(_('Дата заезда не может быть позже даты выезда.'))
 
     def update_rating(self):
         comments = self.comments.filter(is_approved=True)
