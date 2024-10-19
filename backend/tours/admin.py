@@ -7,6 +7,8 @@ from main.models import BestChoice, RestIdea
 from .models import *
 from common.models import *
 
+from django.utils.translation import gettext_lazy as _
+
 
 class TourCommentsAdminForm(forms.ModelForm):
     comment = forms.CharField(
@@ -108,10 +110,18 @@ class TourAdmin(admin.ModelAdmin):
 
 @admin.register(TourInquiry)
 class InquiryAdmin(admin.ModelAdmin):
-    list_display = ['name', 'phone_number', 'email', 'created_at', 'tour']
+    list_display = ['created_at', 'name', 'phone_number', 'email', 'tour', 'is_processed']
     list_filter = ['created_at', 'tour']
+    list_editable = ['is_processed']
     search_fields = ['name', 'phone_number', 'email']
     readonly_fields = ['created_at']
+    actions = ['mark_as_processed']
+
+    def mark_as_processed(self, request, queryset):
+        queryset.update(is_processed=True)
+        self.message_user(request, _('Выбранные запросы отмечены как обработанные.'))
+
+    mark_as_processed.short_description = _('Отметить как обработанное')
 
 
 @admin.register(IconsAfterName)

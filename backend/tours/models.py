@@ -81,7 +81,6 @@ class Tour(models.Model):
             Q(tags__in=self.tags.all())
         ).exclude(id=self.id).distinct().order_by('-average_rating')[:limit]
 
-
     def __str__(self):
         return f'{self.title} {self.start_tour} - {self.end_tour}'
 

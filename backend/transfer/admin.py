@@ -41,6 +41,9 @@ class TransferAdmin(admin.ModelAdmin):
         ('Основная информация', {
             'fields': ('city', 'departure_date', 'return_date', 'passengers', 'tags')
         }),
+        ('Рейтинг', {
+            'fields': ('manual_rating', 'average_rating', 'rating_count')
+        }),
         ('Русский', {
             'fields': ('title_ru', 'description_ru'),
         }),
@@ -49,9 +52,6 @@ class TransferAdmin(admin.ModelAdmin):
         }),
         ('Английский', {
             'fields': ('title_en', 'description_en'),
-        }),
-        ('Рейтинг', {
-            'fields': ('manual_rating', 'average_rating', 'rating_count')
         }),
     )
 
