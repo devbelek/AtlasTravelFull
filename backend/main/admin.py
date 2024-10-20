@@ -99,9 +99,7 @@ class RentOfCarAdmin(admin.ModelAdmin):
 
 @admin.register(Benefits)
 class BenefitsAdmin(SortableAdminMixin, admin.ModelAdmin):
-    list_display = ('order', 'title_ru', 'icon')
-    # Удаляем 'order' из list_editable
-    # list_editable = ('order',)
+    list_display = ('title_ru', 'icon')
     list_display_links = ('title_ru',)
     fieldsets = (
         ('Общее', {
@@ -120,11 +118,12 @@ class BenefitsAdmin(SortableAdminMixin, admin.ModelAdmin):
 
     class Media:
         js = (
-            'admin/js/vendor/jquery/jquery.js',  # jQuery
-            'admin/js/jquery.init.js',           # Инициализация jQuery
-            'admin/js/jquery-ui/jquery-ui.min.js',  # jQuery UI
-            'adminsortable2/js/jquery.ui.touch-punch.js',  # Поддержка touch-событий
-            'adminsortable2/js/sortable.admin.js',  # Скрипт django-admin-sortable2
+            'admin/js/vendor/jquery/jquery.js',
+            'admin/js/jquery.init.js',
+            'admin/js/jquery-ui/jquery-ui.min.js',
+            'adminsortable2/js/jquery.ui.touch-punch.js',
+            'adminsortable2/js/sortable.admin.js',
+            'main/js/csrf.js',  # Путь к вашему файлу csrf.js
         )
 
 
