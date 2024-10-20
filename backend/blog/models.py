@@ -68,8 +68,8 @@ class BlogSection(models.Model):
     image = models.ImageField(upload_to='blog_section_images/', blank=True,
                               null=True, verbose_name='Картинка',
                               validators=[validate_file_size])
-    order = models.PositiveIntegerField(default=0, blank=False, null=False,
-                                        verbose_name='Порядок')
+    order = models.IntegerField(default=0, blank=False, null=False,
+                                verbose_name='Порядок')
 
     class Meta:
         ordering = ['order']

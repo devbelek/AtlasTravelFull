@@ -68,7 +68,7 @@ class AboutUsImage(models.Model):
 class FAQ(models.Model):
     question = models.CharField(max_length=255, verbose_name='Вопрос')
     answer = models.TextField(verbose_name='Ответ', blank=False)
-    order = models.PositiveIntegerField(default=0, blank=False, null=False, verbose_name='Порядок отображения')
+    order = models.IntegerField(default=0, blank=False, null=False, verbose_name='Порядок отображения')
 
     class Meta:
         verbose_name = "Вопрос-Ответ"

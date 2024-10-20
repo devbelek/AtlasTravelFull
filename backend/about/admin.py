@@ -53,11 +53,13 @@ class AboutUsImageAdmin(admin.ModelAdmin):
         return super().has_add_permission(request)
 
 
+
 @admin.register(FAQ)
 class FAQAdmin(SortableAdminMixin, admin.ModelAdmin):
-    list_display = ('order', 'question_ru', 'question_ky', 'question_en')
-    list_editable = ('order',)
-    list_display_links = ('question_ru',)  # Добавляем поле, по которому будет переход
+    list_display = ('question_ru', 'question_ky', 'question_en')
+    # Удаляем 'order' из list_editable
+    # list_editable = ('order',)
+    list_display_links = ('question_ru',)
     fieldsets = (
         ('Русский', {
             'fields': ('question_ru', 'answer_ru'),
@@ -69,6 +71,16 @@ class FAQAdmin(SortableAdminMixin, admin.ModelAdmin):
             'fields': ('question_en', 'answer_en'),
         }),
     )
+
+    class Media:
+        js = (
+            'admin/js/vendor/jquery/jquery.js',
+            'admin/js/jquery.init.js',
+            'admin/js/jquery-ui/jquery-ui.min.js',
+            'adminsortable2/js/jquery.ui.touch-punch.js',
+            'adminsortable2/js/sortable.admin.js',
+            'about/js/csrf.js',
+        )
 
 
 @admin.register(AboutUsInquiry)

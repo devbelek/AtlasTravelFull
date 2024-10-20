@@ -1,3 +1,4 @@
+from adminsortable2.admin import SortableInlineAdminMixin, SortableAdminBase
 from django.contrib import admin
 from .models import VisaService, ServiceImage, ServiceFeature
 
@@ -14,20 +15,20 @@ class ServiceImageInline(admin.TabularInline):
             ServiceImage.objects.filter(service=obj.service, is_main=True).exclude(id=obj.id).update(is_main=False)
 
 
-class ServiceFeatureInline(admin.TabularInline):
+class ServiceFeatureInline(SortableInlineAdminMixin, admin.TabularInline):
     model = ServiceFeature
     extra = 1
+    fields = ('order', 'title_ru', 'description_ru')
     ordering = ['order']
     show_change_link = True
     can_delete = True
-    fields = ['title_ru', 'description_ru', 'order']
 
     def has_add_permission(self, request, obj=None):
         return True
 
 
 @admin.register(VisaService)
-class VisaServiceAdmin(admin.ModelAdmin):
+class VisaServiceAdmin(SortableAdminBase, admin.ModelAdmin):
     inlines = [ServiceFeatureInline, ServiceImageInline]
     list_display = ['title_ru', 'created_at', 'updated_at']
     search_fields = ['title_ru', 'title_ky', 'title_en', 'description_ru', 'description_ky', 'description_en']

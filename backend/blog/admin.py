@@ -8,20 +8,10 @@ from .models import BlogPost, BlogSection
 class BlogSectionInline(SortableInlineAdminMixin, TranslationTabularInline):
     model = BlogSection
     extra = 1
-    fieldsets = (
-        ('Основное', {
-            'fields': ('image', 'image_preview', 'order'),
-        }),
-        ('Русский', {
-            'fields': ('title_ru', 'content_ru'),
-        }),
-        ('Кыргызский', {
-            'fields': ('title_ky', 'content_ky'),
-        }),
-        ('Английский', {
-            'fields': ('title_en', 'content_en'),
-        }),
-    )
+    fields = ('order', 'image', 'image_preview') + \
+             ('title_ru', 'content_ru') + \
+             ('title_ky', 'content_ky') + \
+             ('title_en', 'content_en')
     readonly_fields = ('image_preview',)
 
     def image_preview(self, obj):
@@ -35,6 +25,7 @@ class BlogSectionInline(SortableInlineAdminMixin, TranslationTabularInline):
 
 @admin.register(BlogPost)
 class BlogPostAdmin(SortableAdminBase, TranslationAdmin):
+    inlines = [BlogSectionInline]
     list_display = ('title', 'main_image_preview', 'created_at', 'updated_at')
     fieldsets = (
         ('Основная информация', {

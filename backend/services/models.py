@@ -117,7 +117,7 @@ class ServiceFeature(models.Model):
     service = models.ForeignKey(VisaService, related_name='features', on_delete=models.CASCADE)
     title = models.CharField(max_length=255, verbose_name='Заголовок')
     description = RichTextField(verbose_name='Описание')
-    order = models.PositiveIntegerField(default=0, verbose_name='Порядок')
+    order = models.IntegerField(default=0, blank=True, null=True, verbose_name='Порядок')
 
     class Meta:
         ordering = ['order']
