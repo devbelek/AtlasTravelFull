@@ -107,10 +107,10 @@ JAZZMIN_SETTINGS = {
         "flights",
         "main",
         "blog",
+        "services",
         "contacts",
         "about",
         "common",
-        "services",
         "auth",
     ],
 
