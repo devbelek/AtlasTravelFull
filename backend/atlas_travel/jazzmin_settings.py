@@ -26,6 +26,7 @@ JAZZMIN_SETTINGS = {
     "navigation_expanded": True,
     "changeform_format": "horizontal_tabs",
     "language_chooser": True,
+    "show_ui_builder": True,
     "changeform_format_overrides": {
         "auth.user": "collapsible",
         "tours.tour": "horizontal_tabs",
@@ -135,13 +136,13 @@ JAZZMIN_UI_TWEAKS = {
     "footer_small_text": False,
     "body_small_text": False,
     "brand_small_text": False,
-    "brand_colour": False,
+    "brand_colour": "navbar-primary",
     "accent": "accent-primary",
     "navbar": "navbar-white navbar-light",
     "no_navbar_border": True,
     "navbar_fixed": True,
     "layout_boxed": False,
-    "footer_fixed": False,
+    "footer_fixed": True,
     "sidebar_fixed": True,
     "sidebar": "sidebar-light-primary",
     "sidebar_nav_small_text": False,
@@ -151,14 +152,14 @@ JAZZMIN_UI_TWEAKS = {
     "sidebar_nav_legacy_style": False,
     "sidebar_nav_flat_style": False,
     "theme": "default",
-    "dark_mode_theme": None,
+    "dark_mode_theme": "darkly",
     "button_classes": {
-        "primary": "btn-primary",
-        "secondary": "btn-secondary",
-        "info": "btn-info",
-        "warning": "btn-warning",
-        "danger": "btn-danger",
-        "success": "btn-success"
+        "primary": "btn-outline-primary",
+        "secondary": "btn-outline-secondary",
+        "info": "btn-outline-info",
+        "warning": "btn-outline-warning",
+        "danger": "btn-outline-danger",
+        "success": "btn-outline-success"
     }
 }
 
