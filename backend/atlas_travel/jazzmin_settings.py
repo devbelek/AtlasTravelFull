@@ -9,7 +9,7 @@ JAZZMIN_SETTINGS = {
     "site_icon": "admin/img/LOGO.svg",
 
     # Настройки CSS/JS
-    "custom_css": "static/custom_admin.css",
+    "custom_css": "/custom_admin.css",
     "custom_js": [
         "admin/js/vendor/jquery/jquery.min.js",
         "admin/js/jquery.init.js",
