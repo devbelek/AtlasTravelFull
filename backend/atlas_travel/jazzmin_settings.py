@@ -5,22 +5,17 @@ JAZZMIN_SETTINGS = {
     "site_logo_classes": "img-circle elevation-3",
     "site_icon": "admin/img/LOGO.svg",
     "site_brand": "Atlas Travel",
-    "custom_css": [
-        "/static/custom_admin.css",
-    ],
+    "custom_css": "/static/custom_admin.css",
     "welcome_sign": "Добро пожаловать в админ-панель Atlas Travel",
     "copyright": "Все права защищены.",
     "search_model": [],
     "topmenu_links": [
 
     ],
-    "custom_js": [
-        "/staticfiles/admin/js/vendor/jquery/jquery.js",
-        "/staticfiles/admin/js/jquery.init.js",
-        "/staticfiles/admin/js/jquery-ui/jquery-ui.min.js",
-        "/staticfiles/adminsortable2/js/jquery.ui.touch-punch.js",
-        "/staticfiles/adminsortable2/js/sortable.admin.js",
-    ],
+    "custom_js": "/staticfiles/admin/js/vendor/jquery/jquery.js,/staticfiles/admin/js/jquery.init.js,"
+                 "/staticfiles/admin/js/jquery-ui/jquery-ui.min.js,"
+                 "/staticfiles/adminsortable2/js/jquery.ui.touch-punch.js,"
+                 "/staticfiles/adminsortable2/js/sortable.admin.js",
     "default_icon_parents": "fas fa-circle",
     "default_icon_children": "fas fa-dot-circle",
     "show_sidebar": True,
