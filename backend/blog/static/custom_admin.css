@@ -1,48 +1,62 @@
 /* Основные переменные */
 :root {
-  --primary-color: #ffc107;
-  --secondary-color: #343a40;
-  --accent-color: #17a2b8;
-  --text-color: #495057;
-  --card-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  --primary-color: #2196F3;  /* Голубой - как море */
+  --secondary-color: #4CAF50;  /* Зеленый - как природа */
+  --accent-color: #FFC107;  /* Желтый - как солнце */
+  --text-color: #333;
+  --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
-/* Анимация появления формы */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Стилизация фона страницы */
+.login-page {
+  min-height: 100vh;
+  position: relative;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+              url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
+              url("/static/admin/img/travel-bg.jpg");  /* Добавьте фоновое изображение в /static/admin/img/ */
+  background-size: auto, auto, cover;
+  background-position: center;
+  background-attachment: fixed;
+  overflow: hidden;
 }
 
-/* Анимация для кнопки */
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
+/* Анимация для декоративных элементов */
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
 }
 
-/* Стили для контейнера входа */
+/* Стилизация контейнера входа */
 .login-box {
   animation: fadeInUp 0.6s ease-out;
   background: rgba(255, 255, 255, 0.95);
-  border-radius: 15px;
+  border-radius: 20px;
   box-shadow: var(--card-shadow);
   backdrop-filter: blur(10px);
-  padding: 2rem;
+  padding: 2.5rem;
   max-width: 400px;
   width: 90%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Декоративные элементы для формы */
+.login-box::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(33, 150, 243, 0.1) 0%, rgba(255,255,255,0) 70%);
+  animation: rotate 30s linear infinite;
 }
 
 /* Стилизация логотипа */
 .login-logo {
   margin-bottom: 2rem;
-  transform-origin: center;
-  transition: transform 0.3s ease;
+  position: relative;
 }
 
 .login-logo img {
@@ -50,48 +64,47 @@
   height: auto;
   display: block;
   margin: 0 auto;
-  transition: transform 0.3s ease;
-}
-
-.login-logo:hover img {
-  transform: scale(1.05);
+  animation: float 6s ease-in-out infinite;
 }
 
 /* Стилизация формы */
 .login-card-body {
-  padding: 1.5rem;
+  position: relative;
+  z-index: 1;
 }
 
 .form-control {
-  border: 2px solid #e9ecef;
-  border-radius: 8px;
+  border: 2px solid rgba(33, 150, 243, 0.2);
+  border-radius: 12px;
   padding: 0.75rem 1rem;
   transition: all 0.3s ease;
   background: rgba(255, 255, 255, 0.9);
+  color: var(--text-color);
 }
 
 .form-control:focus {
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(33, 150, 243, 0.25);
   transform: translateY(-2px);
 }
 
 /* Стилизация кнопки входа */
 .btn-primary {
-  background: linear-gradient(45deg, var(--primary-color), #ffdb4d);
+  background: linear-gradient(45deg, var(--primary-color), #64B5F6);
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   padding: 0.75rem 1.5rem;
   font-weight: 600;
   letter-spacing: 0.5px;
-  transition: all 0.3s ease;
+  color: white;
   position: relative;
   overflow: hidden;
+  transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-  animation: pulse 1s infinite;
-  box-shadow: 0 5px 15px rgba(255, 193, 7, 0.4);
+  background: linear-gradient(45deg, #1976D2, var(--primary-color));
+  box-shadow: 0 5px 15px rgba(33, 150, 243, 0.4);
   transform: translateY(-2px);
 }
 
@@ -99,41 +112,40 @@
   transform: translateY(1px);
 }
 
-/* Стилизация фона страницы */
-.login-page {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  min-height: 100vh;
-  position: relative;
-  overflow: hidden;
+/* Анимация загрузки */
+@keyframes wave {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
 }
 
-/* Декоративные элементы фона */
-.login-page::before {
+.btn-primary::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,193,7,0.1) 0%, rgba(255,255,255,0) 70%);
-  animation: rotate 30s linear infinite;
-}
-
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  animation: wave 2s infinite linear;
 }
 
 /* Стилизация сообщений об ошибках */
 .alert-danger {
-  background: rgba(220, 53, 69, 0.1);
+  background: rgba(244, 67, 54, 0.1);
   border: none;
-  border-radius: 8px;
-  color: #dc3545;
+  border-radius: 12px;
+  color: #f44336;
   animation: fadeInUp 0.4s ease-out;
+  backdrop-filter: blur(5px);
 }
 
-/* Адаптивность для мобильных устройств */
+/* Адаптивность */
 @media (max-width: 768px) {
   .login-box {
     width: 95%;
@@ -146,67 +158,16 @@
   }
 }
 
-/* Улучшение доступности */
-.form-control:focus {
-  outline: none;
-}
-
-/* Анимация для полей ввода при фокусе */
-.input-group {
-  position: relative;
-  margin-bottom: 1.5rem;
-}
-
-.input-group-text {
-  background: transparent;
-  border: 2px solid #e9ecef;
-  border-right: none;
-  transition: all 0.3s ease;
-}
-
-.form-control:focus + .input-group-text {
-  border-color: var(--primary-color);
-}
-
-/* Стилизация placeholder */
-.form-control::placeholder {
-  color: #adb5bd;
-  transition: all 0.3s ease;
-}
-
-.form-control:focus::placeholder {
-  opacity: 0.7;
-  transform: translateX(5px);
-}
-
-/* Эффект наведения для всех интерактивных элементов */
-.btn,
-.form-control,
-.input-group-text {
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-/* Анимация загрузки для кнопки */
-.btn-primary.loading {
-  position: relative;
-  pointer-events: none;
-}
-
-.btn-primary.loading::after {
+/* Дополнительные декоративные элементы */
+.login-page::after {
   content: '';
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  top: 50%;
-  left: 50%;
-  margin: -10px 0 0 -10px;
-  border: 2px solid rgba(255,255,255,0.3);
-  border-top-color: #fff;
-  border-radius: 50%;
-  animation: spinner 0.8s linear infinite;
-}
-
-@keyframes spinner {
-  to {transform: rotate(360deg);}
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,213.3C1248,235,1344,213,1392,202.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+  background-size: cover;
+  pointer-events: none;
+  opacity: 0.1;
 }
