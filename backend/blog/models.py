@@ -21,6 +21,10 @@ def compress_image(image, max_size=(1200, 1200), quality=85):
         im = Image.open(image)
         output = BytesIO()
 
+        # Если изображение в формате RGBA, преобразуем его в RGB
+        if im.mode in ("RGBA", "P"):
+            im = im.convert("RGB")
+
         # Изменяем размер, сохраняя пропорции
         im.thumbnail(max_size)
 
