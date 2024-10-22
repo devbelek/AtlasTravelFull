@@ -1,0 +1,201 @@
+/* custom_admin.css */
+
+/* Основные переменные */
+:root {
+  --primary-color: #2196f3;
+  --secondary-color: #1976d2;
+  --accent-color: #ff4081;
+  --success-color: #4caf50;
+  --warning-color: #ff9800;
+  --danger-color: #f44336;
+  --text-primary: #333;
+  --text-secondary: #666;
+  --background-light: #f5f5f5;
+  --card-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  --transition-speed: 0.3s;
+}
+
+/* Общие стили */
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--background-light);
+  color: var(--text-primary);
+}
+
+/* Navbar стили */
+.navbar {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: transform var(--transition-speed);
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+}
+
+/* Sidebar стили */
+.sidebar {
+  background: white;
+  border-right: 1px solid rgba(0,0,0,0.1);
+}
+
+.nav-sidebar .nav-item {
+  margin: 4px 0;
+}
+
+.nav-sidebar .nav-link {
+  border-radius: 8px;
+  margin: 0 8px;
+  transition: all var(--transition-speed);
+}
+
+.nav-sidebar .nav-link:hover {
+  background: rgba(33, 150, 243, 0.1);
+  transform: translateX(4px);
+}
+
+.nav-sidebar .nav-link.active {
+  background: var(--primary-color);
+  color: white;
+  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3);
+}
+
+/* Карточки и контейнеры */
+.card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+  transition: all var(--transition-speed);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Кнопки */
+.btn {
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 500;
+  transition: all var(--transition-speed);
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  border: none;
+  box-shadow: 0 2px 4px rgba(33, 150, 243, 0.3);
+}
+
+.btn-primary:hover {
+  background: var(--secondary-color);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(33, 150, 243, 0.4);
+}
+
+/* Формы */
+.form-control {
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.1);
+  padding: 8px 12px;
+  transition: all var(--transition-speed);
+}
+
+.form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+}
+
+/* Таблицы */
+.table {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+
+.table thead th {
+  background: var(--background-light);
+  border-bottom: 2px solid rgba(0,0,0,0.05);
+  font-weight: 600;
+}
+
+.table tbody tr {
+  transition: all var(--transition-speed);
+}
+
+.table tbody tr:hover {
+  background: rgba(33, 150, 243, 0.05);
+}
+
+/* Анимации для загрузки */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.loading {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite linear;
+}
+
+/* Тултипы и бейджи */
+.tooltip {
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.badge {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+/* Модальные окна */
+.modal-content {
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.modal-header {
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.modal-footer {
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Уведомления */
+.toast {
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .sidebar {
+    margin-left: -250px;
+  }
+
+  .sidebar.show {
+    margin-left: 0;
+  }
+
+  .content-wrapper {
+    margin-left: 0;
+  }
+}

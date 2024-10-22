@@ -1,187 +1,177 @@
-// Улучшения админ-панели
+// admin_atlas.js
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Инициализация всех компонентов
-    initializeComponents();
+    // Добавляем красивые эффекты при скролле
+    const handleScroll = () => {
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            const rect = card.getBoundingClientRect();
+            if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }
+        });
+    };
 
-    // Добавление анимаций
-    addAnimations();
+    window.addEventListener('scroll', handleScroll);
 
-    // Инициализация темной темы
-    initializeDarkMode();
+    // Добавляем анимации для действий
+    const addClickEffects = () => {
+        const buttons = document.querySelectorAll('.btn');
+        buttons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                const x = e.clientX - e.target.offsetLeft;
+                const y = e.clientY - e.target.offsetTop;
 
-    // Инициализация поиска
-    initializeSearch();
+                const ripple = document.createElement('span');
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                ripple.className = 'ripple';
+
+                this.appendChild(ripple);
+
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+    };
+
+    // Инициализация всплывающих подсказок
+    const initTooltips = () => {
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    };
+
+    // Добавляем интерактивность в сайдбар
+    const enhanceSidebar = () => {
+        const sidebarItems = document.querySelectorAll('.nav-sidebar .nav-item');
+        sidebarItems.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(5px)';
+            });
+
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0)';
+            });
+        });
+    };
+
+    // Улучшаем таблицы
+    const enhanceTables = () => {
+        const tables = document.querySelectorAll('.table');
+        tables.forEach(table => {
+            // Добавляем сортировку
+            const headers = table.querySelectorAll('th');
+            headers.forEach(header => {
+                header.addEventListener('click', function() {
+                    const index = Array.from(this.parentElement.children).indexOf(this);
+                    sortTable(table, index);
+                });
+            });
+
+            // Добавляем поиск
+            const tableContainer = table.parentElement;
+            const searchInput = document.createElement('input');
+            searchInput.className = 'form-control mb-3';
+            searchInput.placeholder = 'Поиск...';
+            searchInput.addEventListener('input', function() {
+                filterTable(table, this.value);
+            });
+            tableContainer.insertBefore(searchInput, table);
+        });
+    };
+
+    // Функция сортировки таблицы
+    const sortTable = (table, column) => {
+        const tbody = table.querySelector('tbody');
+        const rows = Array.from(tbody.querySelectorAll('tr'));
+
+        rows.sort((a, b) => {
+            const aValue = a.children[column].textContent;
+            const bValue = b.children[column].textContent;
+            return aValue.localeCompare(bValue);
+        });
+
+        rows.forEach(row => tbody.appendChild(row));
+    };
+
+    // Функция фильтрации таблицы
+    const filterTable = (table, query) => {
+        const rows = table.querySelectorAll('tbody tr');
+        rows.forEach(row => {
+            const text = row.textContent.toLowerCase();
+            row.style.display = text.includes(query.toLowerCase()) ? '' : 'none';
+        });
+    };
+
+    // Добавляем прогресс-бар для загрузки страницы
+    const addProgressBar = () => {
+        const progress = document.createElement('div');
+        progress.className = 'progress-bar';
+        document.body.appendChild(progress);
+
+        window.addEventListener('load', () => {
+            progress.style.width = '100%';
+            setTimeout(() => {
+                progress.style.opacity = '0';
+            }, 500);
+        });
+    };
+
+    // Инициализация всех улучшений
+    const init = () => {
+        addClickEffects();
+        initTooltips();
+        enhanceSidebar();
+        enhanceTables();
+        addProgressBar();
+        handleScroll();
+    };
+
+    init();
 });
 
-function initializeComponents() {
-    // Инициализация тултипов
-    const tooltips = document.querySelectorAll('[data-tooltip]');
-    tooltips.forEach(tooltip => {
-        tooltip.addEventListener('mouseenter', showTooltip);
-        tooltip.addEventListener('mouseleave', hideTooltip);
-    });
-
-    // Инициализация уведомлений
-    const notifications = document.querySelectorAll('.alert');
-    notifications.forEach(notification => {
-        notification.addEventListener('click', () => {
-            notification.style.animation = 'slideOut 0.3s ease forwards';
-            setTimeout(() => notification.remove(), 300);
-        });
-    });
-
-    // Улучшенные селекты
-    const selects = document.querySelectorAll('select:not(.select2-hidden-accessible)');
-    selects.forEach(select => {
-        $(select).select2({
-            theme: 'custom',
-            dropdownParent: select.closest('.modal-content') || document.body
-        });
-    });
-}
-
-function addAnimations() {
-    // Анимация появления контента
-    const content = document.querySelector('.content-wrapper');
-    if (content) {
-        content.style.opacity = '0';
-        content.style.transform = 'translateY(20px)';
-
-        requestAnimationFrame(() => {
-            content.style.transition = 'all 0.5s ease';
-            content.style.opacity = '1';
-            content.style.transform = 'translateY(0)';
-        });
+// Добавляем стили для ripple-эффекта
+const style = document.createElement('style');
+style.textContent = `
+    .btn {
+        position: relative;
+        overflow: hidden;
     }
 
-    // Анимация карточек
-    const cards = document.querySelectorAll('.card');
-    cards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-
-        setTimeout(() => {
-            card.style.transition = 'all 0.5s ease';
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-        }, 100 + (index * 100));
-    });
-
-    // Анимация боковой панели
-    const sidebarItems = document.querySelectorAll('.nav-sidebar .nav-item');
-    sidebarItems.forEach((item, index) => {
-        item.style.opacity = '0';
-        item.style.transform = 'translateX(-20px)';
-
-        setTimeout(() => {
-            item.style.transition = 'all 0.3s ease';
-            item.style.opacity = '1';
-            item.style.transform = 'translateX(0)';
-        }, 50 + (index * 50));
-    });
-}
-
-function initializeDarkMode() {
-    const darkModeToggle = document.createElement('button');
-    darkModeToggle.className = 'dark-mode-toggle';
-    darkModeToggle.innerHTML = '🌙';
-    document.querySelector('.navbar-nav').appendChild(darkModeToggle);
-
-    darkModeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        darkModeToggle.innerHTML = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-    });
-
-    // Проверка сохраненных настроек
-    if (localStorage.getItem('darkMode') === 'true') {
-        document.body.classList.add('dark-mode');
-        darkModeToggle.innerHTML = '☀️';
-    }
-}
-
-function initializeSearch() {
-    const searchInputs = document.querySelectorAll('.search-input');
-    searchInputs.forEach(input => {
-        input.addEventListener('input', debounce(function(e) {
-            const searchTerm = e.target.value.toLowerCase();
-            const tableRows = document.querySelectorAll('tbody tr');
-
-            tableRows.forEach(row => {
-                const text = row.textContent.toLowerCase();
-                const match = text.includes(searchTerm);
-                row.style.display = match ? '' : 'none';
-
-                if (match) {
-                    row.style.animation = 'fadeIn 0.3s ease forwards';
-                }
-            });
-        }, 300));
-    });
-}
-
-// Утилиты
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-function showTooltip(e) {
-    const tooltip = e.target;
-    tooltip.style.animation = 'fadeIn 0.3s ease forwards';
-}
-
-function hideTooltip(e) {
-    const tooltip = e.target;
-    tooltip.style.animation = 'fadeOut 0.3s ease forwards';
-}
-
-// Дополнительные утилиты для работы с данными
-class AdminUtils {
-    static formatNumber(number) {
-        return new Intl.NumberFormat('ru-RU').format(number);
+    .ripple {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        transform: scale(0);
+        animation: ripple 0.6s linear;
+        pointer-events: none;
     }
 
-    static formatDate(date) {
-        return new Intl.DateTimeFormat('ru-RU', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit'
-        }).format(new Date(date));
+    @keyframes ripple {
+        to {
+            transform: scale(4);
+            opacity: 0;
+        }
     }
 
-    static formatCurrency(amount) {
-        return new Intl.NumberFormat('ru-RU', {
-            style: 'currency',
-            currency: 'RUB'
-        }).format(amount);
-    }
-}
-
-// Инициализация графиков
-class ChartInitializer {
-    static initializeCharts() {
-        // Инициализация графиков, если они есть на странице
-        const chartContainers = document.querySelectorAll('[data-chart]');
-        chartContainers.forEach(container => {
-            const type = container.dataset.chart;
-            const data = JSON.parse(container.dataset.chartData || '{}');
-            this.createChart(container, type, data);
-        });
+    .progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        width: 0;
+        transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        z-index: 9999;
     }
 
-    static createChart(container, type, data) {
-        // Здесь можно добавить инициализацию графиков
-        // используя библиотеку по вашему выбору
-        // например, Chart.js или ApexCharts
+    .card {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
     }
-}
+`;
+
+document.head.appendChild(style);
