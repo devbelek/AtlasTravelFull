@@ -1,4 +1,4 @@
-/* custom_admin.css */
+/* Основные переменные с расширенной палитрой */
 :root {
   --primary: #2196F3;
   --primary-dark: #1976D2;
@@ -19,9 +19,12 @@
   --gray-700: #495057;
   --gray-800: #343a40;
   --gray-900: #212529;
+  --sidebar-width: 250px;
+  --font-primary: 'Roboto', sans-serif;
+  --transition-speed: 0.3s;
 }
 
-/* Страница входа */
+/* Стили для страницы входа */
 .login-page {
   background: linear-gradient(135deg, var(--primary-light), var(--primary));
   min-height: 100vh;
@@ -34,6 +37,7 @@
   background: white;
   border-radius: 16px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  overflow: hidden;
   width: 400px;
   animation: slideUp 0.5s ease-out;
 }
@@ -58,6 +62,7 @@
   border-radius: 12px;
   padding: 1rem;
   font-size: 1rem;
+  transition: all var(--transition-speed);
   width: 100%;
   margin-bottom: 1rem;
 }
@@ -68,18 +73,36 @@
   outline: none;
 }
 
-/* Основные стили админки */
+.login-box .btn-primary {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  border: none;
+  margin-top: 1rem;
+}
+
+/* Улучшенная типографика */
 body {
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
+  font-family: var(--font-primary);
+  font-size: 16px;
   line-height: 1.6;
   color: var(--gray-800);
 }
 
-/* Шапка */
-.main-header {
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--gray-900);
+}
+
+/* Улучшенная навигация */
+.navbar {
+  background: white !important;
   border-bottom: 1px solid var(--gray-200);
-  background: white;
 }
 
 .navbar-brand {
@@ -87,46 +110,43 @@ body {
   color: var(--primary) !important;
 }
 
-/* Сайдбар */
-.main-sidebar {
-  background: white;
-  box-shadow: 0 0 20px rgba(0,0,0,0.05);
-}
-
 .nav-sidebar .nav-link {
-  color: var(--gray-700) !important;
-  border-radius: 8px;
-  margin: 4px 8px;
+  border-radius: 12px;
+  margin: 4px 12px;
   padding: 0.8rem 1rem;
+  transition: all var(--transition-speed);
 }
 
 .nav-sidebar .nav-link:hover {
   background: var(--gray-100);
+  transform: translateX(4px);
 }
 
 .nav-sidebar .nav-link.active {
   background: var(--primary);
-  color: white !important;
+  color: white;
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.2);
 }
 
-/* Контент */
-.content-wrapper {
-  background: var(--gray-100);
-  padding: 20px;
-}
-
+/* Улучшенные карточки и контейнеры */
 .card {
-  border-radius: 12px;
+  border-radius: 16px;
   border: none;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-  margin-bottom: 1rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+  transition: all var(--transition-speed);
 }
 
-/* Формы */
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+/* Улучшенные формы */
 .form-control {
   border: 2px solid var(--gray-200);
-  border-radius: 8px;
-  padding: 0.5rem 0.75rem;
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  transition: all var(--transition-speed);
 }
 
 .form-control:focus {
@@ -134,98 +154,23 @@ body {
   box-shadow: 0 0 0 4px var(--primary-light);
 }
 
-/* Кнопки */
-.btn {
-  border-radius: 8px;
-  padding: 0.5rem 1rem;
-  font-weight: 500;
-}
-
-.btn-primary {
-  background: var(--primary);
-  border: none;
-}
-
-.btn-primary:hover {
-  background: var(--primary-dark);
-}
-
-/* Таблицы */
+/* Улучшенные таблицы */
 .table {
-  border-radius: 8px;
+  border-radius: 16px;
   overflow: hidden;
-  background: white;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
 }
 
 .table thead th {
   background: var(--gray-100);
   border-bottom: 2px solid var(--primary-light);
-  font-weight: 600;
   padding: 1rem;
+  font-weight: 600;
 }
 
 .table tbody td {
   padding: 1rem;
   vertical-align: middle;
-}
-
-/* Вкладки */
-.nav-tabs {
-  border-bottom: 2px solid var(--gray-200);
-}
-
-.nav-tabs .nav-link {
-  border: none;
-  color: var(--gray-600);
-  padding: 1rem 1.5rem;
-  font-weight: 500;
-  position: relative;
-}
-
-.nav-tabs .nav-link.active {
-  color: var(--primary);
-  border-bottom: 2px solid var(--primary);
-}
-
-/* Уведомления */
-.messages {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 9999;
-  min-width: 300px;
-}
-
-.message {
-  padding: 1rem;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  background: white;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  animation: slideIn 0.3s ease-out;
-}
-
-/* Фильтры */
-.select2-container--default .select2-selection--single {
-  height: 38px;
-  border: 2px solid var(--gray-200);
-  border-radius: 8px;
-}
-
-.select2-container--default .select2-selection--single:focus {
-  border-color: var(--primary);
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
-  .content-wrapper {
-    padding: 10px;
-  }
-
-  .login-box {
-    width: 90%;
-    margin: 0 20px;
-  }
 }
 
 /* Анимации */
@@ -240,13 +185,49 @@ body {
   }
 }
 
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(100%);
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Улучшенные кнопки действий */
+.actions-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all var(--transition-speed);
+}
+
+.actions-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Улучшенные уведомления */
+.messages {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  min-width: 300px;
+}
+
+.message {
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Адаптивные улучшения */
+@media (max-width: 768px) {
+  .login-box {
+    width: 90%;
+    margin: 0 20px;
   }
-  to {
-    opacity: 1;
-    transform: translateX(0);
+
+  .table-responsive {
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
   }
 }
