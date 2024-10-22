@@ -1,149 +1,130 @@
 JAZZMIN_SETTINGS = {
+    # Основные настройки
     "site_title": "Atlas Travel",
-    "site_header": "Atlas Travel",
-    "site_logo": "admin/img/LOGO.svg",
-    "site_logo_classes": "img-circle elevation-3",
-    "site_icon": "admin/img/LOGO.svg",
+    "site_header": "Atlas Travel Management",
     "site_brand": "Atlas Travel",
-    "custom_css": "/custom_admin.css",
-    "welcome_sign": "Добро пожаловать в админ-панель Atlas Travel",
-    "copyright": "Все права защищены.",
-    "search_model": [],
-    "topmenu_links": [
+    "site_logo": "admin/img/LOGO.svg",
+    "login_logo": "admin/img/LOGO.svg",
+    "login_logo_dark": None,
+    "site_icon": "admin/img/LOGO.svg",
 
+    # Настройки CSS/JS
+    "custom_css": "static/custom_admin.css",
+    "custom_js": [
+        "admin/js/vendor/jquery/jquery.min.js",
+        "admin/js/jquery.init.js",
     ],
-    "custom_js": "/staticfiles/admin/js/vendor/jquery/jquery.js,/staticfiles/admin/js/jquery.init.js,"
-                 "/staticfiles/admin/js/jquery-ui/jquery-ui.min.js,"
-                 "/staticfiles/adminsortable2/js/jquery.ui.touch-punch.js,"
-                 "/staticfiles/adminsortable2/js/sortable.admin.js",
-    "default_icon_parents": "fas fa-circle",
-    "default_icon_children": "fas fa-dot-circle",
+
+    # Настройки интерфейса
+    "welcome_sign": "Добро пожаловать в Панель Управления Atlas Travel",
+    "copyright": "Atlas Travel © 2024",
+    "search_model": ["auth.User", "tours.Tour", "hotels.Hotel", "flights.Flight"],
+
+    # Верхнее меню
+    "topmenu_links": [
+        {"name": "Главная", "url": "admin:index"},
+        {"name": "Сайт", "url": "/", "new_window": True},
+        {"model": "auth.User", "permissions": ["auth.view_user"]},
+        {"name": "Поддержка", "url": "https://support.example.com", "new_window": True},
+    ],
+
+    # Настройки отображения
     "show_sidebar": True,
     "navigation_expanded": True,
-    "changeform_format": "horizontal_tabs",
-    "language_chooser": True,
-    "changeform_format_overrides": {
-    },
     "hide_apps": [],
-    "hide_models": [
-        "services.ServiceFeature",
-    ],
+    "hide_models": ["auth.Group"],
+
+    # Формат форм
+    "changeform_format": "horizontal_tabs",
+    "form_submit_sticky": True,
+
+    # Иконки (с туристической тематикой)
     "icons": {
         "auth": "fas fa-users-cog",
         "auth.user": "fas fa-user",
-        "auth.Group": "fas fa-users",
 
-        "services.VisaService": "fas fa-passport",
-        "services.ServiceImage": "fas fa-image",
-        "services.ServiceFeature": "fas fa-list-ul",
+        "tours.Tour": "fas fa-globe-americas",
+        "tours.TourCategory": "fas fa-tags",
+        "tours.TourPackage": "fas fa-box-open",
+        "tours.TourDate": "fas fa-calendar-alt",
+        "tours.TourBooking": "fas fa-ticket-alt",
+        "tours.TourReview": "fas fa-star",
 
-        "telegram_bot.TelegramUser": "fas fa-comment-dots",
-
-        "main.RestIdea": "fas fa-lightbulb",
-        "main.BestChoice": "fas fa-trophy",
-        "main.PopularHotel": "fas fa-hotel",
-        "main.RentOfCar": "fas fa-car",
-        "main.RentOfCarImage": "fas fa-car-side",
-        "main.RentOfCarDescription": "fas fa-file-alt",
-        "main.Benefits": "fas fa-gift",
-        "main.MainComments": "fas fa-comment-alt",
-
-        "hotels.HotelComments": "fas fa-comment-alt",
         "hotels.Hotel": "fas fa-hotel",
-        "hotels.PopularHotels": "fas fa-star",
-        "hotels.HotelImage": "fas fa-image",
-        "hotels.HotelInquiry": "fas fa-question-circle",
-        "hotels.IconsAfterName": "fas fa-icons",
+        "hotels.Room": "fas fa-bed",
+        "hotels.Booking": "fas fa-concierge-bell",
+        "hotels.HotelReview": "fas fa-comment-dots",
 
-        "flights.FlightComments": "fas fa-comment-alt",
         "flights.Flight": "fas fa-plane",
-        "flights.FlightImage": "fas fa-image",
-        "flights.FlightInquiry": "fas fa-question-circle",
-        "flights.IconsAfterName": "fas fa-icons",
+        "flights.FlightBooking": "fas fa-ticket-alt",
+        "flights.Airline": "fas fa-plane-departure",
 
-        "contacts.Contacts": "fas fa-address-book",
+        "destinations.Country": "fas fa-flag",
+        "destinations.City": "fas fa-city",
+        "destinations.Attraction": "fas fa-monument",
 
-        "blog.BlogPost": "fas fa-blog",
-        "blog.BlogSection": "fas fa-newspaper",
+        "customers.Customer": "fas fa-user-circle",
+        "customers.Inquiry": "fas fa-question-circle",
+        "customers.Newsletter": "fas fa-envelope",
 
-        "about.AboutUs": "fas fa-info-circle",
-        "about.AboutUsImage": "fas fa-image",
-        "about.FAQ": "fas fa-question",
-        "about.AboutUsInquiry": "fas fa-envelope",
-        "about.AboutUsConsultant": "fas fa-user-tie",
-        "about.OurProjects": "fas fa-project-diagram",
-        "about.PrivacyPolicy": "fas fa-user-shield",
-        "about.UserAgreement": "fas fa-handshake",
-        "about.ReturnPolicy": "fas fa-undo",
+        "blog.Post": "fas fa-blog",
+        "blog.Category": "fas fa-folder",
+        "blog.Tag": "fas fa-tag",
 
-        "tours.Tour": "fas fa-plane-departure",
-        "tours.TourComments": "fas fa-comment-alt",
-        "tours.TourImage": "fas fa-image",
-        "tours.TourInquiry": "fas fa-question-circle",
-        "tours.IconsAfterName": "fas fa-icons",
-
-        "common.Tag": "fas fa-tag",
-        "common.City": "fas fa-city",
-        "common.Country": "fas fa-globe",
-        "common.Comments": "fas fa-comments",
-        "common.Inquiry": "fas fa-envelope",
-
-        "transfer.Transfer": "fas fa-shuttle-van",
-        "transfer.TransferComments": "fas fa-comment-alt",
-        "transfer.TransferImage": "fas fa-image",
-        "transfer.TransferInquiry": "fas fa-question-circle",
-        "transfer.IconsAfterName": "fas fa-icons",
+        "marketing.Promotion": "fas fa-percentage",
+        "marketing.Coupon": "fas fa-ticket-alt",
+        "marketing.Campaign": "fas fa-bullhorn",
     },
 
+    # Группировка и порядок приложений
     "order_with_respect_to": [
         "tours",
         "hotels",
-        "transfer",
         "flights",
-        "main",
+        "destinations",
+        "customers",
         "blog",
-        "contacts",
-        "about",
-        "common",
-        "services",
+        "marketing",
         "auth",
     ],
 
+    # Кастомные ссылки в меню
     "custom_links": {
-        "travel_services": [{
-            "name": "Туристические услуги",
-            "url": "admin:index",
-            "children": [
-                {"name": "Туры", "url": "admin:tours_tour_changelist"},
-                {"name": "Отели", "url": "admin:hotels_hotel_changelist"},
-                {"name": "Трансфер", "url": "admin:transfer_transfer_changelist"},
-                {"name": "Авиаперелеты", "url": "admin:flights_flight_changelist"},
-            ]
+        "tours": [{
+            "name": "Управление турами",
+            "url": "admin:tours_tour_changelist",
+            "icon": "fas fa-globe-americas"
+        }],
+        "hotels": [{
+            "name": "Управление отелями",
+            "url": "admin:hotels_hotel_changelist",
+            "icon": "fas fa-hotel"
         }],
     },
 }
 
+# UI настройки для современного туристического дизайна
 JAZZMIN_UI_TWEAKS = {
     "navbar_small_text": False,
     "footer_small_text": False,
     "body_small_text": False,
     "brand_small_text": False,
-    "brand_colour": False,
-    "accent": "accent-primary",
+    "brand_colour": "navbar-success",
+    "accent": "accent-teal",
     "navbar": "navbar-dark",
     "no_navbar_border": True,
     "navbar_fixed": True,
     "layout_boxed": False,
     "footer_fixed": False,
     "sidebar_fixed": True,
-    "sidebar": "sidebar-light-primary",
+    "sidebar": "sidebar-dark-success",
     "sidebar_nav_small_text": False,
     "sidebar_disable_expand": False,
     "sidebar_nav_child_indent": True,
     "sidebar_nav_compact_style": True,
     "sidebar_nav_legacy_style": False,
     "sidebar_nav_flat_style": False,
-    "theme": "default",
+    "theme": "cosmo",
     "dark_mode_theme": None,
     "button_classes": {
         "primary": "btn-primary",
@@ -154,8 +135,3 @@ JAZZMIN_UI_TWEAKS = {
         "success": "btn-success"
     }
 }
-
-
-
-
-
