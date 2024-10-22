@@ -16,9 +16,10 @@ JAZZMIN_SETTINGS = {
 
     ],
     "custom_js": "/staticfiles/admin/js/vendor/jquery/jquery.js,/staticfiles/admin/js/jquery.init.js,"
+                 "/static/admin/js/admin_atlas.js,"
                  "/staticfiles/admin/js/jquery-ui/jquery-ui.min.js,"
                  "/staticfiles/adminsortable2/js/jquery.ui.touch-punch.js,"
-                 "/staticfiles/adminsortable2/js/sortable.admin.js",
+                 "/staticfiles/adminsortable2/js/sortable.admin_atlas.js",
     "default_icon_parents": "fas fa-circle",
     "default_icon_children": "fas fa-dot-circle",
     "show_sidebar": True,

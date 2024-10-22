@@ -78,7 +78,7 @@ class FAQAdmin(SortableAdminMixin, admin.ModelAdmin):
             'admin/js/jquery.init.js',
             'admin/js/jquery-ui/jquery-ui.min.js',
             'adminsortable2/js/jquery.ui.touch-punch.js',
-            'adminsortable2/js/sortable.admin.js',
+            'adminsortable2/js/sortable.admin_atlas.js',
             'about/js/csrf.js',
         )
 
