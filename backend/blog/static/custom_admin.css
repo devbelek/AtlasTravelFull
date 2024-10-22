@@ -1,67 +1,212 @@
-/* Общие стили для страницы */
-body {
-    background: url('/static/admin/img/background.jpg') no-repeat center center fixed; /* Добавьте свой фон */
-    background-size: cover;
-    font-family: 'Roboto', sans-serif;
+/* Основные переменные */
+:root {
+  --primary-color: #ffc107;
+  --secondary-color: #343a40;
+  --accent-color: #17a2b8;
+  --text-color: #495057;
+  --card-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
-.login-box, .card {
-    background: rgba(255, 255, 255, 0.85);  /* Прозрачный белый фон для формы */
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Тень для формы */
+/* Анимация появления формы */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Стили для логотипа */
+/* Анимация для кнопки */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Стили для контейнера входа */
+.login-box {
+  animation: fadeInUp 0.6s ease-out;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  max-width: 400px;
+  width: 90%;
+}
+
+/* Стилизация логотипа */
+.login-logo {
+  margin-bottom: 2rem;
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
 .login-logo img {
-    width: 120px; /* Меньший размер логотипа */
-    height: auto;
-    animation: spin 4s infinite ease-in-out;  /* Добавим анимацию вращения */
-    display: block;
-    margin: 0 auto 20px; /* Центрирование и отступы снизу */
+  width: 180px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  transition: transform 0.3s ease;
 }
 
-/* Анимация вращения для логотипа */
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    50% { transform: rotate(360deg); }
-    100% { transform: rotate(0deg); }
+.login-logo:hover img {
+  transform: scale(1.05);
 }
 
-/* Стили для полей ввода */
-input {
-    border-radius: 25px; /* Скругленные углы */
-    padding: 12px 20px;
-    border: 2px solid #007bff;
-    font-size: 16px;
-    transition: all 0.3s ease;
+/* Стилизация формы */
+.login-card-body {
+  padding: 1.5rem;
 }
 
-input:focus {
-    border-color: #28a745;  /* Изменение цвета при фокусе */
-    box-shadow: 0 0 10px rgba(40, 167, 69, 0.5); /* Эффект подсветки */
+.form-control {
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.9);
 }
 
-/* Стили для кнопки входа */
-button {
-    border-radius: 25px;
-    background: linear-gradient(90deg, #007bff, #6610f2); /* Градиент для кнопки */
-    color: white;
-    font-size: 18px;
-    padding: 10px 20px;
-    transition: background 0.3s ease;
+.form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
+  transform: translateY(-2px);
 }
 
-button:hover {
-    background: linear-gradient(90deg, #28a745, #17a2b8); /* Изменение градиента при наведении */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Тень при наведении */
+/* Стилизация кнопки входа */
+.btn-primary {
+  background: linear-gradient(45deg, var(--primary-color), #ffdb4d);
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Стили для текста и других элементов */
-.welcome-sign {
-    font-size: 24px;
-    font-weight: bold;
-    color: #343a40;
-    text-align: center;
-    margin-bottom: 30px;
+.btn-primary:hover {
+  animation: pulse 1s infinite;
+  box-shadow: 0 5px 15px rgba(255, 193, 7, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+/* Стилизация фона страницы */
+.login-page {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Декоративные элементы фона */
+.login-page::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,193,7,0.1) 0%, rgba(255,255,255,0) 70%);
+  animation: rotate 30s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Стилизация сообщений об ошибках */
+.alert-danger {
+  background: rgba(220, 53, 69, 0.1);
+  border: none;
+  border-radius: 8px;
+  color: #dc3545;
+  animation: fadeInUp 0.4s ease-out;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .login-box {
+    width: 95%;
+    margin: 1rem auto;
+    padding: 1.5rem;
+  }
+
+  .login-logo img {
+    width: 140px;
+  }
+}
+
+/* Улучшение доступности */
+.form-control:focus {
+  outline: none;
+}
+
+/* Анимация для полей ввода при фокусе */
+.input-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.input-group-text {
+  background: transparent;
+  border: 2px solid #e9ecef;
+  border-right: none;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus + .input-group-text {
+  border-color: var(--primary-color);
+}
+
+/* Стилизация placeholder */
+.form-control::placeholder {
+  color: #adb5bd;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus::placeholder {
+  opacity: 0.7;
+  transform: translateX(5px);
+}
+
+/* Эффект наведения для всех интерактивных элементов */
+.btn,
+.form-control,
+.input-group-text {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Анимация загрузки для кнопки */
+.btn-primary.loading {
+  position: relative;
+  pointer-events: none;
+}
+
+.btn-primary.loading::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 50%;
+  margin: -10px 0 0 -10px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spinner 0.8s linear infinite;
+}
+
+@keyframes spinner {
+  to {transform: rotate(360deg);}
 }
