@@ -3,11 +3,14 @@ JAZZMIN_SETTINGS = {
     "site_header": "Atlas Travel",
     "site_logo": "admin/img/LOGO.svg",
     "site_logo_classes": "img-circle elevation-3",
+    "login_logo": "admin/img/LOGO.svg",
+    "login_logo_dark": "admin/img/LOGO.svg",
     "site_icon": "admin/img/LOGO.svg",
     "site_brand": "Atlas Travel",
     "custom_css": "/custom_admin.css",
     "welcome_sign": "Добро пожаловать в админ-панель Atlas Travel",
     "copyright": "Все права защищены.",
+    "user_avatar": None,
     "search_model": [],
     "topmenu_links": [
 
@@ -23,6 +26,8 @@ JAZZMIN_SETTINGS = {
     "changeform_format": "horizontal_tabs",
     "language_chooser": True,
     "changeform_format_overrides": {
+        "auth.user": "collapsible",
+        "tours.tour": "horizontal_tabs",
     },
     "hide_apps": [],
     "hide_models": [
@@ -123,27 +128,28 @@ JAZZMIN_SETTINGS = {
     },
 }
 
+
 JAZZMIN_UI_TWEAKS = {
     "navbar_small_text": False,
     "footer_small_text": False,
     "body_small_text": False,
     "brand_small_text": False,
-    "brand_colour": "navbar-success",
-    "accent": "accent-teal",
-    "navbar": "navbar-dark",
+    "brand_colour": False,
+    "accent": "accent-primary",
+    "navbar": "navbar-white navbar-light",
     "no_navbar_border": True,
     "navbar_fixed": True,
     "layout_boxed": False,
     "footer_fixed": False,
     "sidebar_fixed": True,
-    "sidebar": "sidebar-dark-success",
+    "sidebar": "sidebar-light-primary",
     "sidebar_nav_small_text": False,
     "sidebar_disable_expand": False,
     "sidebar_nav_child_indent": True,
     "sidebar_nav_compact_style": True,
     "sidebar_nav_legacy_style": False,
     "sidebar_nav_flat_style": False,
-    "theme": "cosmo",
+    "theme": "default",
     "dark_mode_theme": None,
     "button_classes": {
         "primary": "btn-primary",
