@@ -1,201 +1,260 @@
 /* custom_admin.css */
 
-/* Основные переменные */
 :root {
   --primary-color: #2196f3;
-  --secondary-color: #1976d2;
-  --accent-color: #ff4081;
-  --success-color: #4caf50;
-  --warning-color: #ff9800;
-  --danger-color: #f44336;
-  --text-primary: #333;
-  --text-secondary: #666;
-  --background-light: #f5f5f5;
-  --card-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  --transition-speed: 0.3s;
+  --accent-color: #ff6b6b;
+  --success-color: #2ecc71;
+  --warning-color: #f1c40f;
+  --info-color: #3498db;
+  --background-light: #f8f9fa;
+  --text-primary: #2c3e50;
+  --card-shadow: 0 2px 15px rgba(0,0,0,0.08);
 }
 
 /* Общие стили */
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   background: var(--background-light);
   color: var(--text-primary);
 }
 
 /* Navbar стили */
 .navbar {
-  backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.9) !important;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
+  background: white !important;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.08);
 }
 
 .navbar-brand {
   font-weight: 700;
-  background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  transition: transform var(--transition-speed);
+  font-size: 1.5rem;
+  color: var(--primary-color) !important;
 }
 
-.navbar-brand:hover {
-  transform: scale(1.05);
+.navbar-brand img {
+  height: 40px;
+  margin-right: 10px;
 }
 
-/* Sidebar стили */
+/* Кнопки действий */
+.btn-add, .btn-change {
+  border-radius: 20px;
+  padding: 8px 20px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.btn-add {
+  background: var(--success-color);
+  color: white;
+  border: none;
+}
+
+.btn-change {
+  background: var(--info-color);
+  color: white;
+  border: none;
+}
+
+.btn-add:hover, .btn-change:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Карточки секций */
+.card {
+  border: none;
+  border-radius: 15px;
+  background: white;
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.card-header {
+  background: white;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  padding: 20px;
+}
+
+.card-title {
+  color: var(--primary-color);
+  font-weight: 600;
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+/* Боковое меню */
 .sidebar {
   background: white;
-  border-right: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 2px 0 15px rgba(0,0,0,0.05);
 }
 
 .nav-sidebar .nav-item {
-  margin: 4px 0;
+  margin: 5px 10px;
 }
 
 .nav-sidebar .nav-link {
-  border-radius: 8px;
-  margin: 0 8px;
-  transition: all var(--transition-speed);
+  color: var(--text-primary);
+  border-radius: 10px;
+  padding: 12px 15px;
+  transition: all 0.3s ease;
 }
 
 .nav-sidebar .nav-link:hover {
   background: rgba(33, 150, 243, 0.1);
-  transform: translateX(4px);
+  color: var(--primary-color);
 }
 
 .nav-sidebar .nav-link.active {
   background: var(--primary-color);
   color: white;
-  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3);
 }
 
-/* Карточки и контейнеры */
-.card {
-  border: none;
-  border-radius: 12px;
-  box-shadow: var(--card-shadow);
-  transition: all var(--transition-speed);
+.nav-sidebar .nav-icon {
+  color: inherit;
+  margin-right: 10px;
 }
 
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+/* Страница входа */
+.login-page {
+  background: linear-gradient(135deg, #2196f3, #3f51b5);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Кнопки */
-.btn {
-  border-radius: 8px;
-  padding: 8px 16px;
+.login-box {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  padding: 40px;
+  width: 400px;
+  max-width: 90%;
+}
+
+.login-logo {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.login-logo img {
+  height: 80px;
+}
+
+.login-box-msg {
+  color: var(--text-primary);
+  font-size: 1.2rem;
   font-weight: 500;
-  transition: all var(--transition-speed);
+  text-align: center;
+  margin-bottom: 30px;
 }
 
-.btn-primary {
+.login-card-body {
+  padding: 20px 0;
+}
+
+.login-box .form-control {
+  border-radius: 25px;
+  padding: 12px 20px;
+  height: auto;
+  border: 2px solid #eee;
+  transition: all 0.3s ease;
+}
+
+.login-box .form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+}
+
+.login-box .btn-primary {
+  border-radius: 25px;
+  padding: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   background: var(--primary-color);
   border: none;
-  box-shadow: 0 2px 4px rgba(33, 150, 243, 0.3);
+  width: 100%;
+  margin-top: 20px;
 }
 
-.btn-primary:hover {
-  background: var(--secondary-color);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(33, 150, 243, 0.4);
+.login-box .btn-primary:hover {
+  background: #1976d2;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(33, 150, 243, 0.3);
 }
 
-/* Формы */
-.form-control {
-  border-radius: 8px;
-  border: 1px solid rgba(0,0,0,0.1);
-  padding: 8px 12px;
-  transition: all var(--transition-speed);
-}
-
-.form-control:focus {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+/* Анимации для кнопок и элементов */
+.btn, .nav-link, .form-control {
+  transition: all 0.3s ease;
 }
 
 /* Таблицы */
 .table {
-  border-radius: 12px;
+  background: white;
+  border-radius: 15px;
   overflow: hidden;
   box-shadow: var(--card-shadow);
 }
 
 .table thead th {
-  background: var(--background-light);
+  background: rgba(33, 150, 243, 0.05);
   border-bottom: 2px solid rgba(0,0,0,0.05);
+  color: var(--primary-color);
   font-weight: 600;
-}
-
-.table tbody tr {
-  transition: all var(--transition-speed);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
 }
 
 .table tbody tr:hover {
-  background: rgba(33, 150, 243, 0.05);
+  background: rgba(33, 150, 243, 0.02);
 }
 
-/* Анимации для загрузки */
-@keyframes shimmer {
-  0% {
-    background-position: -1000px 0;
-  }
-  100% {
-    background-position: 1000px 0;
-  }
+/* Иконки в меню */
+.nav-sidebar .nav-item i {
+  width: 20px;
+  text-align: center;
+  margin-right: 8px;
+  color: #666;
 }
 
-.loading {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 1000px 100%;
-  animation: shimmer 2s infinite linear;
+.nav-sidebar .nav-item:hover i {
+  color: var(--primary-color);
 }
 
-/* Тултипы и бейджи */
-.tooltip {
-  border-radius: 4px;
-  font-size: 12px;
+/* Хлебные крошки */
+.breadcrumb {
+  background: transparent;
+  padding: 0;
+  margin: 20px 0;
 }
 
-.badge {
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-weight: 500;
-}
-
-/* Модальные окна */
-.modal-content {
-  border-radius: 12px;
-  border: none;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-}
-
-.modal-header {
-  border-bottom: 1px solid rgba(0,0,0,0.1);
-}
-
-.modal-footer {
-  border-top: 1px solid rgba(0,0,0,0.1);
-}
-
-/* Уведомления */
-.toast {
-  border-radius: 8px;
-  border: none;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+.breadcrumb-item a {
+  color: var(--primary-color);
 }
 
 /* Адаптивность */
 @media (max-width: 768px) {
-  .sidebar {
-    margin-left: -250px;
+  .navbar-brand {
+    font-size: 1.2rem;
   }
 
-  .sidebar.show {
-    margin-left: 0;
+  .login-box {
+    margin: 20px;
   }
 
-  .content-wrapper {
-    margin-left: 0;
+  .btn-add, .btn-change {
+    width: 100%;
+    margin-bottom: 10px;
   }
 }

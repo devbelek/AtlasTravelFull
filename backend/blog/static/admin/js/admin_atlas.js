@@ -1,52 +1,41 @@
 // admin_atlas.js
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Добавляем красивые эффекты при скролле
-    const handleScroll = () => {
-        const cards = document.querySelectorAll('.card');
-        cards.forEach(card => {
-            const rect = card.getBoundingClientRect();
-            if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
-                card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
-            }
+    // Анимация появления элементов при загрузке
+    const fadeInElements = () => {
+        const elements = document.querySelectorAll('.card, .btn, .nav-item');
+        elements.forEach((el, index) => {
+            setTimeout(() => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }, index * 100);
         });
     };
 
-    window.addEventListener('scroll', handleScroll);
-
-    // Добавляем анимации для действий
-    const addClickEffects = () => {
+    // Эффект волны для кнопок
+    const addRippleEffect = () => {
         const buttons = document.querySelectorAll('.btn');
         buttons.forEach(button => {
             button.addEventListener('click', function(e) {
-                const x = e.clientX - e.target.offsetLeft;
-                const y = e.clientY - e.target.offsetTop;
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
 
                 const ripple = document.createElement('span');
+                ripple.className = 'ripple-effect';
                 ripple.style.left = `${x}px`;
                 ripple.style.top = `${y}px`;
-                ripple.className = 'ripple';
 
                 this.appendChild(ripple);
-
                 setTimeout(() => ripple.remove(), 600);
             });
         });
     };
 
-    // Инициализация всплывающих подсказок
-    const initTooltips = () => {
-        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-        tooltipTriggerList.map(function (tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl);
-        });
-    };
-
-    // Добавляем интерактивность в сайдбар
-    const enhanceSidebar = () => {
-        const sidebarItems = document.querySelectorAll('.nav-sidebar .nav-item');
-        sidebarItems.forEach(item => {
+    // Улучшение навигации
+    const enhanceNavigation = () => {
+        const navItems = document.querySelectorAll('.nav-sidebar .nav-item');
+        navItems.forEach(item => {
             item.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateX(5px)';
             });
@@ -57,96 +46,41 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     };
 
-    // Улучшаем таблицы
-    const enhanceTables = () => {
-        const tables = document.querySelectorAll('.table');
-        tables.forEach(table => {
-            // Добавляем сортировку
-            const headers = table.querySelectorAll('th');
-            headers.forEach(header => {
-                header.addEventListener('click', function() {
-                    const index = Array.from(this.parentElement.children).indexOf(this);
-                    sortTable(table, index);
-                });
-            });
+    // Анимация для страницы входа
+    const enhanceLoginPage = () => {
+        if (document.querySelector('.login-page')) {
+            const loginBox = document.querySelector('.login-box');
+            loginBox.style.opacity = '0';
+            loginBox.style.transform = 'translateY(20px)';
 
-            // Добавляем поиск
-            const tableContainer = table.parentElement;
-            const searchInput = document.createElement('input');
-            searchInput.className = 'form-control mb-3';
-            searchInput.placeholder = 'Поиск...';
-            searchInput.addEventListener('input', function() {
-                filterTable(table, this.value);
-            });
-            tableContainer.insertBefore(searchInput, table);
-        });
-    };
-
-    // Функция сортировки таблицы
-    const sortTable = (table, column) => {
-        const tbody = table.querySelector('tbody');
-        const rows = Array.from(tbody.querySelectorAll('tr'));
-
-        rows.sort((a, b) => {
-            const aValue = a.children[column].textContent;
-            const bValue = b.children[column].textContent;
-            return aValue.localeCompare(bValue);
-        });
-
-        rows.forEach(row => tbody.appendChild(row));
-    };
-
-    // Функция фильтрации таблицы
-    const filterTable = (table, query) => {
-        const rows = table.querySelectorAll('tbody tr');
-        rows.forEach(row => {
-            const text = row.textContent.toLowerCase();
-            row.style.display = text.includes(query.toLowerCase()) ? '' : 'none';
-        });
-    };
-
-    // Добавляем прогресс-бар для загрузки страницы
-    const addProgressBar = () => {
-        const progress = document.createElement('div');
-        progress.className = 'progress-bar';
-        document.body.appendChild(progress);
-
-        window.addEventListener('load', () => {
-            progress.style.width = '100%';
             setTimeout(() => {
-                progress.style.opacity = '0';
-            }, 500);
-        });
+                loginBox.style.opacity = '1';
+                loginBox.style.transform = 'translateY(0)';
+            }, 200);
+        }
     };
 
     // Инициализация всех улучшений
     const init = () => {
-        addClickEffects();
-        initTooltips();
-        enhanceSidebar();
-        enhanceTables();
-        addProgressBar();
-        handleScroll();
+        fadeInElements();
+        addRippleEffect();
+        enhanceNavigation();
+        enhanceLoginPage();
     };
 
     init();
 });
 
-// Добавляем стили для ripple-эффекта
+// Добавляем стили для эффектов
 const style = document.createElement('style');
 style.textContent = `
-    .btn {
-        position: relative;
-        overflow: hidden;
-    }
-
-    .ripple {
+    .ripple-effect {
         position: absolute;
-        background: rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.7);
         border-radius: 50%;
+        pointer-events: none;
         transform: scale(0);
         animation: ripple 0.6s linear;
-        pointer-events: none;
     }
 
     @keyframes ripple {
@@ -156,21 +90,14 @@ style.textContent = `
         }
     }
 
-    .progress-bar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 3px;
-        background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-        width: 0;
-        transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out;
-        z-index: 9999;
-    }
-
-    .card {
+    .card, .btn, .nav-item {
         opacity: 0;
         transform: translateY(20px);
-        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        transition: all 0.3s ease;
+    }
+
+    .login-box {
+        transition: all 0.5s ease;
     }
 `;
 
