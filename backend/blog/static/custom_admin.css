@@ -1,6 +1,67 @@
+/* Общие стили для страницы */
+body {
+    background: url('/static/admin/img/background.jpg') no-repeat center center fixed; /* Добавьте свой фон */
+    background-size: cover;
+    font-family: 'Roboto', sans-serif;
+}
+
+.login-box, .card {
+    background: rgba(255, 255, 255, 0.85);  /* Прозрачный белый фон для формы */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Тень для формы */
+}
+
+/* Стили для логотипа */
 .login-logo img {
-    width: 150px;  /* Установите ширину для логотипа */
-    height: auto;  /* Автоматически подгоняет высоту */
+    width: 120px; /* Меньший размер логотипа */
+    height: auto;
+    animation: spin 4s infinite ease-in-out;  /* Добавим анимацию вращения */
     display: block;
-    margin: 0 auto;
+    margin: 0 auto 20px; /* Центрирование и отступы снизу */
+}
+
+/* Анимация вращения для логотипа */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* Стили для полей ввода */
+input {
+    border-radius: 25px; /* Скругленные углы */
+    padding: 12px 20px;
+    border: 2px solid #007bff;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    border-color: #28a745;  /* Изменение цвета при фокусе */
+    box-shadow: 0 0 10px rgba(40, 167, 69, 0.5); /* Эффект подсветки */
+}
+
+/* Стили для кнопки входа */
+button {
+    border-radius: 25px;
+    background: linear-gradient(90deg, #007bff, #6610f2); /* Градиент для кнопки */
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #28a745, #17a2b8); /* Изменение градиента при наведении */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Тень при наведении */
+}
+
+/* Стили для текста и других элементов */
+.welcome-sign {
+    font-size: 24px;
+    font-weight: bold;
+    color: #343a40;
+    text-align: center;
+    margin-bottom: 30px;
 }
