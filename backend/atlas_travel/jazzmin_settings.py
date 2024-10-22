@@ -5,6 +5,9 @@ JAZZMIN_SETTINGS = {
     "site_logo_classes": "img-circle elevation-3",
     "site_icon": "admin/img/LOGO.svg",
     "site_brand": "Atlas Travel",
+    "custom_css": [
+        "/static/custom_admin.css",
+    ],
     "welcome_sign": "Добро пожаловать в админ-панель Atlas Travel",
     "copyright": "Все права защищены.",
     "search_model": [],
