@@ -9,7 +9,7 @@ from .models import (AboutUs, AboutUsImage, FAQ, AboutUsInquiry,
                      AboutUsConsultant, OurProjects, PrivacyPolicy,
                      UserAgreement, ReturnPolicy)
 from django.utils.translation import gettext_lazy as _
-from django.contrib.postgres.forms import JSONField as JSONFormField
+from django.forms import JSONField as JSONFormField
 
 
 @admin.register(AboutUs)
