@@ -101,8 +101,12 @@ class AboutUsConsultantForm(forms.ModelForm):
 
 @admin.register(AboutUsConsultant)
 class AboutUsConsultantAdmin(admin.ModelAdmin):
-    list_display = ('name', 'surname', 'phone_number', 'is_active')
+    list_display = ('name', 'surname', 'get_phone_numbers', 'is_active')  # Заменяем phone_number на метод get_phone_numbers
     list_editable = ('is_active',)
+
+    def get_phone_numbers(self, obj):
+        return ", ".join(obj.phone_numbers) if obj.phone_numbers else 'Нет номеров'  # Вывод номеров телефонов из JSON
+    get_phone_numbers.short_description = 'Номера телефонов'  # Название колонки в админке
 
     def save_model(self, request, obj, form, change):
         if obj.is_active:
