@@ -12,7 +12,6 @@ import { usePathname } from "next/navigation";
 import { axiosGetTours } from "@/services/tours";
 import { Transfer } from "@/types/tour";
 import { axiosGetHome } from "@/services/home";
-import { IMAGE_API_URL } from "@/constants/default_api";
 import { transferApi } from "@/constants/content";
 import { translate } from "@/constants/locale";
 import NoTours from "../components/ui/error_message/no_tours/NoTours";
@@ -79,7 +78,7 @@ export default function CarRentals() {
                 return (
                   <MainCard
                     key={offer.linkTo + offer.id}
-                    imageSrc={IMAGE_API_URL + offer.image.image}
+                    imageSrc={process.env.NEXT_PUBLIC_IMAGE_API_BASE_URL + offer.image.image}
                     title={translate(
                       offer.title_ru,
                       offer.title_ky,
@@ -110,12 +109,12 @@ export default function CarRentals() {
 
       <section>
         <Container>
-          {homeResultsArr.length > 0 && (
+          {homeResultsArr ? homeResultsArr.length > 0 && (
             <OffersBlock
               offerTitle={t("vacationIdeas")}
               slides={homeResultsArr}
             />
-          )}
+          ): <></>}
         </Container>
       </section>
     </main>

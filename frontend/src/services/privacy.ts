@@ -1,9 +1,8 @@
 import axios from "axios";
-import { API_BASE_URL } from "@/constants/default_api";
 
 export const axiosGetPrivacyPolicy = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}privacy-policy/`);
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}privacy-policy/`);
     const data = response.data;
     return data;
   } catch (error) {
@@ -14,7 +13,7 @@ export const axiosGetPrivacyPolicy = async () => {
 
 export const axiosGetReturnPolicy = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}return-policy/`);
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}return-policy/`);
     const data = response.data;
     return data;
   } catch (error) {
@@ -25,7 +24,7 @@ export const axiosGetReturnPolicy = async () => {
 
 export const axiosGetUserAgreement = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}user-agreement/`);
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}user-agreement/`);
     const data = response.data;
     return data;
   } catch (error) {

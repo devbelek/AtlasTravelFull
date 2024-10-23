@@ -1,10 +1,11 @@
+about-us.ts
+
 import axios from "axios";
-import { API_BASE_URL } from "@/constants/default_api";
 import { axiosGetCity } from "./cities";
 
 export const axiosGetAboutUs = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}about-us/`);
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}about-us/`);
     const data = response.data;
     return data;
   } catch (error) {
@@ -15,7 +16,7 @@ export const axiosGetAboutUs = async () => {
 
 export const axiosGetAboutUsImages = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}about-us-images/`);
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}about-us-images/`);
     const data = response.data;
     return data;
   } catch (error) {
@@ -26,7 +27,7 @@ export const axiosGetAboutUsImages = async () => {
 
 export const axiosGetOurProjects = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}our-projects/`);
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}our-projects/`);
     const data = response.data[0];
 
     const projects: any[] = [];
@@ -96,7 +97,7 @@ export const axiosGetOurProjects = async () => {
 
 export const axiosGetFaqs = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}faqs/`);
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}faqs/`);
     const data = response.data;
     return data;
   } catch (error) {

@@ -83,7 +83,7 @@ export default function Flights() {
                 return (
                   <MainCard
                     key={offer.linkTo + offer.id}
-                    imageSrc={IMAGE_API_URL + offer.image.image}
+                    imageSrc={process.env.NEXT_PUBLIC_IMAGE_API_BASE_URL + offer.image.image}
                     title={`${translate(
                       offer.cityInfo.country.name_ru,
                       offer.cityInfo.country.name_ky,

@@ -4,7 +4,7 @@ import { axiosGetCity } from "./cities";
 
 export const axiosGetTours = async (content: string) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}${content}/`);
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}${content}/`);
     const data = response.data.results;
 
     const projectsWithCityInfo = await Promise.all(
@@ -30,7 +30,7 @@ export const axiosGetTours = async (content: string) => {
 
 export const axiosGetToursDetails = async (content: string, id: string) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}` + content + "/" + id);
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}` + content + "/" + id);
     const data = response.data;
     return data;
   } catch (error) {
@@ -42,7 +42,7 @@ export const axiosGetToursDetails = async (content: string, id: string) => {
 export const axiosGetToursSimilar = async (content: string, id: string) => {
   try {
     const response = await axios.get(
-      `${API_BASE_URL}${content}/${id}/similar/`
+      ${process.env.NEXT_PUBLIC_API_BASE_URL}${content}/${id}/similar/
     );
     const data = response.data;
 

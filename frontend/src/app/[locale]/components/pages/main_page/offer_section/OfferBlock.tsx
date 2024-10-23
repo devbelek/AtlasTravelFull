@@ -5,7 +5,6 @@ import "swiper/swiper-bundle.css";
 import "swiper/css";
 import styles from "./offer_block.module.css";
 import TourCard from "@/app/[locale]/components/cards/tours_cards/TourCard";
-import { IMAGE_API_URL } from "@/constants/default_api";
 import { usePathname } from "next/navigation";
 import { translate } from "@/constants/locale";
 
@@ -81,8 +80,8 @@ const OffersBlock: React.FC<OffersBlockProps> = ({ offerTitle, slides }) => {
           },
         }}
         navigation={{
-          prevEl: `.${styles.swiper_button_prev}`,
-          nextEl: `.${styles.swiper_button_next}`,
+          prevEl: .${styles.swiper_button_prev},
+          nextEl: .${styles.swiper_button_next},
         }}
         className={styles.swiper_block}
       >
@@ -111,7 +110,7 @@ const OffersBlock: React.FC<OffersBlockProps> = ({ offerTitle, slides }) => {
         {slides.map((slide) => (
           <SwiperSlide key={slide.linkTo + slide.id}>
             <TourCard
-              imageSrc={IMAGE_API_URL + slide.image.image}
+              imageSrc={process.env.NEXT_PUBLIC_IMAGE_API_BASE_URL + slide.image.image}
               title={
                 locale === "/ru"
                   ? slide.title_ru
@@ -121,9 +120,9 @@ const OffersBlock: React.FC<OffersBlockProps> = ({ offerTitle, slides }) => {
               }
               desc={
                 translate(
-                  slide.cityInfo?.name_ru ?? "", 
+                  slide.cityInfo?.name_ru ?? "",
                   slide.cityInfo?.name_ky ?? "",
-                  slide.cityInfo?.name_en ?? "" 
+                  slide.cityInfo?.name_en ?? ""
                 ) ?? ""
               }
               linkTo={slide.linkTo}

@@ -1,10 +1,9 @@
-import axios from "axios";
-import { API_BASE_URL } from "@/constants/default_api";
+...import axios from "axios";
 import { axiosGetCity } from "./cities";
 
 export const axiosGetHome = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}home/`);
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}home/`);
     const data = response.data.rest_ideas;
 
     const rest_ideas = [];
@@ -75,7 +74,7 @@ export const axiosGetHome = async () => {
 
 export const axiosGetBestOffers = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}home/`);
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}home/`);
     const data = response.data.best_choices;
 
     const best_choices = [];
@@ -137,7 +136,8 @@ export const axiosGetBestOffers = async () => {
       best_choices.push(...transfersWithLink);
     }
 
-    return { ...data, best_choices };
+
+return { ...data, best_choices };
   } catch (error) {
     console.error("Ошибка при загрузке best offers:", error);
     return [];
@@ -146,7 +146,7 @@ export const axiosGetBestOffers = async () => {
 
 export const axiosGetPopularHotels = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}home/`);
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}home/`);
     const data = response.data.popular_hotels;
 
     const popular_hotels = [];

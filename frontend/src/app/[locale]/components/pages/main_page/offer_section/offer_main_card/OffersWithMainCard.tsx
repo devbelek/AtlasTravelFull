@@ -1,18 +1,15 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import { StaticImageData } from "next/image";
 import "swiper/swiper-bundle.css";
 import "swiper/css";
 import styles from "../offer_block.module.css";
 import MainCard from "@/app/[locale]/components/cards/main_cards/MainCard";
-import { IMAGE_API_URL } from "@/constants/default_api";
-import { translate, useLocale } from "@/constants/locale";
+import { translate } from "@/constants/locale";
 import {
   flightsApi,
   hotelsApi,
   toursApi,
-  transferApi,
 } from "@/constants/content";
 import { CityInfo } from "@/types/city";
 
@@ -65,8 +62,8 @@ const OffersWithMainCard: React.FC<OffersWithMainCardProps> = ({
           },
         }}
         navigation={{
-          prevEl: `.${styles.swiper_button_prev}`,
-          nextEl: `.${styles.swiper_button_next}`,
+          prevEl: .${styles.swiper_button_prev},
+          nextEl: .${styles.swiper_button_next},
         }}
         className={styles.swiper_block}
       >
@@ -96,7 +93,7 @@ const OffersWithMainCard: React.FC<OffersWithMainCardProps> = ({
           <SwiperSlide key={index}>
             <MainCard
               key={index}
-              imageSrc={IMAGE_API_URL + slide.image.image}
+              imageSrc={process.env.NEXT_PUBLIC_IMAGE_API_BASE_URL + slide.image.image}
               title={
                 content == flightsApi
                   ? `${translate(

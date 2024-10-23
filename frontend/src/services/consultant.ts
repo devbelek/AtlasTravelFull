@@ -15,7 +15,7 @@ export interface Consultant {
 export const axiosGetConsultant = async (): Promise<Consultant | null> => {
   try {
     const response = await axios.get<Consultant[]>(
-      `${API_BASE_URL}consultants/`
+      ${process.env.NEXT_PUBLIC_API_BASE_URL}consultants/
     );
 
     const activeConsultant = response.data.find(
@@ -33,7 +33,7 @@ export const axiosPostNumberConsultant = async (
   phoneNumber: string
 ): Promise<any> => {
   try {
-    const response = await axios.post(`${API_BASE_URL}inquiries/`, {
+    const response = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}inquiries/`, {
       phone_number: phoneNumber,
     });
     return response.data;

@@ -1,9 +1,8 @@
 import axios from "axios";
-import { API_BASE_URL } from "@/constants/default_api";
 
 export const axiosGetCarRental = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}rent-of-car/`);
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}rent-of-car/`);
     const data = response.data[0];
     return data;
   } catch (error) {

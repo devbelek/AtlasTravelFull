@@ -11,7 +11,6 @@ import MainCard from "../components/cards/main_cards/MainCard";
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import { axiosGetPopularHotels } from "@/services/home";
-import { IMAGE_API_URL } from "@/constants/default_api";
 import { axiosGetTours } from "@/services/tours";
 import { hotelsApi } from "@/constants/content";
 import { Hotel } from "@/types/tour";
@@ -82,7 +81,7 @@ export default function Hotels() {
                 return (
                   <MainCard
                     key={offer.linkTo + offer.id}
-                    imageSrc={IMAGE_API_URL + offer.image.image}
+                    imageSrc={process.env.NEXT_PUBLIC_IMAGE_API_BASE_URL + offer.image.image}
                     title={translate(
                       offer.title_ru,
                       offer.title_ky,

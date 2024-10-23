@@ -14,7 +14,6 @@ import { usePathname } from "next/navigation";
 import { axiosGetTours } from "@/services/tours";
 import { Tour } from "@/types/tour";
 import { axiosGetHome } from "@/services/home";
-import { IMAGE_API_URL } from "@/constants/default_api";
 import { toursApi } from "@/constants/content";
 import { translate } from "@/constants/locale";
 import NoTours from "../components/ui/error_message/no_tours/NoTours";
@@ -67,7 +66,7 @@ export default function Tours() {
 
       <section className={styles.cards_section}>
         <Container isVisible={true}>
-          {tours.length > 0 ? (
+          {tours && tours.length > 0 ? (
             <div className={styles.cards_flex}>
               {tours.map((offer) => {
                 let title;
@@ -83,7 +82,7 @@ export default function Tours() {
                 return (
                   <MainCard
                     key={offer.linkTo + offer.id}
-                    imageSrc={IMAGE_API_URL + offer.image.image}
+                    imageSrc={process.env.NEXT_PUBLIC_IMAGE_API_BASE_URL + offer.image.image}
                     title={translate(
                       offer.title_ru,
                       offer.title_ky,

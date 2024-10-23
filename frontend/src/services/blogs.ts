@@ -3,7 +3,7 @@ import { API_BASE_URL } from "@/constants/default_api";
 
 export const axiosGetBlogs = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}blog-posts/`);
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}blog-posts/`);
     const data = response.data;
     return data;
   } catch (error) {
@@ -14,7 +14,7 @@ export const axiosGetBlogs = async () => {
 
 export const axiosGetBlogsDetails = async (index: string) => {
     try {
-      const response = await axios.get(`${API_BASE_URL}blog-posts/${index}`);
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}blog-posts/${index}`);
       const data = response.data;
       return data;
     } catch (error) {

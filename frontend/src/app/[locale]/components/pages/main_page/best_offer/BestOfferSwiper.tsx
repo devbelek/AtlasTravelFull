@@ -8,7 +8,6 @@ import "swiper/swiper-bundle.css";
 import "swiper/css";
 import { Autoplay, EffectCards, Navigation, Pagination } from "swiper/modules";
 import styles from "./styles.module.css";
-import { IMAGE_API_URL } from "@/constants/default_api";
 import { usePathname } from "next/navigation";
 import { translate } from "@/constants/locale";
 
@@ -74,11 +73,14 @@ const BestOfferSwiper: React.FC<BestOffersProps> = ({ offers }) => {
           <Swiper
             modules={[Navigation, EffectCards, Pagination, Autoplay]}
             slidesPerView={1}
+
             navigation={{
-              prevEl: `.${styles.swiper_button_prev}`,
-              nextEl: `.${styles.swiper_button_next}`,
+              prevEl: .${styles.swiper_button_prev},
+              nextEl: .${styles.swiper_button_next},
             }}
-            pagination={{ clickable: true }}
+            pagination={{
+              clickable: true,
+            }}
             effect="cards"
             className={styles.swiper_cards}
             autoplay={{
@@ -119,11 +121,10 @@ const BestOfferSwiper: React.FC<BestOffersProps> = ({ offers }) => {
                 </svg>
               </div>
             </div>
-
             {offers.map((offer) => (
               <SwiperSlide key={offer.linkTo + offer.id}>
                 <TourCard
-                  imageSrc={IMAGE_API_URL + offer.image.image}
+                  imageSrc={process.env.NEXT_PUBLIC_IMAGE_API_BASE_URL + offer.image.image}
                   index={offer.id}
                   title={
                     locale === "ru"
@@ -134,9 +135,9 @@ const BestOfferSwiper: React.FC<BestOffersProps> = ({ offers }) => {
                   }
                   desc={
                     translate(
-                      offer.cityInfo?.name_ru ?? "", 
-                      offer.cityInfo?.name_ky ?? "", 
-                      offer.cityInfo?.name_en ?? "" 
+                      offer.cityInfo?.name_ru ?? "",
+                      offer.cityInfo?.name_ky ?? "",
+                      offer.cityInfo?.name_en ?? ""
                     ) ?? ""
                   }
                   linkTo={offer.linkTo}
