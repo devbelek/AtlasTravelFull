@@ -171,6 +171,14 @@ class PrivacyPolicy(models.Model):
     def __str__(self):
         return f'{self.title}'
 
+    def clean(self):
+        if PrivacyPolicy.objects.exists() and not self.pk:
+            raise ValidationError("Может быть только одна запись 'Политика конфиденциальности'")
+
+    def save(self, *args, **kwargs):
+        self.clean()
+        super().save(*args, **kwargs)
+
     class Meta:
         verbose_name = 'Политика конфиденциальности'
         verbose_name_plural = 'Политика конфиденциальности'
@@ -183,6 +191,14 @@ class UserAgreement(models.Model):
     def __str__(self):
         return f'{self.title}'
 
+    def clean(self):
+        if UserAgreement.objects.exists() and not self.pk:
+            raise ValidationError("Может быть только одна запись 'Пользовательское соглашение'")
+
+    def save(self, *args, **kwargs):
+        self.clean()
+        super().save(*args, **kwargs)
+
     class Meta:
         verbose_name = 'Пользовательское соглашение'
         verbose_name_plural = 'Пользовательские соглашения'
@@ -194,6 +210,14 @@ class ReturnPolicy(models.Model):
 
     def __str__(self):
         return f'{self.title}'
+
+    def clean(self):
+        if ReturnPolicy.objects.exists() and not self.pk:
+            raise ValidationError("Может быть только одна запись 'Условия возврата'")
+
+    def save(self, *args, **kwargs):
+        self.clean()
+        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'Условия возврата'

@@ -160,6 +160,9 @@ class PrivacyPolicyAdmin(admin.ModelAdmin):
         }),
     )
 
+    def has_add_permission(self, request):
+        return not PrivacyPolicy.objects.exists()
+
     def content_preview_ky(self, obj):
         content = strip_tags(obj.content_ky)
         return (content[:100] + '...') if len(content) > 100 else content
@@ -198,6 +201,9 @@ class UserAgreementAdmin(admin.ModelAdmin):
         }),
     )
 
+    def has_add_permission(self, request):
+        return not UserAgreement.objects.exists()
+
     def content_preview_ky(self, obj):
         content = strip_tags(obj.content_ky)
         return (content[:100] + '...') if len(content) > 100 else content
@@ -235,6 +241,9 @@ class ReturnPolicyAdmin(admin.ModelAdmin):
             'fields': ('title_en', 'content_en'),
         }),
     )
+
+    def has_add_permission(self, request):
+        return not ReturnPolicy.objects.exists()
 
     def content_preview_ky(self, obj):
         content = strip_tags(obj.content_ky)
