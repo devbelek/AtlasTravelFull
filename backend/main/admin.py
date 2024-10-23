@@ -99,11 +99,12 @@ class RentOfCarAdmin(admin.ModelAdmin):
 
 @admin.register(Benefits)
 class BenefitsAdmin(SortableAdminMixin, admin.ModelAdmin):
-    list_display = ('title_ru', 'icon')
+    list_display = ('icon_preview', 'title_ru', 'icon')
     list_display_links = ('title_ru',)
+    readonly_fields = ('icon_preview',)
     fieldsets = (
         ('Общее', {
-            'fields': ('icon',),
+            'fields': ('icon', 'icon_preview'),
         }),
         ('Русский', {
             'fields': ('title_ru', 'description_ru'),
