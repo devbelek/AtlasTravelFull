@@ -1,5 +1,3 @@
-about-us.ts
-
 import axios from "axios";
 import { axiosGetCity } from "./cities";
 

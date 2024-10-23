@@ -1,5 +1,4 @@
 import axios from "axios";
-import { API_BASE_URL } from "@/constants/default_api";
 import { axiosGetCity } from "./cities";
 
 export const axiosGetTours = async (content: string) => {
@@ -42,7 +41,7 @@ export const axiosGetToursDetails = async (content: string, id: string) => {
 export const axiosGetToursSimilar = async (content: string, id: string) => {
   try {
     const response = await axios.get(
-      ${process.env.NEXT_PUBLIC_API_BASE_URL}${content}/${id}/similar/
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}${content}/${id}/similar/`
     );
     const data = response.data;
 

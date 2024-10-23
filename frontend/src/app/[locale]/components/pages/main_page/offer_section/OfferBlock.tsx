@@ -80,8 +80,8 @@ const OffersBlock: React.FC<OffersBlockProps> = ({ offerTitle, slides }) => {
           },
         }}
         navigation={{
-          prevEl: .${styles.swiper_button_prev},
-          nextEl: .${styles.swiper_button_next},
+          prevEl: `.${styles.swiper_button_prev}`,
+          nextEl: `.${styles.swiper_button_next}`,
         }}
         className={styles.swiper_block}
       >
@@ -120,9 +120,9 @@ const OffersBlock: React.FC<OffersBlockProps> = ({ offerTitle, slides }) => {
               }
               desc={
                 translate(
-                  slide.cityInfo?.name_ru ?? "",
+                  slide.cityInfo?.name_ru ?? "", 
                   slide.cityInfo?.name_ky ?? "",
-                  slide.cityInfo?.name_en ?? ""
+                  slide.cityInfo?.name_en ?? "" 
                 ) ?? ""
               }
               linkTo={slide.linkTo}

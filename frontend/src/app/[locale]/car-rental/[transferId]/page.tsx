@@ -294,15 +294,17 @@ const transferDetails: React.FC = () => {
         </Container>
       </section>
 
-      <section className={styles.similar_tours}>
-        <Container>
-          <OffersWithMainCard
-            offerTitle={tours("sameCars")}
-            slides={similarTransferArr}
-            content={transferApi}
-          />
-        </Container>
-      </section>
+      {similarTransferArr && similarTransferArr.length > 0 && (
+        <section className={styles.similar_tours}>
+          <Container>
+            <OffersWithMainCard
+              offerTitle={tours("sameCars")}
+              slides={similarTransferArr}
+              content={transferApi}
+            />
+          </Container>
+        </section>
+      )}
 
       <section className={styles.best_offers}>
         <Container>

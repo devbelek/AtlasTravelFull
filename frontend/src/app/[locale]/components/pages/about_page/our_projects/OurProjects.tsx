@@ -10,7 +10,7 @@ import { Navigation } from "swiper/modules";
 import TourCard from "../../../cards/tours_cards/TourCard";
 import { useTranslations } from "next-intl";
 import { axiosGetOurProjects } from "@/services/about-us";
-import { process.env.NEXT_PUBLIC_IMAGE_API_BASE_URL, YOU_TUBE_URL } from "@/constants/default_api";
+import { YOU_TUBE_URL } from "@/constants/default_api";
 import { translate } from "@/constants/locale";
 import { youtube_parser } from "@/constants/youtube_convert";
 import { Flight, Hotel, Tour, Transfer } from "@/types/tour";
@@ -58,8 +58,6 @@ const OurProjects = () => {
     loadData();
   }, []);
 
-  const youtubeUrl = youtube_parser(ourProjects?.youtube_video_url ?? "");
-
   return (
     <section className={styles.our_projects_block}>
       <div className={styles.background_block}></div>
@@ -73,7 +71,7 @@ const OurProjects = () => {
             </p>
             <iframe
               className={styles.about_us_video}
-              src={youtubeUrl ? YOU_TUBE_URL + youtubeUrl : ""}
+              src={YOU_TUBE_URL + youtube_parser(ourProjects?.youtube_video_url ?? "")}
               frameBorder="0"
               title="Product Overview Video"
               aria-hidden="true"
@@ -130,26 +128,25 @@ const OurProjects = () => {
                   />
                 </svg>
               </div>
+
               {ourProjects?.projects?.map((tour) => (
-                tour.image && (
-                  <SwiperSlide key={tour.id}>
-                    <TourCard
-                      imageSrc={process.env.NEXT_PUBLIC_IMAGE_API_BASE_URL + tour.image.image}
-                      index={tour.id}
-                      linkTo={tour.linkTo}
-                      title={translate(
-                        tour.title_ru,
-                        tour.title_ky,
-                        tour.title_en
-                      )}
-                      desc={tour.cityInfo ? translate(
-                        tour.cityInfo.name_ru,
-                        tour.cityInfo.name_ky,
-                        tour.cityInfo.name_en
-                      ) : ""}
-                    />
-                  </SwiperSlide>
-                )
+                <SwiperSlide key={tour.id}>
+                  <TourCard
+                    imageSrc={process.env.NEXT_PUBLIC_IMAGE_API_BASE_URL + tour.image.image}
+                    index={tour.id}
+                    linkTo={tour.linkTo}
+                    title={translate(
+                      tour.title_ru,
+                      tour.title_ky,
+                      tour.title_en
+                    )}
+                    desc={translate(
+                      tour.cityInfo.name_ru,
+                      tour.cityInfo.name_ky,
+                      tour.cityInfo.name_en
+                    )}
+                  />
+                </SwiperSlide>
               ))}
             </Swiper>
           </div>

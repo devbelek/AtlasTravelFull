@@ -60,94 +60,86 @@ const BestOfferSwiper: React.FC<BestOffersProps> = ({ offers }) => {
     locale = "/kg";
   }
   return (
-    <>
-      <div className={styles.best_offer_inner}>
-        <div className={styles.best_offer_info}>
-          <h3>{t("bestOffer")}</h3>
-          <p>
-            Не откладывайте - бронируйте авиабилеты заранее, чтобы обеспечить
-            себе комфортный и безопасный перелет
-          </p>
-        </div>
-        <div className={styles.best_offer_swiper}>
-          <Swiper
-            modules={[Navigation, EffectCards, Pagination, Autoplay]}
-            slidesPerView={1}
-
-            navigation={{
-              prevEl: .${styles.swiper_button_prev},
-              nextEl: .${styles.swiper_button_next},
-            }}
-            pagination={{
-              clickable: true,
-            }}
-            effect="cards"
-            className={styles.swiper_cards}
-            autoplay={{
-              delay: 2500,
-              disableOnInteraction: false,
-            }}
-          >
-            <div className={styles.sided_pagination}>
-              <div className={styles.dotted_border}></div>
-              <div className={styles.swiper_button_prev}>
-                <svg
-                  width="11"
-                  height="18"
-                  viewBox="0 0 11 18"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M1 17L9 9L1 0.999999"
-                    stroke="white"
-                    strokeWidth={2}
-                  />
-                </svg>
-              </div>
-              <div className={styles.swiper_button_next}>
-                <svg
-                  width="11"
-                  height="18"
-                  viewBox="0 0 11 18"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M1 17L9 9L1 0.999999"
-                    stroke="white"
-                    strokeWidth={2}
-                  />
-                </svg>
-              </div>
-            </div>
-            {offers.map((offer) => (
-              <SwiperSlide key={offer.linkTo + offer.id}>
-                <TourCard
-                  imageSrc={process.env.NEXT_PUBLIC_IMAGE_API_BASE_URL + offer.image.image}
-                  index={offer.id}
-                  title={
-                    locale === "ru"
-                      ? offer.title_ru
-                      : locale === "ky"
-                      ? offer.title_ky
-                      : offer.title_en
-                  }
-                  desc={
-                    translate(
-                      offer.cityInfo?.name_ru ?? "",
-                      offer.cityInfo?.name_ky ?? "",
-                      offer.cityInfo?.name_en ?? ""
-                    ) ?? ""
-                  }
-                  linkTo={offer.linkTo}
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
+    <div className={styles.best_offer_inner}>
+      <div className={styles.best_offer_info}>
+        <h3>{t("bestOffer")}</h3>
+        <p>
+          Не откладывайте - бронируйте авиабилеты заранее, чтобы обеспечить себе
+          комфортный и безопасный перелет
+        </p>
       </div>
-    </>
+      <div className={styles.best_offer_swiper}>
+        <Swiper
+          modules={[Navigation, EffectCards, Pagination, Autoplay]}
+          slidesPerView={1}
+          navigation={{
+            prevEl: `.${styles.swiper_button_prev}`,
+            nextEl: `.${styles.swiper_button_next}`,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          effect="cards"
+          className={styles.swiper_cards}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+        >
+          <div className={styles.sided_pagination}>
+            <div className={styles.dotted_border}></div>
+            <div className={styles.swiper_button_prev}>
+              <svg
+                width="11"
+                height="18"
+                viewBox="0 0 11 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M1 17L9 9L1 0.999999" stroke="white" strokeWidth={2} />
+              </svg>
+            </div>
+            <div className={styles.swiper_button_next}>
+              <svg
+                width="11"
+                height="18"
+                viewBox="0 0 11 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M1 17L9 9L1 0.999999" stroke="white" strokeWidth={2} />
+              </svg>
+            </div>
+          </div>
+
+          {offers.map((offer) => (
+            <SwiperSlide key={offer.linkTo + offer.id}>
+              <TourCard
+                imageSrc={
+                  process.env.NEXT_PUBLIC_IMAGE_API_BASE_URL + offer.image.image
+                }
+                index={offer.id}
+                title={
+                  locale === "ru"
+                    ? offer.title_ru
+                    : locale === "ky"
+                    ? offer.title_ky
+                    : offer.title_en
+                }
+                desc={
+                  translate(
+                    offer.cityInfo?.name_ru ?? "",
+                    offer.cityInfo?.name_ky ?? "",
+                    offer.cityInfo?.name_en ?? ""
+                  ) ?? ""
+                }
+                linkTo={offer.linkTo}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+    </div>
   );
 };
 

@@ -1,5 +1,4 @@
 import axios from "axios";
-import { API_BASE_URL } from "@/constants/default_api";
 
 export interface Consultant {
   id: number;
@@ -15,7 +14,7 @@ export interface Consultant {
 export const axiosGetConsultant = async (): Promise<Consultant | null> => {
   try {
     const response = await axios.get<Consultant[]>(
-      ${process.env.NEXT_PUBLIC_API_BASE_URL}consultants/
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}consultants/`
     );
 
     const activeConsultant = response.data.find(

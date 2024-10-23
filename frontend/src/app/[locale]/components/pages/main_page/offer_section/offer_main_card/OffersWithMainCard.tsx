@@ -62,8 +62,8 @@ const OffersWithMainCard: React.FC<OffersWithMainCardProps> = ({
           },
         }}
         navigation={{
-          prevEl: .${styles.swiper_button_prev},
-          nextEl: .${styles.swiper_button_next},
+          prevEl: `.${styles.swiper_button_prev}`,
+          nextEl: `.${styles.swiper_button_next}`,
         }}
         className={styles.swiper_block}
       >

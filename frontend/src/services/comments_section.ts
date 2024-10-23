@@ -6,7 +6,7 @@ export const axiosGetComments = async () => {
     const data = response.data;
 
     const approvedComments = data.filter((comment: { is_approved: boolean }) => comment.is_approved);
-
+    
     return approvedComments;
   } catch (error) {
     console.error("Ошибка при загрузке comments:", error);

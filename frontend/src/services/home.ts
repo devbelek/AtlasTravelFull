@@ -1,4 +1,4 @@
-...import axios from "axios";
+import axios from "axios";
 import { axiosGetCity } from "./cities";
 
 export const axiosGetHome = async () => {
@@ -136,8 +136,7 @@ export const axiosGetBestOffers = async () => {
       best_choices.push(...transfersWithLink);
     }
 
-
-return { ...data, best_choices };
+    return { ...data, best_choices };
   } catch (error) {
     console.error("Ошибка при загрузке best offers:", error);
     return [];

@@ -6,7 +6,6 @@ COPY package*.json ./
 
 RUN npm ci || npm install
 
-# Просто копируем все файлы из текущего контекста
 COPY . .
 
 RUN npm run build

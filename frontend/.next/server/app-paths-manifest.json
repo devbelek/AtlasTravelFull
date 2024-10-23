@@ -1,7 +1,7 @@
 {
-  "/[locale]/[...not-found]/page": "app/[locale]/[...not-found]/page.js",
-  "/[locale]/flights/page": "app/[locale]/flights/page.js",
   "/[locale]/page": "app/[locale]/page.js",
+  "/[locale]/blog/page": "app/[locale]/blog/page.js",
+  "/[locale]/tours/[tourId]/page": "app/[locale]/tours/[tourId]/page.js",
   "/[locale]/about-us/page": "app/[locale]/about-us/page.js",
-  "/[locale]/tours/page": "app/[locale]/tours/page.js"
+  "/[locale]/car-rental/page": "app/[locale]/car-rental/page.js"
 }
