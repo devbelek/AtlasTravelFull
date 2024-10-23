@@ -18,7 +18,7 @@ export default createMiddleware({
   defaultLocale: 'ru'
 });
 
-export const config: { matcher: string[] } = {
-  matcher: ['/((?!api|_next|.*\\..*).*)']
+export const config = {
+  matcher: ["/((?!api|_next|.*\\..*).*)"],
 };
 
