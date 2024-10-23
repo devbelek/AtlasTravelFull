@@ -6,7 +6,7 @@ services:
     command: >
       bash -c "./manage.py collectstatic --noinput && 
                ./manage.py makemigrations && 
-               ./manage.py migrate --fake && 
+               ./manage.py migrate && 
                gunicorn -b 0.0.0.0:8000 atlas_travel.wsgi:application"
     volumes:
       - ./backend:/app
