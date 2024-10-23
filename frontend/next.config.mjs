@@ -10,7 +10,7 @@ const withNextIntl = createNextIntlPlugin();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['84.247.162.72'], // Добавьте домен для изображений
+    domains: ['84.247.162.72'],
   },
   webpack: (config) => {
     config.resolve.alias = {

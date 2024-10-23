@@ -75,14 +75,14 @@
     "consultSectionDesc": "If you have any questions, you can leave your phone number, and our specialists will contact you shortly. We are always happy to help you!",
     "consultSectionInputPlaceholder": "Phone number",
     "consultRequestSuccess": "Request sent, you will be contacted shortly",
-     "job": "Consultant"
+    "job": "Consultant"
   },
 
   "AboutPage": {
     "aboutUs": "About us",
 
     "ourProjects": "Our projects",
-     "faqBlockTitle": "Frequently Asked Questions"
+    "faqBlockTitle": "Frequently Asked Questions"
   },
 
   "TourDetailPage": {
@@ -149,7 +149,10 @@
     "noHotelsDesc": "There are no available hotels yet, try again later to see if something appears",
 
     "noCars": "No cars",
-    "noCarsDesc": "There are no available cars yet, try again later to see if something appears"
+    "noCarsDesc": "There are no available cars yet, try again later to see if something appears",
+
+    "noBlogs": "No news available",
+    "noBlogsDesc": "There are no fresh news updates at the moment; please check back later. We might add news soon."
   },
 
   "Footer": {
@@ -162,6 +165,6 @@
     "copyrights": "All rights reserved, Atlas Travel 2024",
     "remotion": "With care, Remotion",
 
-     "share": "Share"
+    "share": "Share"
   }
 }

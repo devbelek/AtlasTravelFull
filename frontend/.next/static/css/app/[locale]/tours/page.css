@@ -1505,3 +1505,29 @@ button.swiper-pagination-bullet {
   transition: 0.5s ease;
 }
 
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/ui/error_message/no_tours/NoTours.module.css ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************/
+.NoTours_no_tours_block__8nnVd {
+  display: block;
+  text-align: center;
+  margin: 100px auto;
+  color: var(--text);
+}
+
+.NoTours_no_tours_title__l0FD3 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 39.01px;
+
+  margin-bottom: 20px;
+}
+
+.NoTours_no_tours_desc__WrpBv {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.94px;
+
+  margin-bottom: 40px;
+}
+

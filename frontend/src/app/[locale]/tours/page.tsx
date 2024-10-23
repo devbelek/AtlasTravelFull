@@ -17,9 +17,10 @@ import { axiosGetHome } from "@/services/home";
 import { IMAGE_API_URL } from "@/constants/default_api";
 import { toursApi } from "@/constants/content";
 import { translate } from "@/constants/locale";
+import NoTours from "../components/ui/error_message/no_tours/NoTours";
+import noToursImage from "@/assets/empty_pages/no_tours.svg";
 
 export default function Tours() {
-  
   const t = useTranslations("OffersSwiperTitle");
 
   const pathname = usePathname();
@@ -66,9 +67,9 @@ export default function Tours() {
 
       <section className={styles.cards_section}>
         <Container isVisible={true}>
-          <div className={styles.cards_flex}>
-            {tours &&
-              tours.map((offer) => {
+          {tours.length > 0 ? (
+            <div className={styles.cards_flex}>
+              {tours.map((offer) => {
                 let title;
 
                 if (locale === "/kg") {
@@ -81,26 +82,29 @@ export default function Tours() {
 
                 return (
                   <MainCard
-                  key={offer.linkTo + offer.id}
-                  imageSrc={IMAGE_API_URL + offer.image.image}
-                  title={translate(
-                    offer.title_ru,
-                    offer.title_ky,
-                    offer.title_en
-                  )}
-                  rating={offer.rating}
-                  commentQuantity={offer.rating_quantity}
-                  desc={translate(
-                    offer.cityInfo.country.name_ru,
-                    offer.cityInfo.country.name_ky,
-                    offer.cityInfo.country.name_en
-                  )}
-                  linkTo={"tours"}
-                  index={offer.id}
+                    key={offer.linkTo + offer.id}
+                    imageSrc={IMAGE_API_URL + offer.image.image}
+                    title={translate(
+                      offer.title_ru,
+                      offer.title_ky,
+                      offer.title_en
+                    )}
+                    rating={offer.rating}
+                    commentQuantity={offer.rating_quantity}
+                    desc={translate(
+                      offer.cityInfo.country.name_ru,
+                      offer.cityInfo.country.name_ky,
+                      offer.cityInfo.country.name_en
+                    )}
+                    linkTo={"tours"}
+                    index={offer.id}
                   />
                 );
               })}
-          </div>
+            </div>
+          ) : (
+            <NoTours title="noTours" desc="noToursDesc" image={noToursImage} />
+          )}
         </Container>
       </section>
 

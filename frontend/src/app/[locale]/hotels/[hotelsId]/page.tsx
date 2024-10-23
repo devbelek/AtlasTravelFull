@@ -87,6 +87,7 @@ const HotelDetails: React.FC = () => {
         setCityInfo(cityResult);
 
         const similarHotels = await axiosGetToursSimilar(hotelsApi, hotelId);
+        console.log(similarHotels)
         setSimilarHotelsArr(similarHotels);
       } catch (error) {
         console.error("Ошибка загрузки данных: ", error);

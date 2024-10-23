@@ -129,7 +129,7 @@ const OurProjects = () => {
                 </svg>
               </div>
 
-              {ourProjects?.projects.map((tour) => (
+              {ourProjects?.projects?.map((tour) => (
                 <SwiperSlide key={tour.id}>
                   <TourCard
                     imageSrc={IMAGE_API_URL + tour.image.image}

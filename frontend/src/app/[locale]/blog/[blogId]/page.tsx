@@ -87,7 +87,7 @@ const BlogDetails = () => {
           ></p>
         </div>
 
-        {blogs?.sections.map((blog, index) => (
+        {blogs?.sections.map((blog) => (
           <div
             className={`${styles.blog_images_block} ${
               blog.image ? styles.maxHeight : styles.textHeght
@@ -121,7 +121,7 @@ const BlogDetails = () => {
             {blog.image && (
               <Image
                 src={blog.image}
-                alt="boat"
+                alt={blog.title}
                 className={styles.imageStyle}
               />
             )}

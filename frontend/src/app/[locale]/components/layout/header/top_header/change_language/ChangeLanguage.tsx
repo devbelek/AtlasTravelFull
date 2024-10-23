@@ -44,9 +44,8 @@ const ChangeLanguage: React.FC = () => {
   const [rotation, setRotation] = useState(180);
 
   useEffect(() => {
-    const savedLanguage = localStorage.getItem("currentLanguage") || "ru";
-    const language =
-      languages.find((lang) => lang.key === savedLanguage) || languages[0];
+    const savedLanguage = (localStorage.getItem("currentLanguage") as string) || "ru";
+    const language = languages.find((lang) => lang.key === savedLanguage) || languages[0];
     setCurrentLanguage(language);
   }, []);
 
@@ -61,26 +60,23 @@ const ChangeLanguage: React.FC = () => {
       setCurrentLanguage(selectedLanguage);
       localStorage.setItem("currentLanguage", key);
 
-     
       const currentPath = window.location.pathname;
       const newPathname = currentPath.replace(/^(\/ru|\/en|\/kg)/, `/${key}`);
 
-     
-      window.location.href = newPathname; 
+      if (!newPathname.startsWith(`/${key}`)) {
+        window.location.href = `/${key}${currentPath}`;
+      } else {
+        window.location.href = newPathname;
+      }
     }
     setOpen(false);
   };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (isOpen) {
-        if (
-          menuRef.current &&
-          !menuRef.current.contains(event.target as Node)
-        ) {
-          setOpen(false);
-          setRotation((prevRotation) => prevRotation + 180);
-        }
+      if (isOpen && menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setOpen(false);
+        setRotation((prevRotation) => prevRotation + 180);
       }
     };
 

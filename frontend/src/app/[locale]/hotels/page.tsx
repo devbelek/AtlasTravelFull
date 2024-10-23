@@ -16,6 +16,9 @@ import { axiosGetTours } from "@/services/tours";
 import { hotelsApi } from "@/constants/content";
 import { Hotel } from "@/types/tour";
 import { translate } from "@/constants/locale";
+import NoTours from "../components/ui/error_message/no_tours/NoTours";
+
+import noToursImage from "@/assets/empty_pages/no_hotels.svg";
 
 export default function Hotels() {
   const [hotelsArr, setHotelsArr] = useState<Hotel[]>([]);
@@ -39,6 +42,7 @@ export default function Hotels() {
       try {
         const hotelsArr = await axiosGetTours(hotelsApi);
         setHotelsArr(hotelsArr);
+        console.log(hotelsArr)
 
         const popularHotels = await axiosGetPopularHotels();
         setPopularHotelsArr(popularHotels.popular_hotels);
@@ -62,9 +66,9 @@ export default function Hotels() {
 
       <section className={styles.cards_section}>
         <Container isVisible={true}>
-          <div className={styles.cards_flex}>
-            {hotelsArr.length > 0 ? (
-              hotelsArr.map((offer, index) => {
+          {hotelsArr.length > 0 ? (
+            <div className={styles.cards_flex}>
+              {hotelsArr.map((offer) => {
                 let title;
 
                 if (locale === "/kg") {
@@ -87,19 +91,23 @@ export default function Hotels() {
                     rating={offer.rating}
                     commentQuantity={offer.rating_quantity}
                     desc={translate(
-                      offer.cityInfo.country.name_ru,
-                      offer.cityInfo.country.name_ky,
-                      offer.cityInfo.country.name_en
+                      offer?.cityInfo.country.name_ru,
+                      offer?.cityInfo.country.name_ky,
+                      offer?.cityInfo.country.name_en
                     )}
                     linkTo={"hotels"}
                     index={offer.id}
                   />
                 );
-              })
-            ) : (
-              <p>Нет доступных отелей</p>
-            )}
-          </div>
+              })}
+            </div>
+          ) : (
+            <NoTours
+              title="noHotels"
+              desc="noHotelsDesc"
+              image={noToursImage}
+            />
+          )}
         </Container>
       </section>
 

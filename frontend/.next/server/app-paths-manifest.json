@@ -1,8 +1,7 @@
 {
-  "/[locale]/about-us/page": "app/[locale]/about-us/page.js",
-  "/[locale]/tours/[tourId]/page": "app/[locale]/tours/[tourId]/page.js",
   "/[locale]/[...not-found]/page": "app/[locale]/[...not-found]/page.js",
-  "/[locale]/blog/page": "app/[locale]/blog/page.js",
-  "/[locale]/services/page": "app/[locale]/services/page.js",
-  "/[locale]/blog/[blogId]/page": "app/[locale]/blog/[blogId]/page.js"
+  "/[locale]/flights/page": "app/[locale]/flights/page.js",
+  "/[locale]/page": "app/[locale]/page.js",
+  "/[locale]/about-us/page": "app/[locale]/about-us/page.js",
+  "/[locale]/tours/page": "app/[locale]/tours/page.js"
 }

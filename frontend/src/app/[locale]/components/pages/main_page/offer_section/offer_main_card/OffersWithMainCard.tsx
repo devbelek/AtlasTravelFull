@@ -7,13 +7,14 @@ import "swiper/css";
 import styles from "../offer_block.module.css";
 import MainCard from "@/app/[locale]/components/cards/main_cards/MainCard";
 import { IMAGE_API_URL } from "@/constants/default_api";
-import { useLocale } from "@/constants/locale";
+import { translate, useLocale } from "@/constants/locale";
 import {
   flightsApi,
   hotelsApi,
   toursApi,
   transferApi,
 } from "@/constants/content";
+import { CityInfo } from "@/types/city";
 
 interface Image {
   id: number;
@@ -32,6 +33,7 @@ type OffersWithMainCardProps = {
     desc?: string;
     rating_quantity: number;
     linkTo: string;
+    cityInfo: CityInfo;
   }[];
 };
 
@@ -95,7 +97,19 @@ const OffersWithMainCard: React.FC<OffersWithMainCardProps> = ({
             <MainCard
               key={index}
               imageSrc={IMAGE_API_URL + slide.image.image}
-              title={slide.title}
+              title={
+                content == flightsApi
+                  ? `${translate(
+                      slide.cityInfo.country.name_ru,
+                      slide.cityInfo.country.name_ky,
+                      slide.cityInfo.country.name_en
+                    )}, ${translate(
+                      slide.cityInfo.name_ru,
+                      slide.cityInfo.name_ky,
+                      slide.cityInfo.name_en
+                    )}`
+                  : slide.title
+              }
               rating={slide.rating}
               commentQuantity={slide.rating_quantity}
               desc={slide.desc}

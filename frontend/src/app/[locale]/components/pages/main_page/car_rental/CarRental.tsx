@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import TripleImage from "../../../ui/triple_image/TripleImage";
 import { axiosGetCarRental } from "@/services/rent-of-car";
 import { StaticImageData } from "next/image";
-import { useLocale } from "@/constants/locale";
+import { translate, useLocale } from "@/constants/locale";
 
 type ImageObject = {
   id: number;
@@ -27,20 +27,15 @@ type CarRentalData = {
 const CarRental = () => {
   const locale = useLocale();
   const button = useTranslations("Buttons");
-  const [carRentalData, setCarRentalData] = useState<CarRentalData | null>(
-    null
-  );
+  const [carRentalData, setCarRentalData] = useState<CarRentalData>();
 
   const [error, setError] = useState("");
-
-  const removeHtmlTags = (text: string) => {
-    return text.replace(/<\/?[^>]+(>|$)/g, "");
-  };
 
   useEffect(() => {
     const loadData = async () => {
       try {
         const results = await axiosGetCarRental();
+        console.log(results);
         setCarRentalData(results);
       } catch (error) {
         console.error("Ошибка загрузки данных: ", error);
@@ -74,9 +69,13 @@ const CarRental = () => {
               {carRentalData ? carRentalData.title : "Загрузка..."}
             </h4>
             <ul className={styles.desc_list}>
-              {carRentalData?.descriptions.map((desc, index) => (
+              {carRentalData?.descriptions?.map((desc, index) => (
                 <li key={index} className={styles.desc_list_item}>
-                  {removeHtmlTags(desc.description)}
+                  {translate(
+                    desc.description,
+                    desc.description,
+                    desc.description
+                  )}
                 </li>
               ))}
             </ul>

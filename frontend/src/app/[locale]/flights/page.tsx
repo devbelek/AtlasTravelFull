@@ -17,6 +17,8 @@ import { axiosGetBestOffers, axiosGetHome } from "@/services/home";
 import { IMAGE_API_URL } from "@/constants/default_api";
 import { flightsApi, toursApi } from "@/constants/content";
 import { translate } from "@/constants/locale";
+import NoTours from "../components/ui/error_message/no_tours/NoTours";
+import noToursImage from "@/assets/empty_pages/no_flights.svg";
 
 export default function Flights() {
   const t = useTranslations("OffersSwiperTitle");
@@ -65,9 +67,9 @@ export default function Flights() {
 
       <section className={styles.cards_section}>
         <Container isVisible={true}>
-          <div className={styles.cards_flex}>
-            {flights &&
-              flights.map((offer) => {
+          {flights.length > 0 ? (
+            <div className={styles.cards_flex}>
+              {flights.map((offer) => {
                 let title;
 
                 if (locale === "/kg") {
@@ -82,24 +84,30 @@ export default function Flights() {
                   <MainCard
                     key={offer.linkTo + offer.id}
                     imageSrc={IMAGE_API_URL + offer.image.image}
-                    title={translate(
-                      offer.title_ru,
-                      offer.title_ky,
-                      offer.title_en
-                    )}
-                    rating={offer.rating}
-                    commentQuantity={offer.rating_quantity}
-                    desc={translate(
+                    title={`${translate(
                       offer.cityInfo.country.name_ru,
                       offer.cityInfo.country.name_ky,
                       offer.cityInfo.country.name_en
-                    )}
+                    )}, ${translate(
+                      offer.cityInfo.name_ru,
+                      offer.cityInfo.name_ky,
+                      offer.cityInfo.name_en
+                    )}`}
+                    rating={offer.rating}
+                    commentQuantity={offer.rating_quantity}
                     linkTo={"flights"}
                     index={offer.id}
                   />
                 );
               })}
-          </div>
+            </div>
+          ) : (
+            <NoTours
+              title="noTickets"
+              desc="noTicketsDesc"
+              image={noToursImage}
+            />
+          )}
         </Container>
       </section>
 

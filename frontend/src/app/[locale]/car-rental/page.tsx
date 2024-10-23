@@ -15,6 +15,8 @@ import { axiosGetHome } from "@/services/home";
 import { IMAGE_API_URL } from "@/constants/default_api";
 import { transferApi } from "@/constants/content";
 import { translate } from "@/constants/locale";
+import NoTours from "../components/ui/error_message/no_tours/NoTours";
+import noToursImage from "@/assets/empty_pages/no_transfer.svg";
 
 export default function CarRentals() {
   const t = useTranslations("OffersSwiperTitle");
@@ -61,40 +63,48 @@ export default function CarRentals() {
 
       <section className={styles.cards_section}>
         <Container isVisible={true}>
-          <div className={styles.cards_flex}>
-            {transfers.map((offer) => {
-              let title;
+          {transfers.length > 0 ? (
+            <div className={styles.cards_flex}>
+              {transfers.map((offer) => {
+                let title;
 
-              if (locale === "/kg") {
-                title = offer.title_ky;
-              } else if (locale === "/ru") {
-                title = offer.title_ru;
-              } else {
-                title = offer.title_en;
-              }
+                if (locale === "/kg") {
+                  title = offer.title_ky;
+                } else if (locale === "/ru") {
+                  title = offer.title_ru;
+                } else {
+                  title = offer.title_en;
+                }
 
-              return (
-                <MainCard
-                  key={offer.linkTo + offer.id}
-                  imageSrc={IMAGE_API_URL + offer.image.image}
-                  title={translate(
-                    offer.title_ru,
-                    offer.title_ky,
-                    offer.title_en
-                  )}
-                  rating={offer.rating}
-                  commentQuantity={offer.rating_quantity}
-                  desc={translate(
-                    offer.cityInfo.country.name_ru,
-                    offer.cityInfo.country.name_ky,
-                    offer.cityInfo.country.name_en
-                  )}
-                  linkTo={"car-rental"}
-                  index={offer.id}
-                />
-              );
-            })}
-          </div>
+                return (
+                  <MainCard
+                    key={offer.linkTo + offer.id}
+                    imageSrc={IMAGE_API_URL + offer.image.image}
+                    title={translate(
+                      offer.title_ru,
+                      offer.title_ky,
+                      offer.title_en
+                    )}
+                    rating={offer.rating}
+                    commentQuantity={offer.rating_quantity}
+                    desc={translate(
+                      offer.cityInfo.country.name_ru,
+                      offer.cityInfo.country.name_ky,
+                      offer.cityInfo.country.name_en
+                    )}
+                    linkTo={"car-rental"}
+                    index={offer.id}
+                  />
+                );
+              })}
+            </div>
+          ) : (
+            <NoTours
+              title="noCars"
+              desc="noCarsDesc"
+              image={noToursImage}
+            />
+          )}
         </Container>
       </section>
 

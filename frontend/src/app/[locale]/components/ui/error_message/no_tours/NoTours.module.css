@@ -1,0 +1,22 @@
+.no_tours_block {
+  display: block;
+  text-align: center;
+  margin: 100px auto;
+  color: var(--text);
+}
+
+.no_tours_title {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 39.01px;
+
+  margin-bottom: 20px;
+}
+
+.no_tours_desc {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.94px;
+
+  margin-bottom: 40px;
+}
