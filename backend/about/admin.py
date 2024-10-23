@@ -9,6 +9,7 @@ from .models import (AboutUs, AboutUsImage, FAQ, AboutUsInquiry,
                      AboutUsConsultant, OurProjects, PrivacyPolicy,
                      UserAgreement, ReturnPolicy)
 from django.utils.translation import gettext_lazy as _
+from django.contrib.postgres.forms import JSONField as JSONFormField
 
 
 @admin.register(AboutUs)
@@ -53,7 +54,6 @@ class AboutUsImageAdmin(admin.ModelAdmin):
         return super().has_add_permission(request)
 
 
-
 @admin.register(FAQ)
 class FAQAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_display = ('question_ru', 'question_ky', 'question_en')
@@ -89,6 +89,14 @@ class AboutUsInquiryAdmin(admin.ModelAdmin):
     list_filter = ['created_at']
     search_fields = ['phone_number']
     readonly_fields = ['created_at']
+
+
+class AboutUsConsultantForm(forms.ModelForm):
+    phone_numbers = JSONFormField(widget=forms.Textarea, required=False)
+
+    class Meta:
+        model = AboutUsConsultant
+        fields = '__all__'
 
 
 @admin.register(AboutUsConsultant)
