@@ -6,7 +6,8 @@ COPY package*.json ./
 
 RUN npm ci || npm install
 
-COPY ./frontend .
+# Просто копируем все файлы из текущего контекста
+COPY . .
 
 RUN npm run build
 
