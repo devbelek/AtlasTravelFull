@@ -125,7 +125,7 @@ class AboutUsConsultant(models.Model):
 
 class OurProjects(models.Model):
     title = models.CharField(max_length=200, default="Наши Проекты", verbose_name="Заголовок")
-    description = RichTextField(verbose_name="Описание")
+    description = models.TextField(verbose_name="Описание")
     youtube_video_url = models.URLField(verbose_name="URL видео с YouTube", blank=True, null=True)
     tours = models.ManyToManyField(Tour, related_name='our_projects', verbose_name="Связанные туры")
 
