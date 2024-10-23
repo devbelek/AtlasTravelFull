@@ -10,7 +10,7 @@ const withNextIntl = createNextIntlPlugin();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['84.247.162.72'],
+    domains: ['atlastravel.kg'],
   },
   webpack: (config) => {
     config.resolve.alias = {
