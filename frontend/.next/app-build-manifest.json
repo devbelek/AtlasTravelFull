@@ -1,10 +1,10 @@
 {
   "pages": {
-    "/[locale]/tours/[tourId]/page": [
+    "/[locale]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/[locale]/tours/[tourId]/page.css",
-      "static/chunks/app/[locale]/tours/[tourId]/page.js"
+      "static/css/app/[locale]/page.css",
+      "static/chunks/app/[locale]/page.js"
     ],
     "/[locale]/layout": [
       "static/chunks/webpack.js",
@@ -18,18 +18,6 @@
       "static/css/app/[locale]/not-found.css",
       "static/chunks/app/[locale]/not-found.js"
     ],
-    "/[locale]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/[locale]/page.css",
-      "static/chunks/app/[locale]/page.js"
-    ],
-    "/[locale]/about-us/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/[locale]/about-us/page.css",
-      "static/chunks/app/[locale]/about-us/page.js"
-    ],
     "/[locale]/tours/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -42,35 +30,17 @@
       "static/css/app/[locale]/flights/page.css",
       "static/chunks/app/[locale]/flights/page.js"
     ],
-    "/[locale]/flights/[flightsId]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/[locale]/flights/[flightsId]/page.css",
-      "static/chunks/app/[locale]/flights/[flightsId]/page.js"
-    ],
     "/[locale]/hotels/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/[locale]/hotels/page.css",
       "static/chunks/app/[locale]/hotels/page.js"
     ],
-    "/[locale]/hotels/[hotelsId]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/[locale]/hotels/[hotelsId]/page.css",
-      "static/chunks/app/[locale]/hotels/[hotelsId]/page.js"
-    ],
     "/[locale]/car-rental/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/[locale]/car-rental/page.css",
       "static/chunks/app/[locale]/car-rental/page.js"
-    ],
-    "/[locale]/car-rental/[transferId]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/[locale]/car-rental/[transferId]/page.css",
-      "static/chunks/app/[locale]/car-rental/[transferId]/page.js"
     ],
     "/[locale]/blog/page": [
       "static/chunks/webpack.js",
@@ -89,6 +59,59 @@
       "static/chunks/main-app.js",
       "static/css/app/[locale]/contacts/page.css",
       "static/chunks/app/[locale]/contacts/page.js"
+    ],
+    "/[locale]/privacy-policy/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/[locale]/privacy-policy/page.css",
+      "static/chunks/app/[locale]/privacy-policy/page.js"
+    ],
+    "/[locale]/user-agreement/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/[locale]/user-agreement/page.css",
+      "static/chunks/app/[locale]/user-agreement/page.js"
+    ],
+    "/[locale]/return-policy/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/[locale]/return-policy/page.css",
+      "static/chunks/app/[locale]/return-policy/page.js"
+    ],
+    "/[locale]/about-us/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/[locale]/about-us/page.css",
+      "static/chunks/app/[locale]/about-us/page.js"
+    ],
+    "/[locale]/blog/[blogId]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/[locale]/blog/[blogId]/page.css",
+      "static/chunks/app/[locale]/blog/[blogId]/page.js"
+    ],
+    "/[locale]/services/[servicesId]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/[locale]/services/[servicesId]/page.css",
+      "static/chunks/app/[locale]/services/[servicesId]/page.js"
+    ],
+    "/[locale]/tours/[tourId]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/[locale]/tours/[tourId]/page.css",
+      "static/chunks/app/[locale]/tours/[tourId]/page.js"
+    ],
+    "/[locale]/[...not-found]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/[locale]/[...not-found]/page.js"
+    ],
+    "/[locale]/car-rental/[transferId]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/[locale]/car-rental/[transferId]/page.css",
+      "static/chunks/app/[locale]/car-rental/[transferId]/page.js"
     ]
   }
 }

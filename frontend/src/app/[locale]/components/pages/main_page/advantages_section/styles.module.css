@@ -1,0 +1,71 @@
+.advantages_block {
+  margin-top: 100px;
+}
+
+.advantages_block .section_title {
+  text-align: center;
+  color: var(--text);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 60px;
+  letter-spacing: 0.015em;
+  margin-bottom: 40px;
+}
+
+.advantages_block_inner {
+  background: url("../../../../../../assets/section_backgrounds/advantages_bg.svg")
+    no-repeat;
+  background-position-x: center;
+  background-position-y: 35px;
+}
+
+.advantages_flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.advantages_flex_item {
+  width: 23%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .advantages_block_inner {
+    background: url("../../../../../../assets/section_backgrounds/advantages_bg_rotated.svg")
+      no-repeat;
+    background-position-x: 35%;
+    background-position-y: -25%;
+  }
+  .advantages_flex {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .advantages_flex_item {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .advantages_block .section_title {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 42px;
+  }
+}
+
+@media (max-width: 600px) {
+  .advantages_block_inner {
+    background-position-x: 50%;
+    background-position-y: 20%;
+  }
+
+  .advantages_flex {
+    gap: 30px;
+  }
+}

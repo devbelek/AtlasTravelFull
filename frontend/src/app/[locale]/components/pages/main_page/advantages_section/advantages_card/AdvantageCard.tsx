@@ -23,6 +23,8 @@ const AdvantageCard: React.FC<AdvantageProps> = ({
           src={imageSrc}
           layout="responsive"
           alt={alt}
+          width={100}
+          height={100}
         />
       </div>
       <h5 className={styles.title}>{title}</h5>

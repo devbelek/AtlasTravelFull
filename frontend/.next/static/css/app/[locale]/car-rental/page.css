@@ -12,131 +12,184 @@
     position: relative;
   }
   
+
+  .page_cards_flex__tJNxH {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px;
+    gap: 30px;
+    margin-top: 100px;
+  }
+  
+  .page_cards_section__uGEB2 {
+    margin-bottom: 100px;
+  }
+  
+  @media (max-width: 1200px) {
+    .page_cards_flex__tJNxH {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  @media (max-width: 740px) {
+    .page_cards_flex__tJNxH {
+      grid-template-columns: 1fr;
+    }
+  }
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/pages/main_page/date_picker_section/TicketFormComponent/ticket_form.module.css ***!
   \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 .ticket_form_ticket_picker_form__mqDIZ {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    border-radius: 15px;
-  }
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 15px;
+}
+
+.ticket_form_input_section__tOxUn {
+  width: 16%;
+  display: block;
+  height: 100%;
+  position: relative;
+  border-right: 1px solid var(--stroke);
+}
+
+.ticket_form_input_section__tOxUn label {
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  color: var(--text-input);
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17.07px;
+  text-align: left;
+}
+
+.ticket_form_input_section__tOxUn:first-child {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.ticket_form_input_section__tOxUn:first-child input {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.ticket_form_input_section__tOxUn:last-child {
+  background: var(--orange);
+}
+
+.ticket_form_input_section__tOxUn.ticket_form_button__JGiIL {
+  background: var(--orange);
+  padding: 28.5px 0;
+  flex-grow: 1;
+  border-right: 1px solid var(--orange);
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.ticket_form_input_section__tOxUn input {
+  display: block;
+  border: none;
+  padding: 42px 20px 16px;
+  width: 100%;
+  height: 100%;
+  outline: none;
+
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.94px;
+  text-align: left;
+}
+
+.ticket_form_input_section__tOxUn button {
+  color: white;
+  width: 100%;
+  height: 100%;
+  background: var(--orange);
+
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 21.94px;
+  text-align: center;
+}
+
+.ticket_form_dropdown__lylk2 {
+  position: absolute;
+  bottom: 0px;
+  top: calc(100% - 15px);
+  z-index: 100;
+  background: #fff;
+  width: 100%;
+  border-radius: 15px;
+}
+
+.ticket_form_dropdown_item__wXSxt {
+  background: #fff;
+  color: var(--text);
+  width: 100%;
+  padding: 16px 0px 16px 20px;
   
-  .ticket_form_input_section__tOxUn {
-    width: 16%;
-    display: block;
-    height: 100%;
-    position: relative;
-    border-right: 1px solid var(--stroke);
-  }
-  
-  .ticket_form_input_section__tOxUn label {
-    position: absolute;
-    top: 16px;
-    left: 20px;
-    color: var(--text-input);
-  
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 17.07px;
-    text-align: left;
-  }
-  
-  .ticket_form_input_section__tOxUn:first-child {
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-  }
-  
-  .ticket_form_input_section__tOxUn:first-child input {
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-  }
-  
-  .ticket_form_input_section__tOxUn:last-child {
-    background: var(--orange);
-  }
-  
-  .ticket_form_input_section__tOxUn.ticket_form_button__JGiIL {
-    background: var(--orange);
-    padding: 28.5px 0;
-    flex-grow: 1;
-    border-right: 1px solid var(--orange);
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-  }
-  
-  .ticket_form_input_section__tOxUn input {
-    display: block;
-    border: none;
-    padding: 42px 20px 16px;
-    width: 100%;
-    height: 100%;
-    outline: none;
-  
-    color: var(--text);
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 21.94px;
-    text-align: left;
-  }
-  
-  .ticket_form_input_section__tOxUn button {
-    color: white;
-    width: 100%;
-    height: 100%;
-    background: var(--orange);
-  
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 21.94px;
-    text-align: center;
+
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.94px;
+}
+
+.ticket_form_dropdown_item__wXSxt:hover {
+  cursor: pointer;
+  background: var(--text);
+  color: #fff;
+}
+
+@media (max-width: 1024px) {
+  .ticket_form_ticket_picker_form__mqDIZ {
+    flex-direction: column;
+    background: var(--stroke);
   }
 
-  @media (max-width: 1024px) {
-    .ticket_form_ticket_picker_form__mqDIZ {
-      flex-direction: column;
-      background: var(--stroke);
-    }
-  
-    .ticket_form_input_section__tOxUn {
-      width: 100%;
-      border-right: none;
-      border-bottom: 1px solid var(--stroke);
-    }
-  
-    .ticket_form_input_section__tOxUn input {
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 19.5px;
-  
-      padding: 32px 15px 12px;
-    }
-  
-    .ticket_form_input_section__tOxUn:first-child input {
-      border-bottom-left-radius: 0;
-      border-top-right-radius: 15px;
-    }
-  
-    .ticket_form_input_section__tOxUn.ticket_form_button__JGiIL {
-      border-bottom-left-radius: 15px;
-      border-top-right-radius: 0;
-      border-bottom: 1px solid var(--orange);
-  
-      font-size: 16px;
-      font-weight: 700;
-      line-height: 19.5px;
-  
-      padding: 22px 0;
-    }
-  
-    .ticket_form_input_section__tOxUn label {
-      font-size: 12px;
-      font-weight: 400;
-      line-height: 14.63px;
-      top: 12px;
-      left: 15px;
-    }
+  .ticket_form_input_section__tOxUn {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--stroke);
   }
+
+  .ticket_form_input_section__tOxUn input {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.5px;
+
+    padding: 32px 15px 12px;
+  }
+
+  .ticket_form_input_section__tOxUn:first-child input {
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 15px;
+  }
+
+  .ticket_form_input_section__tOxUn.ticket_form_button__JGiIL {
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 0;
+    border-bottom: 1px solid var(--orange);
+
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19.5px;
+
+    padding: 22px 0;
+  }
+
+  .ticket_form_input_section__tOxUn label {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14.63px;
+    top: 12px;
+    left: 15px;
+  }
+}
+
 /*!*************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/layout/container/Container.module.css ***!
   \*************************************************************************************************************************************************************************************************************************************************************************************************************/
@@ -1262,41 +1315,53 @@ button.swiper-pagination-bullet {
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/cards/tours_cards/tours_cards.module.css ***!
   \****************************************************************************************************************************************************************************************************************************************************************************************************************/
 .tours_cards_slide_inner__Bgmjg {
-    width: 300px;
-    height: 400px;
-    position: relative;
-    margin: 0 auto;
-  }
+  width: 300px;
+  height: 400px;
+  position: relative;
+  margin: 0 auto;
+}
 
-  .tours_cards_slide_inner__Bgmjg img{
-    border-radius: 20px;
-  }
-  
-  .tours_cards_title_desc_block__coFe2 .tours_cards_title__XeH59 {
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 27px;
-    color: white;
-  }
-  
-  .tours_cards_title_desc_block__coFe2 .tours_cards_desc___HOlP {
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 24px;
-    color: white;
-  }
+.tours_cards_slide_inner__Bgmjg img {
+  border-radius: 20px;
+  object-fit: cover;
+}
 
-  .tours_cards_title_desc_block__coFe2 {
-    -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-    position: absolute;
-    padding: 16px 20px;
-    bottom: 0;
-    left: 0px;
-    width: 300px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-  }
+.tours_cards_title_desc_block__coFe2 .tours_cards_title__XeH59 {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 27px;
+  color: white;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tours_cards_title_desc_block__coFe2 .tours_cards_desc___HOlP {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  color: white;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tours_cards_title_desc_block__coFe2 {
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  position: absolute;
+  padding: 16px 20px;
+  bottom: 0;
+  left: 0px;
+  width: 300px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/darker_filter/darker_filter.module.css ***!
   \**************************************************************************************************************************************************************************************************************************************************************************************************************/
@@ -1329,8 +1394,7 @@ button.swiper-pagination-bullet {
           backdrop-filter: blur(24px);
   display: flex;
   flex-direction: column;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  border-radius: 20px;
   align-items: stretch;
   box-shadow: 0px 0px 100px 0px #0117361a;
 }
@@ -1346,6 +1410,8 @@ button.swiper-pagination-bullet {
   position: absolute;
   top: 12px;
   right: 12px;
+  width: 47px;
+  aspect-ratio: 1;
   background-color: var(--orange);
 
   font-size: 18px;
@@ -1364,6 +1430,7 @@ button.swiper-pagination-bullet {
   height: 100%;
 
   object-fit: cover;
+  border: none !important;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 }
@@ -1371,6 +1438,9 @@ button.swiper-pagination-bullet {
 .main_cards_cardContent__ruoQZ {
   padding: 20px;
   background: white;
+
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 .main_cards_cardTitle__WMdga {
@@ -1433,67 +1503,5 @@ button.swiper-pagination-bullet {
 .page_link_page_link__hTki6:hover {
   background: #226ee6;
   transition: 0.5s ease;
-}
-
-/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/pages/offers_cards_list/offer_cards_list.module.css ***!
-  \***************************************************************************************************************************************************************************************************************************************************************************************************************************/
-.offer_cards_list_cards_flex__x1ETh {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 30px;
-  gap: 30px;
-  margin-top: 100px;
-}
-
-.offer_cards_list_cards_section__MKH8I {
-  margin-bottom: 100px;
-}
-
-@media (max-width: 1200px) {
-  .offer_cards_list_cards_flex__x1ETh {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 740px) {
-  .offer_cards_list_cards_flex__x1ETh {
-    grid-template-columns: 1fr;
-  }
-}
-
-/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/ui/pagination_controls/pagination_controls.module.css ***!
-  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************/
-.pagination_controls_pagination__0EFGH {
-  display: flex;
-  justify-content: center;
-  margin: 40px 0 100px;
-}
-
-.pagination_controls_pagination_buttons_block__JeCxe {
-  display: flex;
-  flex-direction: row;
-  gap: 0;
-}
-
-.pagination_controls_pagination_button__k29G0 {
-  width: 48px;
-  aspect-ratio: 1;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 28px;
-  text-align: center;
-  padding: 10px;
-  border-bottom: 2px solid var(--stroke);
-  color: var(--text-grey);
-  cursor: pointer;
-}
-
-.pagination_controls_pagination_button__k29G0:disabled,
-.pagination_controls_pagination_button__k29G0.pagination_controls_active__UxKOZ {
-  cursor: auto;
-  border-color: var(--blue);
-  color: var(--blue);
 }
 

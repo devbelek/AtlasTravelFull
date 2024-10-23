@@ -1,11 +1,11 @@
 import React from "react";
-import styles from "./triple_image.module.css"; // Импортируйте стили, если необходимо
+import styles from "./triple_image.module.css"; 
 import Image, { StaticImageData } from "next/image";
 
 type TripleImageProps = {
-  image1: StaticImageData; // Путь к первому изображению
-  image2: StaticImageData; // Путь ко второму изображению
-  image3: StaticImageData; // Путь к третьему изображению
+  image1: StaticImageData;
+  image2: StaticImageData;
+  image3: StaticImageData;
 };
 
 const TripleImage: React.FC<TripleImageProps> = ({
@@ -21,6 +21,7 @@ const TripleImage: React.FC<TripleImageProps> = ({
         width={200}
         height={280}
         alt="car1"
+        quality={100}
         className={styles.car_1_image}
       />
       <div className={styles.middle_car}>
@@ -30,6 +31,7 @@ const TripleImage: React.FC<TripleImageProps> = ({
           width={320}
           height={445}
           alt="car1"
+          quality={100}
           className={styles.car_2_image}
         />
       </div>
@@ -40,6 +42,7 @@ const TripleImage: React.FC<TripleImageProps> = ({
         width={200}
         height={280}
         alt="car1"
+        quality={100}
         className={styles.car_3_image}
       />
     </div>

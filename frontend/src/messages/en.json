@@ -66,11 +66,16 @@
     ]
   },
 
+  "BenefitsSection": {
+    "title": "Benefits of working with us"
+  },
+
   "ConsultSection": {
     "consultSectionTitle": "Leave a request for consultation",
     "consultSectionDesc": "If you have any questions, you can leave your phone number, and our specialists will contact you shortly. We are always happy to help you!",
     "consultSectionInputPlaceholder": "Phone number",
-    "consultRequestSuccess": "Request sent, you will be contacted shortly"
+    "consultRequestSuccess": "Request sent, you will be contacted shortly",
+     "job": "Consultant"
   },
 
   "AboutPage": {

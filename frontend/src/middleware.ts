@@ -1,11 +1,12 @@
 import createMiddleware from "next-intl/middleware";
 
 export default createMiddleware({
-    locales: ['ru', 'en', 'kg'],
-    defaultLocale: 'ru'
+  locales: ["ru", "en", "kg"],
+  defaultLocale: "ru",
 });
 
 export const config = {
-  // Match only internationalized pathnames
-  matcher: ["/", "/(ru|en|kg)/:path*"],
+  matcher: [
+    "/((?!api|_next/static|_next/image|favicon.ico|apple-touch-icon.png|favicon.svg|images/books|icons|manifest).*)",
+  ],
 };

@@ -9,11 +9,12 @@ import arrow from "@/assets/icons/blog_arrow.svg";
 import { usePathname } from "next/navigation";
 
 interface BlogCardsProps {
-  src: StaticImageData;
+  src: string;
   alt: string;
   isCardBig?: boolean;
-  title: string;
-  desc?: string;
+  title: string | undefined;
+  desc?: string | null;
+  index: number;
 }
 
 const BlogCards: React.FC<BlogCardsProps> = ({
@@ -22,6 +23,7 @@ const BlogCards: React.FC<BlogCardsProps> = ({
   isCardBig = false,
   title,
   desc,
+  index
 }) => {
   const pathname = usePathname();
 
@@ -38,9 +40,9 @@ const BlogCards: React.FC<BlogCardsProps> = ({
     <div
       className={`${styles.blog_card} ${isCardBig ? styles.big_blog_card : ""}`}
     >
-      <Link href={locale + "/blog/1"}>
+      <Link href={locale + "/blog/" + index}>
         <DarkerFilter isAllowHover={true} />
-        <Image src={src} alt={alt} className={styles.blog_image} />
+        <Image quality={100} src={src} alt={alt} className={styles.blog_image} width={300} height={400}/>
         <div className={styles.blog_info}>
           <h2 className={styles.blog_title}>{title}</h2>
           {desc && isCardBig ? (

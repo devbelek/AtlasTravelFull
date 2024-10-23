@@ -1,0 +1,112 @@
+.our_projects_block {
+  margin-bottom: 160px;
+  position: relative;
+  overflow: visible;
+}
+
+.our_projects_info .swiper {
+  overflow: hidden;
+}
+
+.our_projects_block .section_title {
+  margin-bottom: 30px;
+}
+
+.our_projects_block .section_desc {
+  margin-bottom: 30px;
+}
+
+.background_block {
+  position: absolute;
+  top: 30px;
+  left: 45%;
+  z-index: -1;
+  background: #eaf2fd;
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+}
+
+.projects_flex {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 40px;
+  height: auto;
+}
+
+.our_projects_info {
+  width: 49%;
+}
+
+.our_projects_info {
+  overflow: hidden;
+}
+
+.projects_flex iframe {
+  width: 100%;
+  height: 81%;
+  margin-top: 30px;
+  border-radius: 15px;
+}
+
+.swiper_button_block {
+  margin-top: 110px;
+}
+
+.our_projects_block {
+  position: relative;
+}
+
+.our_projects_block .swiper_button_prev,
+.our_projects_block .swiper_button_next {
+  position: absolute;
+  top: -90px;
+  z-index: 10;
+  background-color: var(--blue);
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+}
+
+.our_projects_block .swiper_button_prev {
+  right: 76px;
+}
+
+.our_projects_block .swiper_button_next {
+  right: 10px;
+}
+
+.our_projects_block .swiper_button_next svg,
+.our_projects_block .swiper_button_prev svg {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  text-align: center;
+  width: 10px;
+  height: 20px;
+}
+
+.our_projects_block .swiper_button_prev svg {
+  transform: translate(-50%, -50%) rotate(180deg);
+}
+
+@media (max-width: 1366px) {
+  .projects_flex {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .our_projects_info {
+    width: 100%;
+    margin-top: 0;
+  }
+  .our_projects_block .about_us_video {
+    width: 100%;
+    min-height: 400px;
+  }
+}

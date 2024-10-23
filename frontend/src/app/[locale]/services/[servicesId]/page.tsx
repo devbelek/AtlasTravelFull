@@ -19,7 +19,7 @@ const ServiceDetails = () => {
         <h1 className={styles.blog_title}>
           Как провести идеальный день на острове Хорватии
         </h1>
-        <Image src={image_1} alt="turtle" className={styles.blog_cover} />
+        <Image quality={100} width={1290} height={600} src={image_1} alt="turtle" className={styles.blog_cover} />
 
         <div className={styles.blog_info_block}>
           <h2 className={styles.blog_info_title}>

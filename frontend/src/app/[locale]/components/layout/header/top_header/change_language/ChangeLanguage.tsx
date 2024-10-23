@@ -61,12 +61,12 @@ const ChangeLanguage: React.FC = () => {
       setCurrentLanguage(selectedLanguage);
       localStorage.setItem("currentLanguage", key);
 
-      // Измените локаль в pathname
+     
       const currentPath = window.location.pathname;
       const newPathname = currentPath.replace(/^(\/ru|\/en|\/kg)/, `/${key}`);
 
-      // Перенаправьте пользователя на новый путь
-      window.location.href = newPathname; // Используйте window.location.href для перенаправления
+     
+      window.location.href = newPathname; 
     }
     setOpen(false);
   };
@@ -120,7 +120,7 @@ const ChangeLanguage: React.FC = () => {
         {isOpen && (
           <ul className={styles.language_menu}>
             {languages
-              .filter((lang) => lang.key !== currentLanguage?.key) // Фильтруем текущий язык
+              .filter((lang) => lang.key !== currentLanguage?.key) 
               .map((lang) => (
                 <li
                   className={styles.other_languages}

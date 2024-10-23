@@ -1277,492 +1277,11 @@ button.swiper-pagination-bullet {
 /*!****************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/page.module.css ***!
   \****************************************************************************************************************************************************************************************************************************************************************************/
-.page_cars_block__B_k_m {
-  min-height: 530px;
-  margin-bottom: 100px;
-}
-
-.page_car_block_inner__98KTd {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  min-height: 530px;
-}
-
-.page_car_images_block__nDvbK {
-  width: 45%;
-}
-
-.page_car_desc_block__G80RS {
-  width: 45%;
-}
-
-.page_title_block__nOzrm {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-  margin-top: 58px;
-}
-
-.page_title_block__nOzrm h4 {
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 24px;
-  margin-right: 45px;
-  color: var(--blue);
-}
-
-.page_title_block__nOzrm .page_stroke__em3iQ {
-  background-image: linear-gradient(
-    to right,
-    var(--stroke) 33%,
-    rgba(255, 255, 255, 0) 0%
-  );
-  background-position: bottom;
-  background-size: 10px 2px;
-  background-repeat: repeat-x;
-
-  height: 2px;
-  flex-grow: 1;
-}
-
-.page_car_block_title__03Lgy {
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 45px;
-
-  color: var(--text);
-
-  margin-bottom: 40px;
-}
-
-.page_desc_list__FQVoa {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  list-style: inside;
-  margin-bottom: 40px;
-}
-
-.page_desc_list_item__dAg92 {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 28px;
-}
-
-.page_desc_list_item__dAg92::marker {
-  color: var(--blue);
-  font-size: 18px;
-}
-
-.page_cars_page_link__2nLQ2 {
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 28px;
-  text-align: center;
-  color: #fff;
-  background: var(--blue);
-  padding: 14px 35px;
-  border-radius: 15px;
-}
-
-.page_comments_block__KeJ63 {
-  background: url(/_next/static/media/comment_bg.02b03b4c.png) no-repeat
-    center;
-  background-size: cover;
-  padding: 100px 0 0;
-  position: relative;
-}
-
-.page_comments_block__KeJ63 .page_offer_title__SQODk {
-  margin-bottom: 40px;
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 60px;
-  letter-spacing: 0.015em;
-}
-
-.page_comments_block__KeJ63 {
-  padding-bottom: 100px;
-  overflow: hidden !important;
-}
-
-.page_comments_block__KeJ63 .page_swiper_button_prev__C0nmm,
-.page_comments_block__KeJ63 .page_swiper_button_next__axRMp{
-  top: -90px;
-  z-index: 10;
-  background-color: var(--blue);
-  color: white;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  text-align: center;
-  position: absolute;
-  box-shadow: 0px 10px 14px 0px #313ef740;
-}
-
-.page_comments_block__KeJ63 .page_swiper_button_prev__C0nmm {
-  right: 76px;
-}
-
-.page_comments_block__KeJ63 .page_swiper_button_next__axRMp {
-  right: 10px;
-}
-
-.page_comment_block__jiVKx {
-  border-radius: 20px;
-  background: white;
-  padding: 24px 20px;
-  border: 1px solid #0117361a;
-  height: auto;
-}
-
-.page_clent_info_block__fPygY {
-  display: flex;
-  flex-direction: row;
-  gap: 16px;
-}
-
-.page_clent_info__1LDK5 {
-  padding: 5.5px 0;
-}
-
-.page_client_name__UDt6_ {
-  margin-bottom: 8px;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 24px;
-  color: var(--text);
-}
-
-.page_comment_person_image__ANQMN {
-  border-radius: 50% !important;
-}
-
-.page_client_rate__TcTNc {
-  display: flex;
-  flex-direction: row;
-  gap: 4px;
-}
-
-.page_client_comment__tacA3 {
-  margin-top: 16px;
-  font-size: 16px;
-  font-style: italic;
-  font-weight: 400;
-  line-height: 24px;
-  color: var(--text);
-  padding-right: 65px;
-}
-
 .page_best_offers_block__XOZ0p {
   padding: 100px 0;
   background: url(/_next/static/media/best_offer_bg.f9f41a0b.svg) repeat;
   background-size: cover;
   margin-bottom: 100px;
-}
-
-.page_best_offer_inner__ZuRC_ {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.page_best_offer_info__h7uNk h3 {
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 60px;
-  color: white;
-  margin-bottom: 16px;
-}
-
-.page_best_offer_info__h7uNk p {
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 27px;
-  color: white;
-}
-
-.page_best_offer_info__h7uNk {
-  width: 49.5%;
-}
-
-.page_best_offer_swiper__i1ZPN {
-  width: 49.5%;
-  position: relative;
-}
-
-.page_swiper_cards__akfG5 {
-  padding-right: 100px;
-}
-
-.page_sided_pagination__2f0jG {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 11px;
-}
-
-.page_swiper_button_prev__C0nmm,
-.page_swiper_button_next__axRMp {
-  z-index: 10;
-  background-color: var(--blue);
-  color: white;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  text-align: center;
-  position: relative;
-}
-
-.page_swiper_button_next__axRMp svg,
-.page_swiper_button_prev__C0nmm svg {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: absolute;
-  text-align: center;
-  width: 8px;
-  height: 16px;
-}
-
-.page_swiper_button_prev__C0nmm svg {
-  transform: translate(-50%, -50%) rotate(180deg);
-}
-
-.page_dotted_border__f9dfx {
-  background-image: linear-gradient(
-    to bottom,
-    #ffffff4d 33%,
-    rgba(255, 255, 255, 0) 0%
-  );
-  background-position: top;
-  background-size: 2px 10px;
-  background-repeat: repeat-y;
-  margin-bottom: 40px;
-  width: 2px;
-  height: 151px;
-}
-
-.page_advantages_block__jEm_g {
-  margin-top: 100px;
-}
-
-.page_advantages_block__jEm_g .page_section_title__sv3NG {
-  text-align: center;
-  color: var(--text);
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 60px;
-  letter-spacing: 0.015em;
-  margin-bottom: 40px;
-}
-
-.page_advantages_block_inner__kgOUw {
-  background: url(/_next/static/media/advantages_bg.e5466e5f.svg) no-repeat;
-  background-position-x: center;
-  background-position-y: 35px;
-}
-
-.page_advantages_flex__D2_1E {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.page_advantages_flex_item__VmXz_ {
-  width: 23%;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-@media (max-width: 1024px) {
-  .page_advantages_block_inner__kgOUw {
-    background: url(/_next/static/media/advantages_bg_rotated.09a424b3.svg)
-      no-repeat;
-    background-position-x: 35%;
-    background-position-y: -25%;
-  }
-  .page_advantages_flex__D2_1E {
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  .page_advantages_flex_item__VmXz_ {
-    width: 100%;
-  }
-}
-
-@media (max-width: 970px) {
-  .page_comments_block__KeJ63 .page_swiper_button_prev__C0nmm,
-  .page_comments_block__KeJ63 .page_swiper_button_next__axRMp {
-    width: 35px;
-    height: 35px;
-    top: 50%;
-    right: -18px;
-  }
-
-  .page_comments_block__KeJ63 .page_swiper_button_prev__C0nmm {
-    left: -18px;
-  }
-}
-
-@media (max-width: 960px) {
-  .page_car_block_inner__98KTd {
-    flex-direction: column;
-  }
-
-  .page_car_images_block__nDvbK {
-    width: 100%;
-  }
-
-  .page_car_desc_block__G80RS {
-    width: 100%;
-  }
-}
-
-@media (max-width: 768px) {
-  .page_best_offer_inner__ZuRC_ {
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  .page_best_offer_info__h7uNk {
-    width: 100%;
-  }
-  .page_best_offer_swiper__i1ZPN {
-    width: 100%;
-  }
-
-  .page_advantages_block__jEm_g .page_section_title__sv3NG {
-    font-size: 28px;
-    font-weight: 700;
-    line-height: 42px;
-  }
-}
-
-@media (max-width: 600px) {
-  .page_advantages_block_inner__kgOUw {
-    background-position-x: 50%;
-    background-position-y: 20%;
-  }
-
-  .page_advantages_flex__D2_1E {
-    gap: 30px;
-  }
-}
-
-@media (max-width: 500px) {
-  .page_swiper_cards__akfG5 {
-    padding-right: 0;
-  }
-}
-
-/*!****************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/cards/tours_cards/tours_cards.module.css ***!
-  \****************************************************************************************************************************************************************************************************************************************************************************************************************/
-.tours_cards_slide_inner__Bgmjg {
-    width: 300px;
-    height: 400px;
-    position: relative;
-    margin: 0 auto;
-  }
-
-  .tours_cards_slide_inner__Bgmjg img{
-    border-radius: 20px;
-  }
-  
-  .tours_cards_title_desc_block__coFe2 .tours_cards_title__XeH59 {
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 27px;
-    color: white;
-  }
-  
-  .tours_cards_title_desc_block__coFe2 .tours_cards_desc___HOlP {
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 24px;
-    color: white;
-  }
-
-  .tours_cards_title_desc_block__coFe2 {
-    -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-    position: absolute;
-    padding: 16px 20px;
-    bottom: 0;
-    left: 0px;
-    width: 300px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-  }
-/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/pages/main_page/advantages_section/advantages_card/advantage_cards.module.css ***!
-  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-.advantage_cards_rounded_block__XPVyO {
-  display: flex;
-  align-items: center;
-  max-width: 160px;
-  width: 100%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: white;
-  box-shadow: 0px 0px 100px 0px #0117361a;
-  position: relative;
-}
-
-.advantage_cards_image_in_round__a0IRa {
-  min-width: 50px;
-  max-width: 100px;
-  width: 100%;
-  margin: 0 auto;
-}
-
-.advantage_cards_title__SY4uI {
-  margin-top: 20px;
-  margin-bottom: 8px;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 27px;
-}
-
-.advantage_cards_desc__bIDFo {
-  color: var(--text-grey);
-
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-}
-
-.advantage_cards_desc__bIDFo::first-letter {
-  text-transform: uppercase;
-}
-
-@media (max-width: 768px) {
-  .advantage_cards_title__SY4uI {
-    font-size: 15px;
-    font-weight: 700;
-    line-height: 22.5px;
-  }
-
-  .advantage_cards_desc__bIDFo {
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 21px;
-  }
 }
 
 /*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
@@ -1816,7 +1335,7 @@ button.swiper-pagination-bullet {
   position: relative;
 }
 
-.consult_form_request_form__dmDc5 input {
+.consult_form_request_form_input__Yqwxt {
   flex-grow: 1;
   padding: 20px;
   padding-right: 145px;
@@ -1826,7 +1345,7 @@ button.swiper-pagination-bullet {
   line-height: 24px;
 }
 
-.consult_form_request_form__dmDc5 input::placeholder {
+.consult_form_request_form_input__Yqwxt::placeholder {
   font-size: 20px;
   font-weight: 400;
   line-height: 24px;
@@ -1856,7 +1375,9 @@ button.swiper-pagination-bullet {
 .consult_form_consultant_image__o3Bft {
   object-fit: cover;
   display: block;
-  transform: scale(1.35);
+  transform: scale(1.9) translateY(25px);
+  width: 300px;
+  height: 350px;
 }
 
 .consult_form_consultant_info__6_k1G {
@@ -1906,6 +1427,15 @@ button.swiper-pagination-bullet {
   display: flex;
   flex-direction: row;
   gap: 12px;
+}
+
+.consult_form_message__z9bvx {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.5px;
+  text-align: left;
+
+  margin-top: 12px;
 }
 
 @media (max-width: 935px) {
@@ -2133,127 +1663,156 @@ button.swiper-pagination-bullet {
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/pages/main_page/date_picker_section/TicketFormComponent/ticket_form.module.css ***!
   \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 .ticket_form_ticket_picker_form__mqDIZ {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    border-radius: 15px;
-  }
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 15px;
+}
+
+.ticket_form_input_section__tOxUn {
+  width: 16%;
+  display: block;
+  height: 100%;
+  position: relative;
+  border-right: 1px solid var(--stroke);
+}
+
+.ticket_form_input_section__tOxUn label {
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  color: var(--text-input);
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17.07px;
+  text-align: left;
+}
+
+.ticket_form_input_section__tOxUn:first-child {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.ticket_form_input_section__tOxUn:first-child input {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.ticket_form_input_section__tOxUn:last-child {
+  background: var(--orange);
+}
+
+.ticket_form_input_section__tOxUn.ticket_form_button__JGiIL {
+  background: var(--orange);
+  padding: 28.5px 0;
+  flex-grow: 1;
+  border-right: 1px solid var(--orange);
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.ticket_form_input_section__tOxUn input {
+  display: block;
+  border: none;
+  padding: 42px 20px 16px;
+  width: 100%;
+  height: 100%;
+  outline: none;
+
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.94px;
+  text-align: left;
+}
+
+.ticket_form_input_section__tOxUn button {
+  color: white;
+  width: 100%;
+  height: 100%;
+  background: var(--orange);
+
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 21.94px;
+  text-align: center;
+}
+
+.ticket_form_dropdown__lylk2 {
+  position: absolute;
+  bottom: 0px;
+  top: calc(100% - 15px);
+  z-index: 100;
+  background: #fff;
+  width: 100%;
+  border-radius: 15px;
+}
+
+.ticket_form_dropdown_item__wXSxt {
+  background: #fff;
+  color: var(--text);
+  width: 100%;
+  padding: 16px 0px 16px 20px;
   
-  .ticket_form_input_section__tOxUn {
-    width: 16%;
-    display: block;
-    height: 100%;
-    position: relative;
-    border-right: 1px solid var(--stroke);
-  }
-  
-  .ticket_form_input_section__tOxUn label {
-    position: absolute;
-    top: 16px;
-    left: 20px;
-    color: var(--text-input);
-  
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 17.07px;
-    text-align: left;
-  }
-  
-  .ticket_form_input_section__tOxUn:first-child {
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-  }
-  
-  .ticket_form_input_section__tOxUn:first-child input {
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-  }
-  
-  .ticket_form_input_section__tOxUn:last-child {
-    background: var(--orange);
-  }
-  
-  .ticket_form_input_section__tOxUn.ticket_form_button__JGiIL {
-    background: var(--orange);
-    padding: 28.5px 0;
-    flex-grow: 1;
-    border-right: 1px solid var(--orange);
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-  }
-  
-  .ticket_form_input_section__tOxUn input {
-    display: block;
-    border: none;
-    padding: 42px 20px 16px;
-    width: 100%;
-    height: 100%;
-    outline: none;
-  
-    color: var(--text);
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 21.94px;
-    text-align: left;
-  }
-  
-  .ticket_form_input_section__tOxUn button {
-    color: white;
-    width: 100%;
-    height: 100%;
-    background: var(--orange);
-  
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 21.94px;
-    text-align: center;
+
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.94px;
+}
+
+.ticket_form_dropdown_item__wXSxt:hover {
+  cursor: pointer;
+  background: var(--text);
+  color: #fff;
+}
+
+@media (max-width: 1024px) {
+  .ticket_form_ticket_picker_form__mqDIZ {
+    flex-direction: column;
+    background: var(--stroke);
   }
 
-  @media (max-width: 1024px) {
-    .ticket_form_ticket_picker_form__mqDIZ {
-      flex-direction: column;
-      background: var(--stroke);
-    }
-  
-    .ticket_form_input_section__tOxUn {
-      width: 100%;
-      border-right: none;
-      border-bottom: 1px solid var(--stroke);
-    }
-  
-    .ticket_form_input_section__tOxUn input {
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 19.5px;
-  
-      padding: 32px 15px 12px;
-    }
-  
-    .ticket_form_input_section__tOxUn:first-child input {
-      border-bottom-left-radius: 0;
-      border-top-right-radius: 15px;
-    }
-  
-    .ticket_form_input_section__tOxUn.ticket_form_button__JGiIL {
-      border-bottom-left-radius: 15px;
-      border-top-right-radius: 0;
-      border-bottom: 1px solid var(--orange);
-  
-      font-size: 16px;
-      font-weight: 700;
-      line-height: 19.5px;
-  
-      padding: 22px 0;
-    }
-  
-    .ticket_form_input_section__tOxUn label {
-      font-size: 12px;
-      font-weight: 400;
-      line-height: 14.63px;
-      top: 12px;
-      left: 15px;
-    }
+  .ticket_form_input_section__tOxUn {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--stroke);
   }
+
+  .ticket_form_input_section__tOxUn input {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.5px;
+
+    padding: 32px 15px 12px;
+  }
+
+  .ticket_form_input_section__tOxUn:first-child input {
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 15px;
+  }
+
+  .ticket_form_input_section__tOxUn.ticket_form_button__JGiIL {
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 0;
+    border-bottom: 1px solid var(--orange);
+
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19.5px;
+
+    padding: 22px 0;
+  }
+
+  .ticket_form_input_section__tOxUn label {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14.63px;
+    top: 12px;
+    left: 15px;
+  }
+}
+
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/pages/main_page/offer_section/offer_block.module.css ***!
   \****************************************************************************************************************************************************************************************************************************************************************************************************************************/
@@ -2379,6 +1938,295 @@ button.swiper-pagination-bullet {
   }
 }
 
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/cards/tours_cards/tours_cards.module.css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************/
+.tours_cards_slide_inner__Bgmjg {
+  width: 300px;
+  height: 400px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.tours_cards_slide_inner__Bgmjg img {
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.tours_cards_title_desc_block__coFe2 .tours_cards_title__XeH59 {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 27px;
+  color: white;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tours_cards_title_desc_block__coFe2 .tours_cards_desc___HOlP {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  color: white;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tours_cards_title_desc_block__coFe2 {
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  position: absolute;
+  padding: 16px 20px;
+  bottom: 0;
+  left: 0px;
+  width: 300px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/pages/main_page/best_offer/styles.module.css ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************/
+.styles_best_offer_inner__TVAqR {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .styles_best_offer_info__ekIhv h3 {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 60px;
+    color: white;
+    margin-bottom: 16px;
+  }
+  
+  .styles_best_offer_info__ekIhv p {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 27px;
+    color: white;
+  }
+  
+  .styles_best_offer_info__ekIhv {
+    width: 49.5%;
+  }
+  
+  .styles_best_offer_swiper__Edorl {
+    width: 49.5%;
+    position: relative;
+  }
+  
+  .styles_swiper_cards__QmBcW {
+    padding-right: 100px;
+  }
+  
+  .styles_sided_pagination___hd_z {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 11px;
+  }
+  
+  .styles_swiper_button_prev__nCsoX,
+  .styles_swiper_button_next__7t31k {
+    z-index: 10;
+    background-color: var(--blue);
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    position: relative;
+  }
+  
+  .styles_swiper_button_next__7t31k svg,
+  .styles_swiper_button_prev__nCsoX svg {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    text-align: center;
+    width: 8px;
+    height: 16px;
+  }
+  
+  .styles_swiper_button_prev__nCsoX svg {
+    transform: translate(-50%, -50%) rotate(180deg);
+  }
+  
+  .styles_dotted_border__s3sqK {
+    background-image: linear-gradient(
+      to bottom,
+      #ffffff4d 33%,
+      rgba(255, 255, 255, 0) 0%
+    );
+    background-position: top;
+    background-size: 2px 10px;
+    background-repeat: repeat-y;
+    margin-bottom: 40px;
+    width: 2px;
+    height: 151px;
+  }
+
+  @media (max-width: 768px) {
+    .styles_best_offer_inner__TVAqR {
+      flex-direction: column;
+      gap: 30px;
+    }
+  
+    .styles_best_offer_info__ekIhv {
+      width: 100%;
+    }
+    .styles_best_offer_swiper__Edorl {
+      width: 100%;
+    }
+  }
+
+
+  @media (max-width: 500px) {
+    .styles_swiper_cards__QmBcW {
+      padding-right: 0;
+    }
+  }
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/pages/main_page/car_rental/styles.module.css ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************/
+.styles_cars_block__3XFJW {
+    min-height: 530px;
+    margin-bottom: 100px;
+  }
+  
+  .styles_car_block_inner__RxsR8 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 530px;
+  }
+  
+  .styles_car_images_block__Lu1kC {
+    width: 45%;
+  }
+  
+  .styles_car_desc_block__bBV9_ {
+    width: 45%;
+  }
+  
+  .styles_title_block__fH7pn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    margin-top: 58px;
+  }
+  
+  .styles_title_block__fH7pn h4 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    margin-right: 45px;
+    color: var(--blue);
+  }
+  
+  .styles_title_block__fH7pn .styles_stroke__Y7G5e {
+    background-image: linear-gradient(
+      to right,
+      var(--stroke) 33%,
+      rgba(255, 255, 255, 0) 0%
+    );
+    background-position: bottom;
+    background-size: 10px 2px;
+    background-repeat: repeat-x;
+  
+    height: 2px;
+    flex-grow: 1;
+  }
+  
+  .styles_car_block_title__p_cdP {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 45px;
+  
+    color: var(--text);
+  
+    margin-bottom: 40px;
+  }
+  
+  .styles_desc_list__s7ZR0 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: inside;
+    margin-bottom: 40px;
+  }
+  
+  .styles_desc_list_item__iBZP4 {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+  }
+  
+  .styles_desc_list_item__iBZP4::marker {
+    color: var(--blue);
+    font-size: 18px;
+  }
+  
+  .styles_cars_page_link__fHwGw {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 28px;
+    text-align: center;
+    color: #fff;
+    background: var(--blue);
+    padding: 14px 35px;
+    border-radius: 15px;
+  }
+
+  @media (max-width: 960px) {
+    .styles_car_block_inner__RxsR8 {
+      flex-direction: column;
+    }
+  
+    .styles_car_images_block__Lu1kC {
+      width: 100%;
+    }
+  
+    .styles_car_desc_block__bBV9_ {
+      width: 100%;
+    }
+  }
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/ui/page_link/page_link.module.css ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************/
+.page_link_page_link__hTki6 {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 28px;
+  text-align: center;
+  color: #fff;
+  background: var(--blue);
+  padding: 14px 35px;
+  border-radius: 15px;
+  display: inline-block;
+  transition: 0.5s ease;
+}
+
+.page_link_page_link__hTki6:hover {
+  background: #226ee6;
+  transition: 0.5s ease;
+}
+
 /*!***************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/ui/triple_image/triple_image.module.css ***!
   \***************************************************************************************************************************************************************************************************************************************************************************************************************/
@@ -2443,24 +2291,244 @@ button.swiper-pagination-bullet {
   }
 }
 
-/*!*********************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/ui/page_link/page_link.module.css ***!
-  \*********************************************************************************************************************************************************************************************************************************************************************************************************/
-.page_link_page_link__hTki6 {
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 28px;
-  text-align: center;
-  color: #fff;
-  background: var(--blue);
-  padding: 14px 35px;
-  border-radius: 15px;
-  display: inline-block;
-  transition: 0.5s ease;
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/pages/main_page/comments_section/styles.module.css ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.styles_comments_block__1_6ma {
+    background: url(/_next/static/media/comment_bg.02b03b4c.png) no-repeat
+      center;
+    background-size: cover;
+    padding: 100px 0 0;
+    position: relative;
+  }
+  
+  .styles_comments_block__1_6ma .styles_offer_title__h2an3 {
+    margin-bottom: 40px;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 60px;
+    letter-spacing: 0.015em;
+  }
+  
+  .styles_comments_block__1_6ma {
+    padding-bottom: 100px;
+    overflow: hidden !important;
+  }
+  
+  .styles_comments_block__1_6ma .styles_swiper_button_prev__VwJck,
+  .styles_comments_block__1_6ma .styles_swiper_button_next__bp35o{
+    top: -90px;
+    z-index: 10;
+    background-color: var(--blue);
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    position: absolute;
+    box-shadow: 0px 10px 14px 0px #313ef740;
+  }
+  
+  .styles_comments_block__1_6ma .styles_swiper_button_prev__VwJck {
+    right: 76px;
+  }
+  
+  .styles_comments_block__1_6ma .styles_swiper_button_next__bp35o {
+    right: 10px;
+  }
+  
+  .styles_comment_block__RotZd {
+    border-radius: 20px;
+    background: white;
+    padding: 24px 20px;
+    border: 1px solid #0117361a;
+    height: auto;
+  }
+  
+  .styles_clent_info_block__wf8eR {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+  
+  .styles_clent_info__CpVZW {
+    padding: 5.5px 0;
+  }
+  
+  .styles_client_name__hCp_E {
+    margin-bottom: 8px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    color: var(--text);
+  }
+  
+  .styles_comment_person_image___hc5k {
+    border-radius: 50% !important;
+  }
+  
+  .styles_client_rate__3zwHC {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+  }
+  
+  .styles_client_comment__1ySzJ {
+    margin-top: 16px;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 24px;
+    color: var(--text);
+    padding-right: 65px;
+  }
+
+  @media (max-width: 970px) {
+    .styles_comments_block__1_6ma .styles_swiper_button_prev__VwJck,
+    .styles_comments_block__1_6ma .styles_swiper_button_next__bp35o {
+      width: 35px;
+      height: 35px;
+      top: 50%;
+      right: -18px;
+    }
+  
+    .styles_comments_block__1_6ma .styles_swiper_button_prev__VwJck {
+      left: -18px;
+    }
+  }
+
+  
+  
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/pages/main_page/advantages_section/advantages_card/advantage_cards.module.css ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.advantage_cards_rounded_block__XPVyO {
+  display: flex;
+  align-items: center;
+  max-width: 160px;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0px 0px 100px 0px #0117361a;
+  position: relative;
 }
 
-.page_link_page_link__hTki6:hover {
-  background: #226ee6;
-  transition: 0.5s ease;
+.advantage_cards_image_in_round__a0IRa {
+  min-width: 50px;
+  max-width: 100px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.advantage_cards_title__SY4uI {
+  margin-top: 20px;
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 27px;
+}
+
+.advantage_cards_desc__bIDFo {
+  color: var(--text-grey);
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.advantage_cards_desc__bIDFo::first-letter {
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .advantage_cards_title__SY4uI {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 22.5px;
+  }
+
+  .advantage_cards_desc__bIDFo {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+}
+
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/pages/main_page/advantages_section/styles.module.css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.styles_advantages_block__bWnRf {
+  margin-top: 100px;
+}
+
+.styles_advantages_block__bWnRf .styles_section_title__ZywXT {
+  text-align: center;
+  color: var(--text);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 60px;
+  letter-spacing: 0.015em;
+  margin-bottom: 40px;
+}
+
+.styles_advantages_block_inner__w__Or {
+  background: url(/_next/static/media/advantages_bg.e5466e5f.svg)
+    no-repeat;
+  background-position-x: center;
+  background-position-y: 35px;
+}
+
+.styles_advantages_flex__SQCK7 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.styles_advantages_flex_item__XL7Cp {
+  width: 23%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .styles_advantages_block_inner__w__Or {
+    background: url(/_next/static/media/advantages_bg_rotated.09a424b3.svg)
+      no-repeat;
+    background-position-x: 35%;
+    background-position-y: -25%;
+  }
+  .styles_advantages_flex__SQCK7 {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .styles_advantages_flex_item__XL7Cp {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .styles_advantages_block__bWnRf .styles_section_title__ZywXT {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 42px;
+  }
+}
+
+@media (max-width: 600px) {
+  .styles_advantages_block_inner__w__Or {
+    background-position-x: 50%;
+    background-position-y: 20%;
+  }
+
+  .styles_advantages_flex__SQCK7 {
+    gap: 30px;
+  }
 }
 

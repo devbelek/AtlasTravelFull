@@ -1,6 +1,7 @@
 .blog_card {
   position: relative;
   width: 100%;
+  aspect-ratio: 300 / 400;
   max-height: 400px;
   border-radius: 15px;
   overflow: hidden;

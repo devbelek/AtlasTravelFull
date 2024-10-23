@@ -1,0 +1,107 @@
+.comments_block {
+    background: url("../../../../../../assets/section_backgrounds/comment_bg.png") no-repeat
+      center;
+    background-size: cover;
+    padding: 100px 0 0;
+    position: relative;
+  }
+  
+  .comments_block .offer_title {
+    margin-bottom: 40px;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 60px;
+    letter-spacing: 0.015em;
+  }
+  
+  .comments_block {
+    padding-bottom: 100px;
+    overflow: hidden !important;
+  }
+  
+  .comments_block .swiper_button_prev,
+  .comments_block .swiper_button_next{
+    top: -90px;
+    z-index: 10;
+    background-color: var(--blue);
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    position: absolute;
+    box-shadow: 0px 10px 14px 0px #313ef740;
+  }
+  
+  .comments_block .swiper_button_prev {
+    right: 76px;
+  }
+  
+  .comments_block .swiper_button_next {
+    right: 10px;
+  }
+  
+  .comment_block {
+    border-radius: 20px;
+    background: white;
+    padding: 24px 20px;
+    border: 1px solid #0117361a;
+    height: auto;
+  }
+  
+  .clent_info_block {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+  
+  .clent_info {
+    padding: 5.5px 0;
+  }
+  
+  .client_name {
+    margin-bottom: 8px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    color: var(--text);
+  }
+  
+  .comment_person_image {
+    border-radius: 50% !important;
+  }
+  
+  .client_rate {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+  }
+  
+  .client_comment {
+    margin-top: 16px;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 24px;
+    color: var(--text);
+    padding-right: 65px;
+  }
+
+  @media (max-width: 970px) {
+    .comments_block .swiper_button_prev,
+    .comments_block .swiper_button_next {
+      width: 35px;
+      height: 35px;
+      top: 50%;
+      right: -18px;
+    }
+  
+    .comments_block .swiper_button_prev {
+      left: -18px;
+    }
+  }
+
+  
+  

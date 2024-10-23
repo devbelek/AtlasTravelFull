@@ -1,347 +1,3 @@
-/*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/about-us/page.module.css ***!
-  \*************************************************************************************************************************************************************************************************************************************************************************************/
-.page_about_us_flex__oBRiL {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 80px;
-}
-
-.page_about_us_info__MgVx7 {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.page_about_us_video__GY30z {
-  width: 45%;
-  border-radius: 20px;
-  margin-top: 15px;
-}
-
-.page_section_title__78mFc {
-  color: var(--text);
-
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 60px;
-}
-
-.page_section_desc__1oFVh {
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 25.2px;
-
-  color: var(--text);
-}
-
-.page_photos_anim_block__kI1qM {
-  background: url(/_next/static/media/plane_background_line.153140e4.svg)
-    center no-repeat;
-  background-size: cover;
-}
-
-.page_photos_anim_inner__sLvZy {
-  margin-top: 80px;
-  margin-bottom: 80px;
-  position: relative;
-  height: auto;
-  display: block;
-  width: 100%;
-  aspect-ratio: 1290 / 915;
-}
-
-.page_photos_anim__gMBv1 {
-  border-radius: 20px;
-  object-fit: cover;
-  width: 100%;
-}
-
-.page_firstIm__hflSA {
-  position: absolute;
-  top: 14.43%;
-  left: 0;
-}
-
-.page_secIm__OpmAy {
-  position: absolute;
-  top: 0;
-  left: calc(24.81% + 1.16%);
-}
-
-.page_thirdIm__aMQ_y {
-  position: absolute;
-  top: calc(16.67%);
-  left: calc(24.81% + 27.13% + 1.16% * 2);
-}
-
-.page_forthIm__OkVZl {
-  position: absolute;
-  bottom: calc(16.67%);
-  right: calc(24.81% + 27.13% + 1.16% * 2);
-}
-
-.page_fifthIm__BLlMc {
-  position: absolute;
-  bottom: 0;
-  right: calc(24.81% + 1.16%);
-}
-
-.page_sixthIm__TqslO {
-  position: absolute;
-  bottom: 20.11%;
-  right: 0;
-}
-
-.page_firstIm__hflSA,
-.page_sixthIm__TqslO {
-  width: 24.81%;
-  aspect-ratio: 320 / 500;
-}
-
-.page_secIm__OpmAy,
-.page_fifthIm__BLlMc {
-  width: 27.13%;
-  aspect-ratio: 350 / 450;
-}
-
-.page_thirdIm__aMQ_y,
-.page_forthIm__OkVZl {
-  width: 20.16%;
-  aspect-ratio: 260 / 300;
-}
-
-.page_photos_anim__gMBv1 {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.page_our_projects_block__Czluy {
-  margin-bottom: 160px;
-  position: relative;
-  overflow: visible;
-}
-
-.page_our_projects_info__duPkj .page_swiper__QyNSC {
-  overflow: hidden;
-}
-
-.page_our_projects_block__Czluy .page_section_title__78mFc {
-  margin-bottom: 30px;
-}
-
-.page_our_projects_block__Czluy .page_section_desc__1oFVh {
-  margin-bottom: 30px;
-}
-
-.page_background_block__VXJ4i {
-  position: absolute;
-  top: 30px;
-  left: 45%;
-  z-index: -1;
-  background: #eaf2fd;
-  width: 100%;
-  height: 100%;
-  border-radius: 30px;
-}
-
-.page_projects_flex__Csh1T {
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  gap: 40px;
-  height: auto;
-}
-
-.page_our_projects_info__duPkj {
-  width: 49%;
-}
-
-.page_our_projects_info__duPkj {
-  overflow: hidden;
-}
-
-.page_projects_flex__Csh1T iframe {
-  width: 100%;
-  height: 78%;
-  margin-top: 30px;
-}
-
-.page_swiper_button_block__bs0MK {
-  margin-top: 110px;
-}
-
-.page_faq_block__accNb {
-  background: #eaf2fd;
-  padding: 100px 0;
-  margin-top: 100px;
-}
-
-.page_faq_block__accNb .page_section_title__78mFc {
-  text-align: center;
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 60px;
-
-  margin-bottom: 40px;
-}
-
-.page_our_projects_block__Czluy {
-  position: relative;
-}
-
-.page_our_projects_block__Czluy .page_swiper_button_prev__py_oE,
-.page_our_projects_block__Czluy .page_swiper_button_next__avy4a {
-  position: absolute;
-  top: -90px;
-  z-index: 10;
-  background-color: var(--blue);
-  color: white;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  text-align: center;
-}
-
-.page_our_projects_block__Czluy .page_swiper_button_prev__py_oE {
-  right: 76px;
-}
-
-.page_our_projects_block__Czluy .page_swiper_button_next__avy4a {
-  right: 10px;
-}
-
-.page_our_projects_block__Czluy .page_swiper_button_next__avy4a svg,
-.page_our_projects_block__Czluy .page_swiper_button_prev__py_oE svg {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: absolute;
-  text-align: center;
-  width: 10px;
-  height: 20px;
-}
-
-.page_our_projects_block__Czluy .page_swiper_button_prev__py_oE svg {
-  transform: translate(-50%, -50%) rotate(180deg);
-}
-
-@media (max-width: 1366px) {
-  .page_projects_flex__Csh1T {
-    flex-direction: column;
-    gap: 30px;
-  }
-  .page_our_projects_info__duPkj {
-    width: 100%;
-    margin-top: 0;
-  }
-  .page_our_projects_block__Czluy .page_about_us_video__GY30z {
-    width: 100%;
-    min-height: 400px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .page_about_us_flex__oBRiL {
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  .page_about_us_info__MgVx7 {
-    width: 100%;
-    gap: 10px;
-  }
-
-  .page_about_us_video__GY30z {
-    width: 100%;
-    aspect-ratio: 335 / 230;
-  }
-}
-
-@media (max-width: 768px) {
-  .page_photos_anim_inner__sLvZy {
-    aspect-ratio: 320 / 829;
-    padding: 50px 0 0;
-    width: 100%;
-  }
-
-  .page_firstIm__hflSA {
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, 50px);
-  }
-
-  .page_secIm__OpmAy {
-    top: calc(26.54% + 0.96% + 50px);
-    left: calc(50% - 2.5% / 2 + 4px);
-    bottom: auto;
-  }
-
-  .page_thirdIm__aMQ_y {
-    top: calc(26.54% + 23.51% + (0.96% * 2) + 50px);
-    left: calc(50% - 2.5% / 2 + 4px);
-  }
-
-  .page_forthIm__OkVZl {
-    top: calc(26.54% + 0.96% + 50px);
-    right: calc(50% - 0.96% * 2);
-    transform: translateX(calc(-50% + 32% + 0.96% * 2));
-  }
-
-  .page_fifthIm__BLlMc {
-    left: 0px;
-    top: calc(26.54% + 17.52% + (0.96% * 2) + 50px);
-  }
-
-  .page_sixthIm__TqslO {
-    top: calc(26.54% + 23.51% + 17.52% + (0.96% * 3));
-    left: 50%;
-    transform: translate(-50%, 50px);
-  }
-
-  .page_firstIm__hflSA,
-  .page_sixthIm__TqslO {
-    width: 53.13%;
-    aspect-ratio: 170 / 220;
-  }
-
-  .page_secIm__OpmAy,
-  .page_fifthIm__BLlMc {
-    width: 47.13%;
-    aspect-ratio: 170 / 220;
-  }
-
-  .page_thirdIm__aMQ_y,
-  .page_forthIm__OkVZl {
-    width: 37.5%;
-    aspect-ratio: 120 / 145;
-  }
-}
-
-/*!*************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/layout/container/Container.module.css ***!
-  \*************************************************************************************************************************************************************************************************************************************************************************************************************/
-.Container_global_container__iCBtc{
-    display: block;
-    max-width: 1330px;
-    width: 100%;
-    overflow: hidden;
-    padding: 0 20px;
-    margin: 0 auto;
-}
-
-header .Container_global_container__iCBtc{
-    overflow: visible;
-}
-
-.Container_global_container_visible__kKNZP{
-    overflow: visible;
-}
 /*!****************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./node_modules/swiper/swiper.css ***!
   \****************************************************************************************************************************************************************************************************************************************************************************/
@@ -667,48 +323,24 @@ header .Container_global_container__iCBtc{
 }
 /* Navigation font end */
 
-/*!****************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/cards/tours_cards/tours_cards.module.css ***!
-  \****************************************************************************************************************************************************************************************************************************************************************************************************************/
-.tours_cards_slide_inner__Bgmjg {
-    width: 300px;
-    height: 400px;
-    position: relative;
-    margin: 0 auto;
-  }
-
-  .tours_cards_slide_inner__Bgmjg img{
-    border-radius: 20px;
-  }
-  
-  .tours_cards_title_desc_block__coFe2 .tours_cards_title__XeH59 {
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 27px;
-    color: white;
-  }
-  
-  .tours_cards_title_desc_block__coFe2 .tours_cards_desc___HOlP {
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 24px;
-    color: white;
-  }
-
-  .tours_cards_title_desc_block__coFe2 {
-    -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-    position: absolute;
-    padding: 16px 20px;
-    bottom: 0;
-    left: 0px;
-    width: 300px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-  }
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/pages/about_page/faq_component/faq.module.css ***!
   \*********************************************************************************************************************************************************************************************************************************************************************************************************************/
+.faq_faq_block__nQF3j {
+  background: #eaf2fd;
+  padding: 100px 0;
+  margin-top: 100px;
+}
+
+.faq_faq_block__nQF3j .faq_section_title__s7rBv {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 60px;
+
+  margin-bottom: 40px;
+}
+
 .faq_faqContainer__RdatJ {
   display: flex;
   flex-direction: row;
@@ -730,7 +362,7 @@ header .Container_global_container__iCBtc{
   position: relative;
   background-color: white;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: var(--transition-effect);
   width: 100%;
   box-shadow: 0px 2px 16px 1px #12325f1a;
 }
@@ -748,13 +380,13 @@ header .Container_global_container__iCBtc{
 .faq_answerClosed__LMLCH {
   overflow: hidden;
   max-height: 0;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
+  transition: var(--transition-effect);
   opacity: 0;
 }
 
 .faq_answerOpen__wrsR4 {
   max-height: 500px;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
+  transition: var(--transition-effect);
   opacity: 1;
 }
 
@@ -786,16 +418,17 @@ header .Container_global_container__iCBtc{
   display: block;
   width: 10px;
   height: 20px;
-  background: url(/_next/static/media/faq_arrow.54485496.svg) center no-repeat;
+  background: url(/_next/static/media/faq_arrow.54485496.svg) center
+    no-repeat;
 }
 
 .faq_arrowClosed__qVUAe.faq_arrow__tRWYM::after {
-  transition: transform 0.3s ease;
+  transition: var(--transition-effect);
   transform: translate(-50%, -50%) rotate(0deg);
 }
 
 .faq_arrowOpen__nPDLQ.faq_arrow__tRWYM::after {
-  transition: transform 0.3s ease;
+  transition: var(--transition-effect);
   transform: translate(-50%, -50%) rotate(90deg);
 }
 
@@ -811,6 +444,25 @@ header .Container_global_container__iCBtc{
   }
 }
 
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/layout/container/Container.module.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************/
+.Container_global_container__iCBtc{
+    display: block;
+    max-width: 1330px;
+    width: 100%;
+    overflow: hidden;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+header .Container_global_container__iCBtc{
+    overflow: visible;
+}
+
+.Container_global_container_visible__kKNZP{
+    overflow: visible;
+}
 /*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/default_sections/consult_form/consult_form.module.css ***!
   \*****************************************************************************************************************************************************************************************************************************************************************************************************************************/
@@ -862,7 +514,7 @@ header .Container_global_container__iCBtc{
   position: relative;
 }
 
-.consult_form_request_form__dmDc5 input {
+.consult_form_request_form_input__Yqwxt {
   flex-grow: 1;
   padding: 20px;
   padding-right: 145px;
@@ -872,7 +524,7 @@ header .Container_global_container__iCBtc{
   line-height: 24px;
 }
 
-.consult_form_request_form__dmDc5 input::placeholder {
+.consult_form_request_form_input__Yqwxt::placeholder {
   font-size: 20px;
   font-weight: 400;
   line-height: 24px;
@@ -902,7 +554,9 @@ header .Container_global_container__iCBtc{
 .consult_form_consultant_image__o3Bft {
   object-fit: cover;
   display: block;
-  transform: scale(1.35);
+  transform: scale(1.9) translateY(25px);
+  width: 300px;
+  height: 350px;
 }
 
 .consult_form_consultant_info__6_k1G {
@@ -952,6 +606,15 @@ header .Container_global_container__iCBtc{
   display: flex;
   flex-direction: row;
   gap: 12px;
+}
+
+.consult_form_message__z9bvx {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.5px;
+  text-align: left;
+
+  margin-top: 12px;
 }
 
 @media (max-width: 935px) {
@@ -1080,5 +743,378 @@ header .Container_global_container__iCBtc{
   .social_icons_icons_list__cWc9w {
     gap: 4px;
   }
+}
+
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/pages/about_page/about_us_info/styles.module.css ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.styles_about_us_flex__sw_jZ {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 80px;
+}
+
+.styles_about_us_info___wQYD {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.styles_about_us_video__X2GF_ {
+  width: 45%;
+  border-radius: 20px;
+  margin-top: 15px;
+}
+
+.styles_section_title__THH8k {
+  color: var(--text);
+
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 60px;
+}
+
+.styles_section_desc___li1c {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 25.2px;
+
+  color: var(--text);
+}
+
+@media (max-width: 1024px) {
+  .styles_about_us_flex__sw_jZ {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .styles_about_us_info___wQYD {
+    width: 100%;
+    gap: 10px;
+  }
+
+  .styles_about_us_video__X2GF_ {
+    width: 100%;
+    aspect-ratio: 335 / 230;
+  }
+}
+
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/pages/about_page/about_us_images/style.module.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.style_photos_anim_block__U6aEl {
+  background: url(/_next/static/media/plane_background_line.153140e4.svg)
+    center no-repeat;
+  background-size: cover;
+}
+
+.style_photos_anim_inner__7ypVA {
+  margin-top: 80px;
+  margin-bottom: 80px;
+  position: relative;
+  height: auto;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1290 / 915;
+}
+
+.style_photos_anim__o5gxF {
+  border-radius: 20px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.style_firstIm__yhHVO {
+  position: absolute;
+  top: 14.43%;
+  left: 0;
+}
+
+.style_secIm__sT30N {
+  position: absolute;
+  top: 0;
+  left: calc(24.81% + 1.16%);
+}
+
+.style_thirdIm__oVyzG {
+  position: absolute;
+  top: calc(16.67%);
+  left: calc(24.81% + 27.13% + 1.16% * 2);
+}
+
+.style_forthIm__u6ZXF {
+  position: absolute;
+  bottom: calc(16.67%);
+  right: calc(24.81% + 27.13% + 1.16% * 2);
+}
+
+.style_fifthIm__qzS4L {
+  position: absolute;
+  bottom: 0;
+  right: calc(24.81% + 1.16%);
+}
+
+.style_sixthIm__HNIMl {
+  position: absolute;
+  bottom: 20.11%;
+  right: 0;
+}
+
+.style_firstIm__yhHVO,
+.style_sixthIm__HNIMl {
+  width: 24.81%;
+  aspect-ratio: 320 / 500;
+}
+
+.style_secIm__sT30N,
+.style_fifthIm__qzS4L {
+  width: 27.13%;
+  aspect-ratio: 350 / 450;
+}
+
+.style_thirdIm__oVyzG,
+.style_forthIm__u6ZXF {
+  width: 20.16%;
+  aspect-ratio: 260 / 300;
+}
+
+.style_photos_anim__o5gxF {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .style_photos_anim_block__U6aEl {
+    background: url(/_next/static/media/plane_background_line_mobile.c535798d.svg)
+      center no-repeat;
+    background-size: cover;
+  }
+  .style_photos_anim_inner__7ypVA {
+    aspect-ratio: 320 / 829;
+    padding: 50px 0 0;
+    width: 100%;
+  }
+
+  .style_firstIm__yhHVO {
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 50px);
+  }
+
+  .style_secIm__sT30N {
+    top: calc(26.54% + 0.96% + 50px);
+    left: calc(50% - 2.5% / 2 + 4px);
+    bottom: auto;
+  }
+
+  .style_thirdIm__oVyzG {
+    top: calc(26.54% + 23.51% + (0.96% * 2) + 50px);
+    left: calc(50% - 2.5% / 2 + 4px);
+  }
+
+  .style_forthIm__u6ZXF {
+    top: calc(26.54% + 0.96% + 50px);
+    right: calc(50% - 0.96% * 2);
+    transform: translateX(calc(-50% + 32% + 0.96% * 2));
+  }
+
+  .style_fifthIm__qzS4L {
+    left: 0px;
+    top: calc(26.54% + 17.52% + (0.96% * 2) + 50px);
+  }
+
+  .style_sixthIm__HNIMl {
+    top: calc(26.54% + 23.51% + 17.52% + (0.96% * 3));
+    left: 50%;
+    transform: translate(-50%, 50px);
+  }
+
+  .style_firstIm__yhHVO,
+  .style_sixthIm__HNIMl {
+    width: 53.13%;
+    aspect-ratio: 170 / 220;
+  }
+
+  .style_secIm__sT30N,
+  .style_fifthIm__qzS4L {
+    width: 47.13%;
+    aspect-ratio: 170 / 220;
+  }
+
+  .style_thirdIm__oVyzG,
+  .style_forthIm__u6ZXF {
+    width: 37.5%;
+    aspect-ratio: 120 / 145;
+  }
+}
+
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/pages/about_page/our_projects/style.module.css ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************/
+.style_our_projects_block__axhjp {
+  margin-bottom: 160px;
+  position: relative;
+  overflow: visible;
+}
+
+.style_our_projects_info__vlPLw .style_swiper__xVEkV {
+  overflow: hidden;
+}
+
+.style_our_projects_block__axhjp .style_section_title__J55BM {
+  margin-bottom: 30px;
+}
+
+.style_our_projects_block__axhjp .style_section_desc__01aO8 {
+  margin-bottom: 30px;
+}
+
+.style_background_block__oOHTY {
+  position: absolute;
+  top: 30px;
+  left: 45%;
+  z-index: -1;
+  background: #eaf2fd;
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+}
+
+.style_projects_flex__mB5C0 {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 40px;
+  height: auto;
+}
+
+.style_our_projects_info__vlPLw {
+  width: 49%;
+}
+
+.style_our_projects_info__vlPLw {
+  overflow: hidden;
+}
+
+.style_projects_flex__mB5C0 iframe {
+  width: 100%;
+  height: 81%;
+  margin-top: 30px;
+  border-radius: 15px;
+}
+
+.style_swiper_button_block__CVP7B {
+  margin-top: 110px;
+}
+
+.style_our_projects_block__axhjp {
+  position: relative;
+}
+
+.style_our_projects_block__axhjp .style_swiper_button_prev__toaHz,
+.style_our_projects_block__axhjp .style_swiper_button_next__cXb7A {
+  position: absolute;
+  top: -90px;
+  z-index: 10;
+  background-color: var(--blue);
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+}
+
+.style_our_projects_block__axhjp .style_swiper_button_prev__toaHz {
+  right: 76px;
+}
+
+.style_our_projects_block__axhjp .style_swiper_button_next__cXb7A {
+  right: 10px;
+}
+
+.style_our_projects_block__axhjp .style_swiper_button_next__cXb7A svg,
+.style_our_projects_block__axhjp .style_swiper_button_prev__toaHz svg {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  text-align: center;
+  width: 10px;
+  height: 20px;
+}
+
+.style_our_projects_block__axhjp .style_swiper_button_prev__toaHz svg {
+  transform: translate(-50%, -50%) rotate(180deg);
+}
+
+@media (max-width: 1366px) {
+  .style_projects_flex__mB5C0 {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .style_our_projects_info__vlPLw {
+    width: 100%;
+    margin-top: 0;
+  }
+  .style_our_projects_block__axhjp .style_about_us_video__YR1an {
+    width: 100%;
+    min-height: 400px;
+  }
+}
+
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/cards/tours_cards/tours_cards.module.css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************/
+.tours_cards_slide_inner__Bgmjg {
+  width: 300px;
+  height: 400px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.tours_cards_slide_inner__Bgmjg img {
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.tours_cards_title_desc_block__coFe2 .tours_cards_title__XeH59 {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 27px;
+  color: white;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tours_cards_title_desc_block__coFe2 .tours_cards_desc___HOlP {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  color: white;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tours_cards_title_desc_block__coFe2 {
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  position: absolute;
+  padding: 16px 20px;
+  bottom: 0;
+  left: 0px;
+  width: 300px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 

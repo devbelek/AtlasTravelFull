@@ -3,25 +3,26 @@ import Image, { StaticImageData } from "next/image";
 import styles from "./main_cards.module.css";
 import PageLink from "../../ui/page_link/PageLink";
 import { useTranslations } from "next-intl";
+import { useLocale } from "@/constants/locale";
 
 type MainCardProps = {
   imageSrc: StaticImageData | string;
-  alt: string;
   rating: number;
   title: string;
   desc?: string;
   commentQuantity: number;
   linkTo: string;
+  index: number;
 };
 
 const MainCard: React.FC<MainCardProps> = ({
   imageSrc,
-  alt,
   rating,
   title,
   desc,
   commentQuantity,
   linkTo,
+  index
 }) => {
   const button = useTranslations("Buttons");
   const reviews = useTranslations("TourDetailPage");
@@ -42,6 +43,8 @@ const MainCard: React.FC<MainCardProps> = ({
     reviewRussian = reviews("commentsQuantityMany");
   }
 
+  const locale = useLocale();
+
   return (
     <div className={styles.card}>
       <div className={styles.imageWrapper}>
@@ -50,10 +53,11 @@ const MainCard: React.FC<MainCardProps> = ({
         </div>
         <Image
           src={imageSrc}
-          alt={alt}
+          alt={title}
           width={320}
           height={300}
           className={styles.cardImage}
+          quality={100}
         />
       </div>
       <div className={styles.cardContent}>
@@ -65,7 +69,7 @@ const MainCard: React.FC<MainCardProps> = ({
               {commentQuantity} {reviewRussian}
             </span>
           </div>
-          <PageLink linkTo={linkTo} text={button("getDetails")} />
+          <PageLink linkTo={locale + "/" + linkTo + "/" + index} text={button("getDetails")} />
         </div>
       </div>
     </div>

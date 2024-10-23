@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/swiper-bundle.css";
 import "swiper/css";
 
-import styles from "./page.module.css";
+import styles from "../../content_detail_page.module.css";
 import Container from "../../components/layout/container/Container";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper";
@@ -14,35 +14,39 @@ import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import Image from "next/image";
 
 import city from "@/assets/icons/city_country.svg";
-import calendar from "@/assets/icons/calendar.svg";
 
-import planeTag from "@/assets/icons/plane_tag.svg";
-import wifiTag from "@/assets/icons/wifi_tag.svg";
-import bedTag from "@/assets/icons/bed_tag.svg";
-import foodTag from "@/assets/icons/food_tag.svg";
-import heartTag from "@/assets/icons/heart_tag.svg";
-import transferTag from "@/assets/icons/transfer_tag.svg";
 import { useTranslations } from "next-intl";
 import star from "@/assets/icons/Star 4.svg";
 
-import image_1 from "@/assets/ticket_cards/tours/image_1.jpeg";
-import image_2 from "@/assets/ticket_cards/tours/image_2.jpeg";
-import image_3 from "@/assets/ticket_cards/tours/image_3.jpeg";
-import image_4 from "@/assets/ticket_cards/tours/image_4.jpeg";
-import image_5 from "@/assets/ticket_cards/tours/image_5.jpeg";
-import image_6 from "@/assets/ticket_cards/tours/image_6.jpeg";
-import image_7 from "@/assets/ticket_cards/tours/image_7.jpeg";
-import image_8 from "@/assets/ticket_cards/tours/image_8.jpeg";
-import image_9 from "@/assets/ticket_cards/tours/image_9.jpeg";
-import image_10 from "@/assets/ticket_cards/tours/image_10.jpeg";
-import image_11 from "@/assets/ticket_cards/tours/image_11.jpeg";
-import image_12 from "@/assets/ticket_cards/tours/image_12.jpeg";
 import OffersWithMainCard from "../../components/pages/main_page/offer_section/offer_main_card/OffersWithMainCard";
 import OffersBlock from "../../components/pages/main_page/offer_section/OfferBlock";
+import { axiosGetHome, axiosGetPopularHotels } from "@/services/home";
+import { axiosGetToursDetails, axiosGetToursSimilar } from "@/services/tours";
+import { TourDetailsInterface } from "@/types/tour";
+import { usePathname } from "next/navigation";
+import { getPluralValues } from "@/services/right_quanity";
+import { cleanAndDecodeString, translate, useLocale } from "@/constants/locale";
+import { axiosGetCity } from "@/services/cities";
+import { CityInfo } from "@/types/city";
+import starGrey from "@/assets/icons/Star 5.svg";
+import { hotelsApi } from "@/constants/content";
 
 const HotelDetails: React.FC = () => {
+  const [homeResultsArr, setHomeResultsArr] = useState<any[]>([]);
+  const [hotelsDetails, setHotelsDetails] =
+    useState<TourDetailsInterface | null>(null);
+  const [similarHotelsArr, setSimilarHotelsArr] = useState<any[]>([]);
+
+  const [cityInfo, setCityInfo] = useState<CityInfo | null>(null);
+
+  const locale = useLocale();
+
+  const [error, setError] = useState("");
+
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
-  const [modalThumbsSwiper, setModalThumbsSwiper] = useState<SwiperType | null>(null);
+  const [modalThumbsSwiper, setModalThumbsSwiper] = useState<SwiperType | null>(
+    null
+  );
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
@@ -64,53 +68,38 @@ const HotelDetails: React.FC = () => {
 
   const t = useTranslations("Buttons");
   const tours = useTranslations("OffersSwiperTitle");
-  const offers = useTranslations("OffersSwiperTitle");
+  const noCom = useTranslations("EmptyPages");
 
-  const images = [
-    image_1,
-    image_2,
-    image_3,
-    image_4,
-    image_5,
-    image_6,
-    image_7,
-    image_8,
-    image_9,
-    image_10,
-    image_11,
-    image_12,
-  ];
+  const pathname = usePathname();
+  const pathParts = pathname.split("/");
+  const hotelId = pathParts[pathParts.length - 1];
 
-  const toursOffers = [];
-  const ideaOffers = [];
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const homeResults = await axiosGetPopularHotels();
+        setHomeResultsArr(homeResults.popular_hotels);
 
-  for (let i = 0; i < 8; i++) {
-    let imageSrc;
-    if (i % 2 == 0) {
-      imageSrc = image_1;
-    } else {
-      imageSrc = image_2;
-    }
+        const hotelResults = await axiosGetToursDetails(hotelsApi, hotelId);
+        setHotelsDetails(hotelResults);
 
-    ideaOffers.push({
-      image: imageSrc,
-      alt: "image 1",
-      title: "Дом на воде",
-      desc: "Дубай",
-    });
-  }
+        const cityResult = await axiosGetCity(hotelResults.city);
+        setCityInfo(cityResult);
 
-  for (let i = 0; i < 12; i++) {
-    toursOffers.push({
-      image: images[i],
-      alt: "Турция, Мармарис",
-      rating: 8.4,
-      commentQuantity: 2,
-      title: "Наименование тура",
-      desc: "ОАЭ, Дубай",
-      linkTo: "/"
-    });
-  }
+        const similarHotels = await axiosGetToursSimilar(hotelsApi, hotelId);
+        setSimilarHotelsArr(similarHotels);
+      } catch (error) {
+        console.error("Ошибка загрузки данных: ", error);
+        setError("Не удалось загрузить данные");
+      }
+    };
+
+    loadData();
+  }, []);
+
+  const formatDate = (dateString: string): string => {
+    return dateString.replace(/-/g, ".");
+  };
 
   return (
     <main className={styles.tour_detail_page}>
@@ -119,7 +108,7 @@ const HotelDetails: React.FC = () => {
           <div className={styles.swiper_block}>
             <Swiper
               slidesPerView={1}
-              thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null}}
+              thumbs={{ swiper: thumbsSwiper }}
               modules={[FreeMode, Navigation, Thumbs]}
               navigation={{
                 prevEl: `.${styles.swiper_button_prev}`,
@@ -127,18 +116,13 @@ const HotelDetails: React.FC = () => {
               }}
               className={styles.upper_swiper}
             >
-              {Array.from({ length: 10 }, (_, i) => (
+              {hotelsDetails?.images.map((image, index) => (
                 <SwiperSlide
-                  key={i}
+                  key={image.id}
                   className={styles.swiper_image}
-                  onClick={() => openModal(i)}
+                  onClick={() => openModal(index)}
                 >
-                  <img
-                    src={`https://swiperjs.com/demos/images/nature-${
-                      i + 1
-                    }.jpg`}
-                    alt={`nature-${i + 1}`}
-                  />
+                  <img src={image.image} alt={`image-${index + 1}`} />
                 </SwiperSlide>
               ))}
               <div className={styles.swiper_button_prev}>
@@ -172,6 +156,7 @@ const HotelDetails: React.FC = () => {
                 </svg>
               </div>
             </Swiper>
+
             <Swiper
               spaceBetween={8}
               slidesPerView={4}
@@ -181,68 +166,72 @@ const HotelDetails: React.FC = () => {
               className={styles.lower_swiper}
               onSwiper={setThumbsSwiper}
             >
-              {Array.from({ length: 10 }, (_, i) => (
-                <SwiperSlide key={i} className={styles.swiper_image_bottom}>
-                  <img
-                    src={`https://swiperjs.com/demos/images/nature-${
-                      i + 1
-                    }.jpg`}
-                    alt={`thumbnail-${i + 1}`}
-                  />
+              {hotelsDetails?.images?.map((image) => (
+                <SwiperSlide key={image.id} className={styles.swiper_image}>
+                  <img src={image.image} alt={`tour-image-${image.id}`} />
                 </SwiperSlide>
               ))}
             </Swiper>
           </div>
           <div className={styles.main_info}>
-            <span className={styles.average_score}>8.4</span>
-            <span className={styles.reviews_quantity}>10 отзывов</span>
+            <span className={styles.average_score}>
+              {hotelsDetails?.average_rating}
+            </span>
+            <span className={styles.reviews_quantity}>
+              {getPluralValues(
+                hotelsDetails?.rating_count ?? 0,
+                locale === "/ru"
+                  ? ["отзыв", "отзыва", "отзывов"]
+                  : locale === "/kg"
+                  ? ["пикир", "сын-пикирлер", "сын-пикирлер"]
+                  : ["review", "reviews", "reviews"]
+              )}
+            </span>
 
-            <h1 className={styles.title}>Наименование тура</h1>
+            <h1 className={styles.title}>
+              {translate(
+                hotelsDetails?.title_ru ?? "",
+                hotelsDetails?.title_ky ?? "",
+                hotelsDetails?.title_en ?? ""
+              )}
+            </h1>
 
             <div className={styles.icon_and_text}>
               <div className={styles.icon_and_text_inner}>
                 <Image src={city} width={24} height={24} alt="city icon" />
-                <p>ОАЭ, Дубай</p>
-              </div>
-              <div className={styles.icon_and_text_inner}>
-                <Image src={calendar} width={24} height={24} alt="city icon" />
-                <p>28.09.2024 - 14.10.2024</p>
+                <p>
+                  {translate(
+                    cityInfo?.country.name_ru ?? "",
+                    cityInfo?.country.name_ky ?? "",
+                    cityInfo?.country.name_en ?? ""
+                  )}
+                  ,{" "}
+                  {translate(
+                    cityInfo?.name_ru ?? "",
+                    cityInfo?.name_ky ?? "",
+                    cityInfo?.name_en ?? ""
+                  )}
+                </p>
               </div>
             </div>
-            <p className={styles.desc}>
-              Погрузитесь в атмосферу спокойствия и роскоши на Мальдивах —
-              месте, где бесконечные белоснежные пляжи встречаются с кристально
-              чистыми лагунами. Этот тур идеально подходит для тех, кто хочет
-              убежать от повседневной суеты и насладиться романтикой и
-              уединением. Вас ждут уютные виллы с видом на океан, ужины на
-              берегу под звездным небом, дайвинг среди коралловых рифов и
-              расслабляющие SPA-процедуры.
+            <p
+              className={styles.desc}
+              dangerouslySetInnerHTML={{
+                __html: translate(
+                  hotelsDetails?.description_ru ?? "",
+                  hotelsDetails?.description_ky ?? "",
+                  hotelsDetails?.description_en ?? ""
+                ),
+              }}
+            >
             </p>
             <div className={styles.tag_block}>
-              <div className={styles.tag}>
-                <Image src={planeTag} width={24} height={24} alt="icon" />
-                <p>Перелет</p>
-              </div>
-              <div className={styles.tag}>
-                <Image src={wifiTag} width={24} height={24} alt="icon" />
-                <p>Бесплатный Wi-fi</p>
-              </div>
-              <div className={styles.tag}>
-                <Image src={bedTag} width={24} height={24} alt="icon" />
-                <p>Проживание</p>
-              </div>
-              <div className={styles.tag}>
-                <Image src={foodTag} width={24} height={24} alt="icon" />
-                <p>Питание BB</p>
-              </div>
-              <div className={styles.tag}>
-                <Image src={heartTag} width={24} height={24} alt="icon" />
-                <p>Страховка</p>
-              </div>
-              <div className={styles.tag}>
-                <Image src={transferTag} width={24} height={24} alt="icon" />
-                <p>Трансфер</p>
-              </div>
+              {hotelsDetails?.tags.map((tag) => (
+                <div key={tag.id} className={styles.tag}>
+                  <Image src={tag.icon} width={24} height={24} alt="icon" />
+                  <p>{translate(tag.name_ru, tag.name_ky, tag.name_en)}</p>
+                </div>
+              ))}
             </div>
 
             <button className={styles.learn_more}>{t("getDetails")}</button>
@@ -252,169 +241,65 @@ const HotelDetails: React.FC = () => {
 
       <section className={styles.comments_section}>
         <Container isVisible={true}>
-          <h2 className={styles.section_title}>{offers("comments")}</h2>
+          <h2 className={styles.section_title}>{tours("comments")}</h2>
           <div className={styles.comment_block}>
-            <div className={styles.comment_block_item}>
-              <div className={styles.clent_info_block}>
-                <div className={styles.clent_info}>
-                  <div className={styles.client_rate}>
-                    <Image
-                      src={star}
-                      width={15}
-                      height={15}
-                      alt="star rating"
-                    />
-                    <Image
-                      src={star}
-                      width={15}
-                      height={15}
-                      alt="star rating"
-                    />
-                    <Image
-                      src={star}
-                      width={15}
-                      height={15}
-                      alt="star rating"
-                    />
-                    <Image
-                      src={star}
-                      width={15}
-                      height={15}
-                      alt="star rating"
-                    />
-                    <Image
-                      src={star}
-                      width={15}
-                      height={15}
-                      alt="star rating"
-                    />
+            {hotelsDetails &&
+            hotelsDetails.comments &&
+            hotelsDetails?.comments.length > 0 ? (
+              hotelsDetails?.comments.map((comment) => (
+                <div key={comment.id} className={styles.comment_block_item}>
+                  <div className={styles.clent_info_block}>
+                    <div className={styles.clent_info}>
+                      <div className={styles.client_rate}>
+                        {[...Array(5)].map((_, index) => (
+                          <Image
+                            key={index}
+                            src={index < comment.rate ? star : starGrey}
+                            width={17}
+                            height={17}
+                            alt="star rating"
+                          />
+                        ))}
+                      </div>
+                      <p className={styles.comment_date}>
+                        {formatDate(comment.date)}
+                      </p>
+                    </div>
+                    <p className={styles.client_name}>{comment.full_name}</p>
                   </div>
-                  <p className={styles.comment_date}>28.03.2024</p>
+                  <p className={styles.client_comment}>
+                    {cleanAndDecodeString(comment.text)}{" "}
+                  </p>
                 </div>
-                <p className={styles.client_name}>Давыдова Карина</p>
-              </div>
-              <p className={styles.client_comment}>
-                Поездка на Мальдивы с Atlas Travel была просто волшебной! Все
-                было организовано на высшем уровне: от перелета до проживания в
-                шикарной вилле с видом на океан. Особенно запомнились ужины на
-                пляже и потрясающий дайвинг. Это было наше лучшее путешествие —
-                спасибо за незабываемые впечатления!
-              </p>
-            </div>
-            <div className={styles.comment_block_item}>
-              <div className={styles.clent_info_block}>
-                <div className={styles.clent_info}>
-                  <div className={styles.client_rate}>
-                    <Image
-                      src={star}
-                      width={15}
-                      height={15}
-                      alt="star rating"
-                    />
-                    <Image
-                      src={star}
-                      width={15}
-                      height={15}
-                      alt="star rating"
-                    />
-                    <Image
-                      src={star}
-                      width={15}
-                      height={15}
-                      alt="star rating"
-                    />
-                    <Image
-                      src={star}
-                      width={15}
-                      height={15}
-                      alt="star rating"
-                    />
-                    <Image
-                      src={star}
-                      width={15}
-                      height={15}
-                      alt="star rating"
-                    />
-                  </div>
-                  <p className={styles.comment_date}>28.03.2024</p>
-                </div>
-                <p className={styles.client_name}>Давыдова Карина</p>
-              </div>
-              <p className={styles.client_comment}>
-                Поездка на Мальдивы с Atlas Travel была просто волшебной! Все
-                было организовано на высшем уровне: от перелета до проживания в
-                шикарной вилле с видом на океан. Особенно запомнились ужины на
-                пляже и потрясающий дайвинг. Это было наше лучшее путешествие —
-                спасибо за незабываемые впечатления!
-              </p>
-            </div>
-            <div className={styles.comment_block_item}>
-              <div className={styles.clent_info_block}>
-                <div className={styles.clent_info}>
-                  <div className={styles.client_rate}>
-                    <Image
-                      src={star}
-                      width={15}
-                      height={15}
-                      alt="star rating"
-                    />
-                    <Image
-                      src={star}
-                      width={15}
-                      height={15}
-                      alt="star rating"
-                    />
-                    <Image
-                      src={star}
-                      width={15}
-                      height={15}
-                      alt="star rating"
-                    />
-                    <Image
-                      src={star}
-                      width={15}
-                      height={15}
-                      alt="star rating"
-                    />
-                    <Image
-                      src={star}
-                      width={15}
-                      height={15}
-                      alt="star rating"
-                    />
-                  </div>
-                  <p className={styles.comment_date}>28.03.2024</p>
-                </div>
-                <p className={styles.client_name}>Давыдова Карина</p>
-              </div>
-              <p className={styles.client_comment}>
-                Поездка на Мальдивы с Atlas Travel была просто волшебной! Все
-                было организовано на высшем уровне: от перелета до проживания в
-                шикарной вилле с видом на океан. Особенно запомнились ужины на
-                пляже и потрясающий дайвинг. Это было наше лучшее путешествие —
-                спасибо за незабываемые впечатления!
-              </p>
-            </div>
+              ))
+            ) : (
+              <p className={styles.no_comments}>{noCom("noComments")}</p>
+            )}
           </div>
           <button className={styles.leave_comment}>{t("sendComment")}</button>
         </Container>
       </section>
 
       <section className={styles.similar_tours}>
-        <Container isVisible={true}>
+        <Container>
           <OffersWithMainCard
             offerTitle={tours("sameHotels")}
-            slides={toursOffers}
+            slides={similarHotelsArr}
+            content={hotelsApi}
           />
         </Container>
       </section>
 
       <section className={styles.best_offers}>
         <Container>
-          <OffersBlock
-            offerTitle={offers("popularHotels")}
-            slides={ideaOffers}
-          />
+          {homeResultsArr && homeResultsArr.length > 0 ? (
+            <OffersBlock
+              offerTitle={tours("popularHotels")}
+              slides={homeResultsArr}
+            />
+          ) : (
+            <></>
+          )}
         </Container>
       </section>
 
@@ -432,19 +317,23 @@ const HotelDetails: React.FC = () => {
                 prevEl: `.${styles.swiper_button_prev}`,
                 nextEl: `.${styles.swiper_button_next}`,
               }}
-              thumbs={{ swiper: modalThumbsSwiper && !modalThumbsSwiper.destroyed ? modalThumbsSwiper : null}}
+              thumbs={{
+                swiper:
+                  modalThumbsSwiper && !modalThumbsSwiper.destroyed
+                    ? modalThumbsSwiper
+                    : null,
+              }}
               modules={[FreeMode, Navigation, Thumbs]}
               className={styles.upper_swiper_modal}
               initialSlide={activeIndex}
             >
-              {Array.from({ length: 10 }, (_, i) => (
-                <SwiperSlide key={i} className={styles.swiper_image}>
-                  <img
-                    src={`https://swiperjs.com/demos/images/nature-${
-                      i + 1
-                    }.jpg`}
-                    alt={`nature-${i + 1}`}
-                  />
+              {hotelsDetails?.images.map((image, index) => (
+                <SwiperSlide
+                  key={image.id}
+                  className={styles.swiper_image}
+                  onClick={() => openModal(index)}
+                >
+                  <img src={image.image} alt={`image-${index + 1}`} />
                 </SwiperSlide>
               ))}
               <div className={styles.swiper_button_prev}>
@@ -487,14 +376,13 @@ const HotelDetails: React.FC = () => {
               className={styles.lower_swiper_modal}
               onSwiper={setModalThumbsSwiper}
             >
-              {Array.from({ length: 10 }, (_, i) => (
-                <SwiperSlide key={i} className={styles.swiper_image_bottom}>
-                  <img
-                    src={`https://swiperjs.com/demos/images/nature-${
-                      i + 1
-                    }.jpg`}
-                    alt={`thumbnail-${i + 1}`}
-                  />
+              {hotelsDetails?.images.map((image, index) => (
+                <SwiperSlide
+                  key={image.id}
+                  className={styles.swiper_image}
+                  onClick={() => openModal(index)}
+                >
+                  <img src={image.image} alt={`image-${index + 1}`} />
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -506,4 +394,3 @@ const HotelDetails: React.FC = () => {
 };
 
 export default HotelDetails;
-

@@ -1255,31 +1255,31 @@ button.swiper-pagination-bullet {
 }
 /* Slide styles end */
 
-/*!****************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/car-rental/[transferId]/page.module.css ***!
-  \****************************************************************************************************************************************************************************************************************************************************************************************************/
-.page_tour_detail_page__CUPGf {
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/content_detail_page.module.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************/
+.content_detail_page_tour_detail_page__HjCpp {
     padding: 80px 0;
     position: relative;
   }
   
-  .page_main_info_section__RkFqC {
+  .content_detail_page_main_info_section__uIq0s {
     display: flex;
     flex-direction: row;
     gap: 60px;
   }
   
-  .page_swiper_block__NzQub {
+  .content_detail_page_swiper_block__BbrOi {
     width: 45%;
     overflow: hidden;
   }
   
-  .page_main_info__Sob8v {
+  .content_detail_page_main_info__H_TI7 {
     flex-grow: 1;
     width: 45%;
   }
   
-  .page_upper_swiper__UFA4U {
+  .content_detail_page_upper_swiper__oC0Tj {
     width: 100%;
     height: 400px;
     overflow: hidden;
@@ -1287,7 +1287,7 @@ button.swiper-pagination-bullet {
     border-radius: 20px;
   }
   
-  .page_upper_swiper__UFA4U img {
+  .content_detail_page_upper_swiper__oC0Tj img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -1295,18 +1295,18 @@ button.swiper-pagination-bullet {
     cursor: pointer;
   }
   
-  .page_swiper_image__W7ohj {
+  .content_detail_page_swiper_image__Azjmp {
     border-radius: 20px;
   }
   
-  .page_lower_swiper__KVxFq {
+  .content_detail_page_lower_swiper__NiPj5 {
     width: 100%;
     height: 100px;
     overflow: hidden;
     border-radius: 10px;
   }
   
-  .page_lower_swiper__KVxFq img {
+  .content_detail_page_lower_swiper__NiPj5 img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -1314,11 +1314,11 @@ button.swiper-pagination-bullet {
     cursor: pointer;
   }
   
-  .page_swiper_image_bottom__OfJsJ {
+  .content_detail_page_swiper_image_bottom__1MUYu {
     border-radius: 10px;
   }
   
-  .page_modal__aozKz {
+  .content_detail_page_modal__7wesJ {
     position: fixed;
     top: 0;
     left: 0;
@@ -1332,7 +1332,7 @@ button.swiper-pagination-bullet {
     z-index: 100;
   }
   
-  .page_modal_content__c__gW {
+  .content_detail_page_modal_content__nibxJ {
     position: relative;
     padding: 20px;
     overflow: hidden;
@@ -1343,7 +1343,7 @@ button.swiper-pagination-bullet {
     align-items: center;
   }
   
-  .page_modal_close__UP3e_ {
+  .content_detail_page_modal_close__DPGZ9 {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -1355,7 +1355,7 @@ button.swiper-pagination-bullet {
     background: #eef5ff;
   }
   
-  .page_modal_close__UP3e_::after {
+  .content_detail_page_modal_close__DPGZ9::after {
     content: "";
     position: absolute;
     background: url(/_next/static/media/cross.6aff990d.svg) center no-repeat;
@@ -1366,12 +1366,12 @@ button.swiper-pagination-bullet {
     aspect-ratio: 1;
   }
   
-  .page_upper_swiper_modal__21KBv,
-  .page_lower_swiper_modal__Ut0ja {
+  .content_detail_page_upper_swiper_modal__GFk74,
+  .content_detail_page_lower_swiper_modal__aQmW9 {
     margin-top: 10px;
   }
   
-  .page_upper_swiper_modal__21KBv {
+  .content_detail_page_upper_swiper_modal__GFk74 {
     width: 100%;
     height: 600px;
     overflow: hidden;
@@ -1379,30 +1379,29 @@ button.swiper-pagination-bullet {
     border-radius: 20px;
   }
   
-  .page_upper_swiper_modal__21KBv img {
+  .content_detail_page_upper_swiper_modal__GFk74 img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 20px;
   }
   
-  /* Стиль для нижнего Swiper в модальном окне */
-  .page_lower_swiper_modal__Ut0ja {
+  .content_detail_page_lower_swiper_modal__aQmW9 {
     width: 100%;
     height: 100px;
     overflow: hidden;
     border-radius: 10px;
   }
   
-  .page_lower_swiper_modal__Ut0ja img {
+  .content_detail_page_lower_swiper_modal__aQmW9 img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 10px;
   }
   
-  .page_swiper_button_prev__pHuLF,
-  .page_swiper_button_next__Azy_K {
+  .content_detail_page_swiper_button_prev__hsmUp,
+  .content_detail_page_swiper_button_next__Wvfs2 {
     position: absolute;
     top: 50%;
     display: block;
@@ -1416,12 +1415,12 @@ button.swiper-pagination-bullet {
     cursor: pointer;
   }
   
-  .page_swiper_button_prev__pHuLF {
+  .content_detail_page_swiper_button_prev__hsmUp {
     left: 5px;
   }
   
-  .page_swiper_button_prev__pHuLF svg,
-  .page_swiper_button_next__Azy_K svg {
+  .content_detail_page_swiper_button_prev__hsmUp svg,
+  .content_detail_page_swiper_button_next__Wvfs2 svg {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -1430,27 +1429,30 @@ button.swiper-pagination-bullet {
     transform: translate(-50%, -50%);
   }
   
-  .page_swiper_button_prev__pHuLF svg {
+  .content_detail_page_swiper_button_prev__hsmUp svg {
     transform: translate(-50%, -50%) rotate(180deg);
   }
   
-  .page_swiper_button_next__Azy_K {
+  .content_detail_page_swiper_button_next__Wvfs2 {
     right: 5px;
   }
   
-  .page_average_score__LITcE {
+  .content_detail_page_average_score__eDP3K {
     font-size: 16px;
     font-weight: 700;
     line-height: 24px;
+    width: 46px;
+    height: 38px;
     color: #fff;
     background: var(--orange);
     padding: 7px 10px;
     border-radius: 12px;
     margin-right: 20px;
+    text-align: center;
     display: inline-block;
   }
   
-  .page_reviews_quantity__FY3hv {
+  .content_detail_page_reviews_quantity__3l843 {
     font-size: 16px;
     font-weight: 500;
     line-height: 24px;
@@ -1458,7 +1460,7 @@ button.swiper-pagination-bullet {
     color: var(--text-grey);
   }
   
-  .page_title__R5r6h {
+  .content_detail_page_title__jI0OX {
     color: var(--text);
   
     font-size: 32px;
@@ -1468,7 +1470,7 @@ button.swiper-pagination-bullet {
     margin: 15px 0 10px;
   }
   
-  .page_icon_and_text__BYvkl {
+  .content_detail_page_icon_and_text__85SRK {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -1476,28 +1478,28 @@ button.swiper-pagination-bullet {
     margin-bottom: 20px;
   }
   
-  .page_icon_and_text_inner__zQw1G {
+  .content_detail_page_icon_and_text_inner__e915c {
     display: flex;
     flex-direction: row;
     gap: 14px;
     align-items: center;
   }
   
-  .page_icon_and_text_inner__zQw1G p {
+  .content_detail_page_icon_and_text_inner__e915c p {
     font-size: 18px;
     font-weight: 500;
     line-height: 21.94px;
     color: var(--blue);
   }
   
-  .page_desc__qco5Z {
+  .content_detail_page_desc__iFQ1_ {
     color: var(--text);
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
   }
   
-  .page_tag_block__yvZC0 {
+  .content_detail_page_tag_block__hcJtV {
     display: flex;
     flex-direction: row;
     gap: 10px;
@@ -1505,7 +1507,7 @@ button.swiper-pagination-bullet {
     margin: 30px 0;
   }
   
-  .page_tag__aIm5T {
+  .content_detail_page_tag__gJ_60 {
     padding: 10px 15px;
     background: #f4f4f4;
     display: flex;
@@ -1515,8 +1517,8 @@ button.swiper-pagination-bullet {
     border-radius: 15px;
   }
   
-  .page_learn_more__qon7G,
-  .page_leave_comment__8r0Le {
+  .content_detail_page_learn_more__oFge3,
+  .content_detail_page_leave_comment__jrWkO {
     font-size: 16px;
     font-weight: 700;
     line-height: 28px;
@@ -1530,13 +1532,13 @@ button.swiper-pagination-bullet {
     cursor: pointer;
   }
   
-  .page_learn_more__qon7G:hover,
-  .page_leave_comment__8r0Le:hover {
+  .content_detail_page_learn_more__oFge3:hover,
+  .content_detail_page_leave_comment__jrWkO:hover {
     background: #226ee6;
     transition: 0.5s ease;
   }
   
-  .page_section_title__rONOp {
+  .content_detail_page_section_title__2Fezv {
     text-align: center;
     color: var(--text);
     font-size: 40px;
@@ -1545,72 +1547,80 @@ button.swiper-pagination-bullet {
     margin: 100px 0 40px;
   }
   
-  .page_comment_block__ZytbW {
+  .content_detail_page_comment_block__c_Yxl {
     display: flex;
     flex-direction: column;
     gap: 20px;
     color: var(--text);
   }
   
-  .page_comment_block_item__ALNtt {
+  .content_detail_page_comment_block_item__XjmoL {
     background: #ffffff;
     box-shadow: 0px 2px 100px 0px #11305b1f;
     padding: 20px;
     border-radius: 15px;
   }
   
-  .page_client_rate__zdMfE {
+  .content_detail_page_client_rate__GQnXk {
     margin-bottom: 8px;
   }
   
-  .page_clent_info__u_5Im {
+  .content_detail_page_clent_info__B_zao {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
   
-  .page_client_name__Z9ekm {
+  .content_detail_page_client_name__cLgNr {
     font-size: 18px;
     font-weight: 600;
     line-height: 27px;
     margin-bottom: 8px;
   }
   
-  .page_comment_date__hUDXe {
+  .content_detail_page_comment_date___Jqqz {
     font-size: 14px;
     font-weight: 400;
     line-height: 21px;
   }
   
-  .page_client_comment__lYgTI {
+  .content_detail_page_client_comment__ra_hK {
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
   }
   
-  .page_leave_comment__8r0Le {
+  .content_detail_page_leave_comment__jrWkO {
     margin: 40px auto 0;
     text-align: center;
     display: block;
   }
   
-  .page_comments_section__4VUjU {
+  .content_detail_page_comments_section__CaubC {
     margin-bottom: 100px;
   }
   
   @media (max-width: 1024px) {
-    .page_main_info_section__RkFqC {
+    .content_detail_page_main_info_section__uIq0s {
       display: flex;
       flex-direction: column;
       gap: 40px;
     }
-    .page_swiper_block__NzQub {
+    .content_detail_page_swiper_block__BbrOi {
       width: 100%;
     }
   
-    .page_main_info__Sob8v {
+    .content_detail_page_main_info__H_TI7 {
       width: 100%;
     }
+  }
+  
+  .content_detail_page_no_comments__iwkG3 {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22.4px;
+    text-align: center;
+    color: var(--text-grey);
   }
   
 /*!*************************************************************************************************************************************************************************************************************************************************************************************************************!*\
@@ -1765,8 +1775,7 @@ header .Container_global_container__iCBtc{
           backdrop-filter: blur(24px);
   display: flex;
   flex-direction: column;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  border-radius: 20px;
   align-items: stretch;
   box-shadow: 0px 0px 100px 0px #0117361a;
 }
@@ -1782,6 +1791,8 @@ header .Container_global_container__iCBtc{
   position: absolute;
   top: 12px;
   right: 12px;
+  width: 47px;
+  aspect-ratio: 1;
   background-color: var(--orange);
 
   font-size: 18px;
@@ -1800,6 +1811,7 @@ header .Container_global_container__iCBtc{
   height: 100%;
 
   object-fit: cover;
+  border: none !important;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 }
@@ -1807,6 +1819,9 @@ header .Container_global_container__iCBtc{
 .main_cards_cardContent__ruoQZ {
   padding: 20px;
   background: white;
+
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 .main_cards_cardTitle__WMdga {
@@ -1875,38 +1890,50 @@ header .Container_global_container__iCBtc{
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/[locale]/components/cards/tours_cards/tours_cards.module.css ***!
   \****************************************************************************************************************************************************************************************************************************************************************************************************************/
 .tours_cards_slide_inner__Bgmjg {
-    width: 300px;
-    height: 400px;
-    position: relative;
-    margin: 0 auto;
-  }
+  width: 300px;
+  height: 400px;
+  position: relative;
+  margin: 0 auto;
+}
 
-  .tours_cards_slide_inner__Bgmjg img{
-    border-radius: 20px;
-  }
-  
-  .tours_cards_title_desc_block__coFe2 .tours_cards_title__XeH59 {
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 27px;
-    color: white;
-  }
-  
-  .tours_cards_title_desc_block__coFe2 .tours_cards_desc___HOlP {
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 24px;
-    color: white;
-  }
+.tours_cards_slide_inner__Bgmjg img {
+  border-radius: 20px;
+  object-fit: cover;
+}
 
-  .tours_cards_title_desc_block__coFe2 {
-    -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-    position: absolute;
-    padding: 16px 20px;
-    bottom: 0;
-    left: 0px;
-    width: 300px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-  }
+.tours_cards_title_desc_block__coFe2 .tours_cards_title__XeH59 {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 27px;
+  color: white;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tours_cards_title_desc_block__coFe2 .tours_cards_desc___HOlP {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  color: white;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tours_cards_title_desc_block__coFe2 {
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  position: absolute;
+  padding: 16px 20px;
+  bottom: 0;
+  left: 0px;
+  width: 300px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+

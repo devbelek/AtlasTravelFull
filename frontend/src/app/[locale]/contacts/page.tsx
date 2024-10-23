@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import styles from "./page.module.css";
 import Container from "../components/layout/container/Container";
 import mapImage from "@/assets/map.png";
@@ -6,10 +8,68 @@ import Image from "next/image";
 import SocialIconsList from "../components/cards/social_icons/SocialIconsList";
 import ConsultForm from "../components/default_sections/consult_form/ConsultForm";
 import { useTranslations } from "next-intl";
+import { axiosGetContacts } from "@/services/contacts";
+import { translate } from "@/constants/locale";
+
+interface ContactInfo {
+  id: number;
+  title: string;
+  title_ru: string;
+  title_ky: string;
+  title_en: string;
+  description: string;
+  description_ru: string;
+  description_ky: string;
+  description_en: string;
+  job: string;
+  job_ru: string;
+  job_ky: string;
+  job_en: string;
+  phone_number: string;
+  email: string;
+  address: string;
+  whatsapp: string;
+  telegram: string;
+  instagram: string;
+  tiktok: string;
+  facebook: string;
+  youtube: string;
+}
 
 const Contacts = () => {
-
   const t = useTranslations("Header");
+  const [contacts, setContacts] = useState<ContactInfo | null>(null);
+  const [error, setError] = useState("");
+
+  function addLineBreakToJobFields(data: any) {
+    const jobFields = ["job_ru", "job_ky", "job_en"];
+
+    jobFields.forEach((field) => {
+      if (data[field]) {
+        data[field] = data[field].replace(
+          /([а-яА-ЯёЁa-zA-Z\s–-]+)(\d)/,
+          "$1<br/>$2"
+        );
+      }
+    });
+
+    return data;
+  }
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const contactsInfo = await axiosGetContacts();
+        const updatedData = addLineBreakToJobFields(contactsInfo[0]);
+        setContacts(updatedData);
+      } catch (error) {
+        console.error("Ошибка загрузки данных: ", error);
+        setError("Не удалось загрузить данные");
+      }
+    };
+
+    loadData();
+  }, []);
 
   return (
     <main className={styles.contacts_page}>
@@ -22,15 +82,23 @@ const Contacts = () => {
             </div>
 
             <div className={styles.contacts_info_block}>
-              <h1 className={styles.contacts_title}>{t("contacts")}</h1>
-              <p className={styles.contacts_desc}>
-                Мы будем рады помочь вам с выбором тура, бронированием и любыми
-                вопросами, связанными с путешествиями!
-              </p>
-              <p className={styles.contacts_desc}>
-                Мы всегда на связи и готовы ответить на любые ваши вопросы!
-                Свяжитесь с нами удобным для вас способом:
-              </p>
+              <h1 className={styles.contacts_title}>
+                {translate(
+                  contacts?.title_ru ?? "",
+                  contacts?.title_ky ?? "",
+                  contacts?.title_en ?? ""
+                )}
+              </h1>
+              <p
+                className={styles.contacts_desc}
+                dangerouslySetInnerHTML={{
+                  __html: translate(
+                    contacts?.description_ru ?? "",
+                    contacts?.description_ky ?? "",
+                    contacts?.description_en ?? ""
+                  ),
+                }}
+              ></p>
 
               <div className={styles.contacts_flex}>
                 <div className={styles.contacts_flex_item}>
@@ -58,9 +126,16 @@ const Contacts = () => {
                   </svg>
                   <div className={styles.contacts_flex_item_inner}>
                     <h2 className={styles.contacts_flex_title}>Режим работы</h2>
-                    <span className={styles.contacts_flex_desc}>
-                      Понедельник – пятница <br /> 9:00 - 21:00
-                    </span>
+                    <span
+                      className={styles.contacts_flex_desc}
+                      dangerouslySetInnerHTML={{
+                        __html: translate(
+                          contacts?.job_ru ?? "",
+                          contacts?.job_ky ?? "",
+                          contacts?.job_en ?? ""
+                        ),
+                      }}
+                    ></span>
                   </div>
                 </div>
                 <div className={styles.contacts_flex_item}>
@@ -83,8 +158,7 @@ const Contacts = () => {
                   <div className={styles.contacts_flex_item_inner}>
                     <h2 className={styles.contacts_flex_title}>Телефон</h2>
                     <span className={styles.contacts_flex_desc}>
-                      +996 123 432 123 <br />
-                      +996 123 432 123
+                      {contacts?.phone_number}
                     </span>
                   </div>
                 </div>
@@ -117,7 +191,7 @@ const Contacts = () => {
                       Электронная почта
                     </h2>
                     <span className={styles.contacts_flex_desc}>
-                      email@gmail.com
+                      {contacts?.email}
                     </span>
                   </div>
                 </div>
@@ -149,7 +223,7 @@ const Contacts = () => {
                     <h2 className={styles.contacts_flex_title}>Адрес</h2>
 
                     <span className={styles.contacts_flex_desc}>
-                      г.Бишкек, ул.Горького 14
+                      {contacts?.address}
                     </span>
                   </div>
                 </div>

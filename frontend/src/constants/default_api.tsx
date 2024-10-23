@@ -1,1 +1,0 @@
-// export default api = "http://185.245.182.159";

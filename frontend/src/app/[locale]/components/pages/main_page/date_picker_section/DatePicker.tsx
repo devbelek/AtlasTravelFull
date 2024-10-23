@@ -22,7 +22,7 @@ const DatePicker = () => {
   ];
   return (
     <section className={styles.ticket_picker_block}>
-      <Container>
+      <Container isVisible={true}>
         <div className={styles.main_block}>
           <h1 className={styles.company_slogan}>
             <Typewriter

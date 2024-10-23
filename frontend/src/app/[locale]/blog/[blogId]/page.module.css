@@ -42,8 +42,15 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 50px;
-  min-height: 720px;
   margin-bottom: 50px;
+}
+
+.maxHeight{
+  min-height: 720px;
+}
+
+.textHeght{
+  min-height: auto;
 }
 
 .imageStyle {

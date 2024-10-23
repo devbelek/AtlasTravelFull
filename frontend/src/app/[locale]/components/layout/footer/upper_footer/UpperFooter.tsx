@@ -36,6 +36,7 @@ const UpperFooter = () => {
           src={logo}
           width={350}
           height={50}
+          quality={100}
           alt="atlas logo"
         />
 

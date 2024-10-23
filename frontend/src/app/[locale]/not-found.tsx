@@ -5,7 +5,7 @@ import PageLink from "./components/ui/page_link/PageLink";
 import Image from "next/image";
 import errorImage from "@/assets/error_images/not_found.png";
 
-const NotFound = () => {
+export default function NotFoundPage() {
   return (
     <div className={styles.not_found_block}>
       <Container>
@@ -20,5 +20,3 @@ const NotFound = () => {
     </div>
   );
 };
-
-export default NotFound;

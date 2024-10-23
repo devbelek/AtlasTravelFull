@@ -14,7 +14,7 @@ const BottomFooter = () => {
       </p>
       <p className={styles.remotion_ad}>
         {t("remotion")}
-        <Image src={remotionLogo} width={195} height={50} alt="remotion logo" />
+        <Image src={remotionLogo} quality={100} width={195} height={50} alt="remotion logo" />
       </p>
     </div>
   );

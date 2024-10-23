@@ -1,35 +1,55 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import Image, { StaticImageData } from "next/image";
+import { StaticImageData } from "next/image";
 import "swiper/swiper-bundle.css";
 import "swiper/css";
 import styles from "../offer_block.module.css";
 import MainCard from "@/app/[locale]/components/cards/main_cards/MainCard";
+import { IMAGE_API_URL } from "@/constants/default_api";
+import { useLocale } from "@/constants/locale";
+import {
+  flightsApi,
+  hotelsApi,
+  toursApi,
+  transferApi,
+} from "@/constants/content";
+
+interface Image {
+  id: number;
+  image: string;
+}
 
 type OffersWithMainCardProps = {
   offerTitle: string;
+  content: string;
   slides: {
-    image: StaticImageData | string;
+    image: Image;
+    id: number;
     alt: string;
     rating: number;
     title: string;
-    desc?: string; // Сделали описание необязательным
-    commentQuantity: number;
+    desc?: string;
+    rating_quantity: number;
     linkTo: string;
   }[];
 };
 
-const OffersWithMainCard: React.FC<OffersWithMainCardProps> = ({ offerTitle, slides }) => {
+const OffersWithMainCard: React.FC<OffersWithMainCardProps> = ({
+  offerTitle,
+  slides,
+  content,
+}) => {
   return (
-    <div className={`${styles.vacation_ideas_block} ${styles.offers_with_main_card}`}>
+    <div
+      className={`${styles.vacation_ideas_block} ${styles.offers_with_main_card}`}
+    >
       <div className={styles.offer_title_block}>
         <h2 className={styles.offer_title}>{offerTitle}</h2>
       </div>
       <Swiper
         modules={[Navigation]}
         slidesPerView={3}
-        slidesPerGroup={3}
         spaceBetween={30}
         breakpoints={{
           0: {
@@ -74,13 +94,21 @@ const OffersWithMainCard: React.FC<OffersWithMainCardProps> = ({ offerTitle, sli
           <SwiperSlide key={index}>
             <MainCard
               key={index}
-              imageSrc={slide.image}
+              imageSrc={IMAGE_API_URL + slide.image.image}
               title={slide.title}
               rating={slide.rating}
-              commentQuantity={slide.commentQuantity}
+              commentQuantity={slide.rating_quantity}
               desc={slide.desc}
-              alt={slide.alt}
-              linkTo="/"
+              linkTo={
+                content == toursApi
+                  ? toursApi
+                  : content == flightsApi
+                  ? flightsApi
+                  : content == hotelsApi
+                  ? hotelsApi
+                  : "car-rental"
+              }
+              index={slide.id}
             />
           </SwiperSlide>
         ))}

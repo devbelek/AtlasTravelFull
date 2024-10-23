@@ -8,6 +8,8 @@
   --stroke: #d3d3d3;
   --text-input: #989898;
   --text: #0d1a27;
+
+  --transition-effect: all 0.25s ease-in-out;
 }
 
 html,
@@ -51,6 +53,11 @@ input {
   border: none;
 }
 
+button,
+input {
+  font-family: inherit;
+}
+
 .swiper-3d .swiper-slide-shadow {
   background: none !important;
 }
@@ -64,7 +71,7 @@ input {
   cursor: default !important;
 }
 
-.swiper-button-disabled svg path{
+.swiper-button-disabled svg path {
   stroke: var(--text);
 }
 

@@ -5,9 +5,9 @@ import { useRouter, useSearchParams } from "next/navigation";
 import styles from "./pagination_controls.module.css";
 
 interface PaginationControlsProps {
-  itemQuantity: number; // Общее количество элементов
-  url: string; // URL для навигации
-  per_page: number; // Количество элементов на странице
+  itemQuantity: number;
+  url: string; 
+  per_page: number; 
 }
 
 const PaginationControls: FC<PaginationControlsProps> = ({
@@ -17,8 +17,8 @@ const PaginationControls: FC<PaginationControlsProps> = ({
 }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const page = parseInt(searchParams.get("page") ?? "1", 10); // Текущая страница
-  const totalPages = Math.ceil(itemQuantity / per_page); // Общее количество страниц
+  const page = parseInt(searchParams.get("page") ?? "1", 10); 
+  const totalPages = Math.ceil(itemQuantity / per_page);
 
   const handlePageChange = (newPage: number) => {
     router.push(url + `?page=${newPage}&per_page=${per_page}`, {

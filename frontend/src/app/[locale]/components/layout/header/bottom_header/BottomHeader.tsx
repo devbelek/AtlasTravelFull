@@ -95,6 +95,7 @@ const BottomHeader = () => {
           src={logo}
           width={245}
           height={37.5}
+          quality={100}
           alt="Atlas Travel Logo"
           layout="responsive"
         />
