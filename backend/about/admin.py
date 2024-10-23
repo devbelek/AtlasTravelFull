@@ -7,9 +7,8 @@ from django.utils.html import strip_tags
 from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
 from .models import (AboutUs, AboutUsImage, FAQ, AboutUsInquiry,
                      AboutUsConsultant, OurProjects, PrivacyPolicy,
-                     UserAgreement, ReturnPolicy)
+                     UserAgreement, ReturnPolicy, ConsultantPhoneNumber)
 from django.utils.translation import gettext_lazy as _
-from django.forms import JSONField as JSONFormField
 
 
 @admin.register(AboutUs)
@@ -91,22 +90,20 @@ class AboutUsInquiryAdmin(admin.ModelAdmin):
     readonly_fields = ['created_at']
 
 
-class AboutUsConsultantForm(forms.ModelForm):
-    phone_numbers = JSONFormField(widget=forms.Textarea, required=False)
-
-    class Meta:
-        model = AboutUsConsultant
-        fields = '__all__'
+class ConsultantPhoneNumberInline(admin.TabularInline):
+    model = ConsultantPhoneNumber
+    extra = 1
 
 
 @admin.register(AboutUsConsultant)
 class AboutUsConsultantAdmin(admin.ModelAdmin):
-    list_display = ('name', 'surname', 'get_phone_numbers', 'is_active')  # Заменяем phone_number на метод get_phone_numbers
+    list_display = ('name', 'surname', 'get_phone_numbers', 'is_active')
     list_editable = ('is_active',)
+    inlines = [ConsultantPhoneNumberInline]
 
     def get_phone_numbers(self, obj):
-        return ", ".join(obj.phone_numbers) if obj.phone_numbers else 'Нет номеров'  # Вывод номеров телефонов из JSON
-    get_phone_numbers.short_description = 'Номера телефонов'  # Название колонки в админке
+        return ", ".join([phone.phone_number for phone in obj.phone_numbers.all()])
+    get_phone_numbers.short_description = 'Номера телефонов'
 
     def save_model(self, request, obj, form, change):
         if obj.is_active:

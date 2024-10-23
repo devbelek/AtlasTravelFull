@@ -1,6 +1,5 @@
 from django.core.exceptions import ValidationError
 from django.db import models
-from django.db.models import JSONField
 from django.utils.html import format_html
 from ckeditor.fields import RichTextField
 from tours.models import Tour
@@ -101,7 +100,6 @@ class AboutUsInquiry(models.Model):
 class AboutUsConsultant(models.Model):
     surname = models.CharField(max_length=20, verbose_name='Фамилия', blank=True, null=True)
     name = models.CharField(max_length=20, verbose_name='Имя', blank=True, null=True)
-    phone_numbers = JSONField(default=list, blank=True, verbose_name='Номера телефонов')
     whatsapp = models.URLField(verbose_name='whatsapp', blank=True, null=True)
     telegram = models.URLField(verbose_name='telegram', blank=True, null=True)
     instagram = models.URLField(verbose_name='instagram', blank=True, null=True)
@@ -122,6 +120,26 @@ class AboutUsConsultant(models.Model):
     class Meta:
         verbose_name = 'Консультант'
         verbose_name_plural = 'Консультанты'
+
+
+class ConsultantPhoneNumber(models.Model):
+    consultant = models.ForeignKey(
+        AboutUsConsultant,
+        on_delete=models.CASCADE,
+        related_name='phone_numbers',
+        verbose_name='Консультант'
+    )
+    phone_number = models.CharField(
+        max_length=20,
+        verbose_name="Номер телефона"
+    )
+
+    def __str__(self):
+        return self.phone_number
+
+    class Meta:
+        verbose_name = 'Номер телефона'
+        verbose_name_plural = 'Номера телефонов'
 
 
 class OurProjects(models.Model):
