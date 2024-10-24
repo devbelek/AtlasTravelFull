@@ -38,7 +38,7 @@ services:
     ports:
       - '3000:3000'
     env_file:
-      - ./.env
+      - .frontend/.env
     expose:
       - "3000"
     command: sh -c "npm install && npm run dev"
